@@ -20,3 +20,6 @@ install:
 
 script:
   - npm test
+
+after_success:
+  - surge --project ./dist --domain job-hunger.surge.sh
