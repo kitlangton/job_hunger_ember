@@ -1,17 +1,41 @@
 export default function() {
 
   // These comments are here to help you get started. Feel free to delete them.
+  //
+  this.namespace = 'api/v1';    // make this `api`, for example, if your API is namespaced
 
-  this.get('/', function() {
-    return {
-      users: [
-        { id: 1, name: 'Zelda' },
-        { id: 2, name: 'Link' },
-        { id: 3, name: 'Epona' },
-      ]
-    };
+  this.get('/users', function(db, request) {
+  return {
+    data: db.users.map(attrs => (
+      { type: 'users', id: attrs.id, attributes: attrs }
+    ))
+  };
   });
 
+  this.get('/users/:id', (db, request) => {
+    let user = db.users.find(request.params.id);
+
+    let data = {
+      type: 'user',
+      id: request.params.id,
+      attributes: user,
+      // relationships: {
+      // }
+    };
+
+    return { data };
+  });
+
+  this.post('/users', function(db, request) {
+    var attrs = JSON.parse(request.requestBody).user;
+    var user = db.users.insert(attrs);
+    console.log(user);
+    return { data: {
+      type: 'user',
+      id: user.id,
+      attributes: user
+    } };
+  });
 
   /*
     Config (with defaults).
@@ -19,7 +43,6 @@ export default function() {
     Note: these only affect routes defined *after* them!
   */
   // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
-  // this.namespace = '';    // make this `api`, for example, if your API is namespaced
   // this.timing = 400;      // delay for each request, automatically set to 0 during testing
 
   /*

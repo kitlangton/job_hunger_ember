@@ -1,6 +1,10 @@
 import Ember from 'ember';
 
+const { service }  = Ember.inject;
+
 export default Ember.Controller.extend({
+
+  store: service(),
 
   validEmail: Ember.computed('email', function()  {
     console.log("RUNNING");
@@ -11,7 +15,16 @@ export default Ember.Controller.extend({
 
   actions: {
     signUp() {
-      this.transitionToRoute('/');
+      let email = this.get('email');
+      let password = this.get('password');
+      let store = this.get('store');
+
+      let user = store.createRecord('user', {
+        email: email,
+        password: password
+      });
+
+      user.save();
     }
   }
 });

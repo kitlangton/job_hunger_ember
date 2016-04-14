@@ -32,3 +32,11 @@ test('password field not visible until valid email address entered', function(as
     assert.equal(find('.password-input.hidden').length, 1);
   });
 });
+
+test('logged out user should be redirected to the sign in page', function(assert) {
+  visit('/');
+
+  andThen(() => {
+    assert.equal(currentURL(), '/login');
+  });
+});
