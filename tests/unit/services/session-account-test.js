@@ -1,3 +1,5 @@
+
+// import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('service:session-account', 'Unit | Service | session account', {
@@ -10,3 +12,16 @@ test('it exists', function(assert) {
   let service = this.subject();
   assert.ok(service);
 });
+
+// test('gets current user', function(assert) {
+
+//   let service = this.subject();
+//   service.set('session.data.authenticated.id', 1);
+
+//   Ember.run( service.loadCurrentUser );
+
+//   assert.ok( service );
+
+// });
+
+
