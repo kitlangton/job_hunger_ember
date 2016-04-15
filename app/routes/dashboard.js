@@ -13,13 +13,13 @@ export default Ember.Route.extend({
     // suggestion7:"Refactor Danebook",
 
     suggestions:[
-      "Go do that",
       "Email Steve Jobs",
       "Read Hacker News",
       "Learn Ember",
-      "Send out your resume",
-      "Call the recruiter",
-      "Refactor Danebook",
+      // "Send out your resume",
+      // "Go do that",
+      // "Call the recruiter",
+      // "Refactor Danebook",
     ],
 
     company1: "Apple",
@@ -30,28 +30,28 @@ export default Ember.Route.extend({
       "Uber",
       "Facebook",
       "Google",
-      "Pets.com",
-      "Goldman Sachs",
-      "Hedge fund"
+      // "Pets.com",
+      // "Goldman Sachs",
+      // "Hedge fund"
     ],
 
     leads: [
-      "Eric Smith",
       "Kit Langton",
-      "Larry Ellison",
-      "Steve Ballmer",
+      "Donald Trump",
       "Linus Torvalds",
-      "Donald Trump"
+      "Steve Ballmer",
+      // "Eric Smith",
+      // "Larry Ellison",
     ],
 
     jobs: [
       "Software Developer",
       "Concessionaire at Oakland Coliseum",
       "Bike messenger",
-      "DBA",
-      "CEO",
-      "Scrum master",
       "yoga teacher",
+      // "Scrum master",
+      // "DBA",
+      // "CEO",
     ],
 
   },
@@ -62,9 +62,6 @@ export default Ember.Route.extend({
 
   model() {
     return this.dummyData;
-    // return {
-    //   suggestion: "Go do that"
-    // };
   },
 
 
