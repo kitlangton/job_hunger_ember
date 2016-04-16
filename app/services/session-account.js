@@ -8,10 +8,10 @@ export default Ember.Service.extend({
 
   loadCurrentUser() {
     return new RSVP.Promise((resolve, reject) => {
-      const accountId = this.get('session.data.authenticated.id');
-      if (!Ember.isEmpty(accountId)) {
-        return this.get('store').find('user', accountId).then((account) => {
-          this.set('currentUser', account);
+      const uid = this.get('session.data.authenticated.uid');
+      if (!Ember.isEmpty(uid)) {
+        return this.get('store').query('user', { filter: { email: uid  } } ).then(account => {
+          this.set('currentUser', account.get('firstObject'));
           resolve();
         }, reject);
       } else {
