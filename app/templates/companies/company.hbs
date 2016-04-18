@@ -1,81 +1,11 @@
 <!-- app/templates/dashboard.hbs -->
-<h4>Occidential Petroleum</h4>
+<h4>{{model.name}}</h4>
 
-<div class="row col-md-10">
-    <div class="panel-heading">
-        <h5 class="panel-title">Suggestions</h5>
-    </div>
-
-    <div class="panel panel-default">
-      {{#each model.suggestions as |suggestion| }}
-        <div class="panel-body dashboard-suggestion">
-        {{ suggestion }}
-        </div>
-      {{/each }}
-      <br>
-    </div>
-</div>
-
-<div class="row col-md-5">
-    <div class="panel-heading">
-        <h5 class="panel-title">Resources</h5>
-    </div>
-
-    <div class="panel panel-default">
-      {{#each model.resources as |resource| }}
-        <div class="panel-body dashboard-resource">
-        {{ resource }}
-        </div>
-      {{/each }}
-      <br>
-    </div>
-</div>
-
+{{show-suggestions model=model}}
+{{show-resources model=model}}
 
 <div class="row col-md-2">
 </div>
 
-<div class="row col-md-5">
-    <div class="panel-heading">
-        <h5 class="panel-title">Leads</h5>
-    </div>
-
-    <div class="panel panel-default">
-      {{#each model.leads as |lead| }}
-        <div class="panel-body dashboard-lead">
-        {{ lead }}
-        </div>
-      {{/each }}
-      <br>
-    </div>
-</div>
-
-
-<div class="row col-md-8">
-    <div class="panel-heading">
-        <h5 class="panel-title">Jobs</h5>
-    </div>
-
-    <div class="panel panel-default">
-      {{#each model.jobs as |job| }}
-        <div class="panel-body dashboard-job">
-        {{ job }}
-        </div>
-      {{/each }}
-      <br>
-    </div>
-</div>
-
-
-<div class="row col-md-8">
-    <div class="panel-heading">
-        <h5 class="panel-title">notes</h5>
-    </div>
-
-    <div class="panel panel-default">
-      <textarea></textarea>
-    </div>
-</div>
-
-{{outlet}}
-
+{{show-leads model=model}}
+{{show-notes}}
