@@ -1,0 +1,15 @@
+<div class="row col-md-5">
+    <div class="panel-heading">
+        <h5 class="panel-title">Resources</h5>
+    </div>
+
+    <div class="panel panel-default">
+      {{#each model.resources as |resource| }}
+        <div class="panel-body dashboard-resource">
+        {{ resource }}
+        </div>
+      {{/each }}
+      <br>
+    </div>
+</div>
+
