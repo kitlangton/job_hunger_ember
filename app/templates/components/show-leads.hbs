@@ -4,11 +4,26 @@
         <h5 class="panel-title">Leads</h5>
     </div>
 
-    <div class="panel-body dashboard-lead">
-      {{#each model.leads as |lead| }}
-        {{ lead }}
-      {{/each }}
-    </div>
-    <br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            Name
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each model.leads as |lead| }}
+        <tr>
+          <td>
+            {{ lead.name }}
+          </td>
+        </tr>
+        {{/each }}
+      </tbody>
+    </table>
+
+
   </div>
 </div>

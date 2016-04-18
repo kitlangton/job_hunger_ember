@@ -1,6 +1,9 @@
 <!-- app/templates/dashboard.hbs -->
 <h4>{{model.name}}</h4>
 
+{{ model.include }}
+
+
 <div class="row">
   {{show-suggestions model=model}}
 </div>
@@ -8,7 +11,27 @@
 <div class="row">
   {{show-resources model=model}}
   {{show-leads model=model}}
+
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h5 class="panel-title">Jobs</h5>
+      </div>
+
+      <table class="table">
+        <tbody>
+          {{#each model.jobs as |job|}}
+            <tr>
+              <td>{{ job.title }}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
+
 <div class="row">
-  {{show-notes}}
+  {{show-notes model=model}}
 </div>

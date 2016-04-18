@@ -14,7 +14,10 @@ Router.map(function() {
     this.route('new');
     this.route('company', { path: '/:company_id'});
   });
-  this.route('leads');
+  this.route('leads', function() {
+    this.route('new');
+    this.route('lead', { path: '/:lead_id'});
+  });
 });
 
 export default Router;
