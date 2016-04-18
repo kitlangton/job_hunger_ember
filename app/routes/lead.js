@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-
   dummyData: {
 
     resources: [
@@ -30,7 +29,6 @@ export default Ember.Route.extend({
       "Apple",
       "Uber",
       "Facebook",
-
       "Google",
       // "Pets.com",
       // "Goldman Sachs",
@@ -59,12 +57,10 @@ export default Ember.Route.extend({
   },
 
   init() {
-    console.log('dashboard');
+    console.log('lead');
   },
 
   model() {
     return this.dummyData;
   },
-
-
 });
