@@ -30,7 +30,6 @@ export default Ember.Route.extend({
       "Apple",
       "Uber",
       "Facebook",
-
       "Google",
       // "Pets.com",
       // "Goldman Sachs",
@@ -68,3 +67,5 @@ export default Ember.Route.extend({
 
 
 });
+
+
