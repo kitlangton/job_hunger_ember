@@ -1,14 +1,14 @@
-<div class="row col-md-5">
+<div class="col-md-6">
+  <div class="panel panel-default">
     <div class="panel-heading">
         <h5 class="panel-title">Leads</h5>
     </div>
 
-    <div class="panel panel-default">
+    <div class="panel-body dashboard-lead">
       {{#each model.leads as |lead| }}
-        <div class="panel-body dashboard-lead">
         {{ lead }}
-        </div>
       {{/each }}
-      <br>
     </div>
+    <br>
+  </div>
 </div>

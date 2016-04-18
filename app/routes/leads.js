@@ -7,9 +7,9 @@ export default Ember.Route.extend({
       "news.ycombinator.com",
       "steve.jobs@icloud.com",
       "wallstreetjournal.com",
-      "Bill Gates: w.gates@hotmail.com",
-      "Paul Graham: @cat_pictures",
-      "Sergey Brin: 444-555-1212",
+      // "Bill Gates: w.gates@hotmail.com",
+      // "Paul Graham: @cat_pictures",
+      // "Sergey Brin: 444-555-1212",
     ],
 
     suggestions:[
