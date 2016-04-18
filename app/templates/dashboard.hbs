@@ -7,8 +7,16 @@
         <h5 class="panel-title">Suggestions</h5>
     </div>
 
-      <div class="panel-body dashboard-suggestion">
-      </div>
+    <table class="dashboard-suggestion">
+      <tbody>
+        {{#each suggestions as |suggestion| }}
+          <tr>
+            <td>{{ suggestion }}</td>
+          </tr>
+        {{/each }}
+      </tbody>
+    </table>
+
     <br>
   </div>
 </div>

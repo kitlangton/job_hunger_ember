@@ -64,8 +64,25 @@ export default Ember.Route.extend({
   model() {
     return RSVP.hash({
       companies: this.store.findAll('company'),
-      leads: this.store.query('lead', { include: 'company'} )
+      leads: this.store.query('lead', { include: 'company'} ),
+      jobs: this.store.query('job', { include: 'company'} )
     });
+  },
+
+  setupController(controller, model) {
+
+    let suggestions = [];
+    let companyName = model.companies.content[0]._data.name;
+    suggestions.push( "Follow " + companyName + " on Twitter.");
+
+    let leadName = model.leads.content[0]._data.name;
+    suggestions.push( "Email " + leadName + ".");
+    
+    let jobName = model.jobs.content[0]._data.title;
+    suggestions.push( "Apply for  " + jobName + " job.");
+
+    controller.set('suggestions', suggestions);
+
   },
 
 
