@@ -1,0 +1,10 @@
+<h3>New Company</h3>
+
+<form>
+  <div class="form-group">
+    <label>Name</label>
+    {{input value=model.name class="form-control"}}
+  </div>
+
+  <button class="btn-success" {{action "createCompany" model}}>Create Company</button>
+</form>

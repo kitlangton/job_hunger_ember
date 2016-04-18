@@ -1,8 +1,6 @@
 import Ember from 'ember';
-const { RSVP } = Ember;
 
 export default Ember.Route.extend({
-
   dummyData: {
 
     resources: [
@@ -25,6 +23,7 @@ export default Ember.Route.extend({
     ],
 
     company1: "Apple",
+
 
     companies: [
       "Apple",
@@ -58,15 +57,10 @@ export default Ember.Route.extend({
   },
 
   init() {
-    console.log('dashboard');
+    console.log('lead');
   },
 
   model() {
-    return RSVP.hash({
-      companies: this.store.findAll('company'),
-      leads: this.store.query('lead', { include: 'company'} )
-    });
+    return this.dummyData;
   },
-
-
 });
