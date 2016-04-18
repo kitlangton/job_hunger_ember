@@ -8,7 +8,6 @@ export default Ember.Route.extend({
 
   model(params) {
     console.log('model');
-    console.log(params);
     return this.store.findRecord('company', params.company_id);
   },
 
