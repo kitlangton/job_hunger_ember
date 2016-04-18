@@ -1,35 +1,32 @@
 <!-- app/templates/dashboard.hbs -->
 <h4>dashboard</h4>
 
-
 <div class="row col-md-12">
     <div class="panel-heading">
         <h5 class="panel-title">Suggestions</h5>
     </div>
 
     <div class="panel panel-default">
-      {{#each model.suggestions as |suggestion| }}
         <div class="panel-body dashboard-suggestion">
-        {{ suggestion }}
         </div>
-      {{/each }}
       <br>
-    </div>  
+    </div>
 </div>
 
 <div class="row col-md-5">
     <div class="panel-heading">
         <h5 class="panel-title">Companies</h5>
+        {{link-to "Companies" 'companies.new'}}
     </div>
 
     <div class="panel panel-default">
       {{#each model.companies as |company| }}
         <div class="panel-body dashboard-company">
-        {{ company }}
+        {{ company.name }}
         </div>
       {{/each }}
       <br>
-    </div>  
+    </div>
 </div>
 
 <div class="row col-md-2">
@@ -43,11 +40,12 @@
     <div class="panel panel-default">
       {{#each model.leads as |lead| }}
         <div class="panel-body dashboard-lead">
-        {{ lead }}
+        {{ lead.name }}
+        {{ lead.company.name }}
         </div>
       {{/each }}
       <br>
-    </div>  
+    </div>
 </div>
 
 
@@ -63,7 +61,7 @@
         </div>
       {{/each }}
       <br>
-    </div>  
+    </div>
 </div>
 
 {{outlet}}
