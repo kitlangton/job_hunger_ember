@@ -4,7 +4,7 @@ export default Ember.Route.extend({
 
   model(params) {
     console.log('model');
-    return this.store.findRecord('company', params.lead_id, include:);
+    return this.store.findRecord('lead', params.lead_id, {include: 'company'});
   }
 
 });
