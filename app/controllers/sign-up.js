@@ -20,10 +20,21 @@ export default Ember.Controller.extend({
       let email = this.get('email');
       let password = this.get('password');
       // let store = this.get('store');
-      this.get('store').createRecord('user', {
-        email: email,
-        password: password
-      }).save().then( _ => {
+      // this.get('store').createRecord('user', {
+      //   email: email,
+      //   password: password
+      // }).save().then( _ => {
+      //   this.get('session').authenticate('authenticator:devise', email, password);
+      // });
+
+      Ember.$.ajax({
+        type: "POST",
+        url: '/users',
+        data: {
+          email: email,
+          password: password
+        }
+      }).then( _ => {
         this.get('session').authenticate('authenticator:devise', email, password);
       });
     }
