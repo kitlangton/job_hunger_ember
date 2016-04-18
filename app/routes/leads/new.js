@@ -5,7 +5,7 @@ export default Ember.Route.extend({
   sessionAccount: Ember.inject.service(),
 
   model() {
-    return this.store.createRecord('leads');
+    return this.store.createRecord('lead');
   },
 
   actions: {
