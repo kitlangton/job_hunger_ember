@@ -1,102 +1,123 @@
 <!-- app/templates/dashboard.hbs -->
 <h4>dashboard</h4>
 
-{{ model }}
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h5 class="panel-title">Suggestions</h5>
+      </div>
 
-<div class="row col-md-12">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-        <h5 class="panel-title">Suggestions</h5>
+      <table class="dashboard-suggestion">
+        <tbody>
+          {{#each suggestions as |suggestion| }}
+            <tr>
+              <td>{{ suggestion }}</td>
+            </tr>
+          {{/each }}
+        </tbody>
+      </table>
+
+      <br>
     </div>
-
-    <table class="dashboard-suggestion">
-      <tbody>
-        {{#each suggestions as |suggestion| }}
-          <tr>
-            <td>{{ suggestion }}</td>
-          </tr>
-        {{/each }}
-      </tbody>
-    </table>
-
-    <br>
   </div>
 </div>
 
-<div class="row col-md-5">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-        <h5 class="panel-title">Companies</h5>
-        {{link-to "Companies" 'companies.new'}}
-    </div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h5 class="panel-title">Companies</h5>
+          {{link-to "Companies" 'companies.new'}}
+      </div>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- {{#each model.companies as |company| }}
+      <table class="table" style="table-layout: fixed">
+        <thead>
           <tr>
-            <td>{{ company.name }}</td>
+            <th>Name</th>
+            <th>Website</th>
+            <th>Blog</th>
           </tr>
-        {{/each }} -->
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {{#each model.companies as |company| }}
+            <tr>
+              <td>
+                {{#link-to "companies.company" company}}
+                  {{company.name}}
+                {{/link-to}}
+              </td>
+              <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ company.website }}>{{company.website}}</a></td>
+              <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ company.blog }}>{{company.blog}}</a></td>
+            </tr>
+          {{/each }}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h5 class="panel-title">Leads</h5>
+          {{link-to "Add Lead" 'leads.new'}}
+      </div>
+
+      <div class="panel-body">
+        <table class='table' style="table-layout: fixed">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Blog</th>
+              <th>Other</th>
+              <th>Contacted?</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each model.leads as |lead| }}
+              <tr>
+                <td >
+                  {{#link-to "leads.lead" lead}}
+                    {{lead.name}}
+                  {{/link-to}}
+                </td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ lead.blog }}>{{lead.blog}}</a></td>
+                <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ lead.linked_in }}>{{lead.linked_in}}</a></td>
+                <td>Yes</td>
+              </tr>
+            {{/each }}
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="row col-md-2">
-</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h5 class="panel-title">Jobs</h5>
+    
+      </div>
 
-<div class="row col-md-5">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-        <h5 class="panel-title">Leads</h5>
-        {{link-to "Add Lead" 'leads.new'}}
-    </div>
-
-    <table class='table'>
-      <thead>
-        <tr>
-          <th>Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- {{#each model.leads as |lead| }}
+      <table class="table">
+        <thead>
           <tr>
-            <td>{{ lead.name }}</td>
+            <th>Position</th>
           </tr>
-        {{/each }} -->
-      </tbody>
-    </table>
-
-  </div>
-</div>
-
-
-<div class="row col-md-8">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-        <h5 class="panel-title">Jobs</h5>
+        </thead>
+        <tbody>
+          {{#each model.jobs as |job| }}
+            <tr>
+              <td>{{ job.title }}</td>
+            </tr>
+          {{/each }}
+        </tbody>
+      </table>
     </div>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Position</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- {{#each model.jobs as |job| }}
-          <tr>
-            <td>{{ job.title }}</td>
-          </tr>
-        {{/each }} -->
-      </tbody>
-    </table>
   </div>
+
 </div>
 
 {{outlet}}

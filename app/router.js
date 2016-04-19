@@ -18,6 +18,10 @@ Router.map(function() {
     this.route('new');
     this.route('lead', { path: '/:lead_id'});
   });
+
+  this.route('jobs', function() {
+    this.route('new');
+  });
 });
 
 export default Router;

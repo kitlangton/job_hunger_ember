@@ -3,7 +3,6 @@
 
 {{ model.include }}
 
-
 <div class="row">
   {{show-suggestions model=model}}
 </div>
@@ -19,12 +18,18 @@
       </div>
 
       <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Application Status</th>
+          </tr>
+        </thead>
         <tbody>
-          {{#each model.jobs as |job|}}
+          {{#each model.jobs as |job| }}
             <tr>
               <td>{{ job.title }}</td>
             </tr>
-          {{/each}}
+          {{/each }}
         </tbody>
       </table>
     </div>

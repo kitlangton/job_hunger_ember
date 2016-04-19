@@ -5,7 +5,7 @@ import { belongsTo } from 'ember-data/relationships';
 export default Model.extend({
   company: belongsTo('company'),
   name: attr('string'),
-  linkedIn: attr('string'),
+  linked_in: attr('string'),
   email: attr('string'),
   blog: attr('string'),
   notes: attr('string')

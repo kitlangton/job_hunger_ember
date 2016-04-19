@@ -7,5 +7,7 @@ export default Model.extend({
   notes: attr('string'),
   user: belongsTo('user'),
   jobs: hasMany('job'),
-  leads: hasMany('lead')
+  leads: hasMany('lead'),
+  website: attr('string'),
+  blog: attr('string')
 });

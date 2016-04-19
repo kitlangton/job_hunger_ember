@@ -2,14 +2,18 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
+  sessionAccount: Ember.inject.service(),
+
   model() {
-    return this.store.findAll('company');
+    let currentUser = this.get('sessionAccount.currentUser');
+    return this.store.findRecord('user', currentUser.id, {include: 'companies'});
   },
 
   actions: {
-    createLead(name, companyId) {
+    createLead(name, company) {
+
       let lead = this.store.createRecord('lead', {
-        company_id: companyId,
+        company: company,
         name: name
       });
       lead.save();

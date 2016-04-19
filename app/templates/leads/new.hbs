@@ -6,14 +6,14 @@
     {{input value=name class="form-control"}}
   </div>
 
-  <select value=companyId>
-    <option value=''></option>
-    {{#each model as |company|}}
+  <select onchange={{action "selectCompany" value="target.value"}}>
+    <option value=''>Please Select Company</option>
+    {{#each model.companies as |company|}}
       <option value={{company.id}}>
         {{ company.name }}
       </option>
     {{/each}}
   </select>
 
-  <button class="btn-success" {{action "createLead" name companyId}}>Create Lead</button>
+  <button class="btn-success" {{action "createLead" name selectedCompany}} disabled={{isDisabled}}>Create Lead</button>
 </form>
