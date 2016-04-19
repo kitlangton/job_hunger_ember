@@ -1,5 +1,23 @@
 @import 'bootstrap';
 @import 'ember-freestyle';
+@import 'nav-bar';
+@import 'input';
+
+body, h1 {
+  transition: all 0.5s;
+  // overflow: hidden;
+}
+
+.dark {
+  body {
+    background-color: rgba(45,45,70,1);
+  }
+
+  h1 {
+    opacity: 0.8;
+    color: white;
+  }
+}
 
 .next-action {
   // border: 1px solid black;
@@ -74,10 +92,36 @@
   }
 }
 
+.hunger-logo {
+  height: 100px;
+  width: auto;
+}
+
 .dashboard-suggestion {
   height: 14px;
 }
 
 .dashboard-resource {
   height: 10px;
+}
+
+@keyframes play {
+  0%{
+    background-position: 0 0px;
+  }
+
+  100%{
+    background-position: 0 -21240px;
+  }
+}
+
+.drop {
+  background:-webkit-gradient(linear,0% 0%,0% 100%, from(rgba(13,52,58,1) ), to(rgba(255,255,255,0.6))  );
+  background: -moz-linear-gradient(top, rgba(13,52,58,1) 0%, rgba(255,255,255,.6) 100%);
+  width:1px;
+  height:89px;
+  opacity: 0.3;
+  position: absolute;
+  bottom:200px;
+  transform-origin: bottom;
 }

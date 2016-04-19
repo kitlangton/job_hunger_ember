@@ -1,0 +1,76 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 79.15 118.54">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #757575;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-7 {
+        stroke: #000;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+
+      .cls-2 {
+        fill: #1c1c1c;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        fill: #686868;
+      }
+
+      .cls-5 {
+        fill: #f44040;
+        stroke: #6d0909;
+      }
+
+      .cls-6 {
+        stroke: #8e0e0e;
+      }
+
+      .cls-7 {
+        fill: #545454;
+      }
+    </style>
+  </defs>
+  <title>hunger_logo</title>
+  <g>
+    <path class="cls-1" d="M31,17.13V8.66a0.32,0.32,0,0,1,.32-0.32H47.81a0.32,0.32,0,0,1,.32.32v8.47a1.48,1.48,0,0,0,1.48,1.48H53.5A1.48,1.48,0,0,0,55,17.13V4.92A3.42,3.42,0,0,0,51.56,1.5h-24a3.42,3.42,0,0,0-3.42,3.42V17.13a1.48,1.48,0,0,0,1.48,1.48h3.89A1.48,1.48,0,0,0,31,17.13Z"/>
+    <rect class="cls-2" x="26.79" y="28.46" width="25.57" height="76.15" transform="translate(106.11 26.96) rotate(90)"/>
+    <g>
+      <rect class="cls-3" x="14.03" y="65.26" width="7.66" height="11.83" rx="3.83" ry="3.83" transform="translate(35.72 142.36) rotate(180)"/>
+      <rect class="cls-3" x="6.37" y="63.93" width="7.66" height="11.83" rx="3.83" ry="3.83" transform="translate(20.4 139.68) rotate(180)"/>
+      <rect class="cls-3" x="22.84" y="66.6" width="7.66" height="11.83" rx="3.83" ry="3.83" transform="translate(53.34 145.03) rotate(180)"/>
+      <rect class="cls-3" x="31.65" y="67.49" width="7.66" height="11.83" rx="3.83" ry="3.83" transform="translate(70.97 146.81) rotate(180)"/>
+      <rect class="cls-3" x="40.47" y="67.49" width="7.66" height="11.83" rx="3.83" ry="3.83" transform="translate(88.59 146.81) rotate(180)"/>
+      <rect class="cls-3" x="49.28" y="66.6" width="7.66" height="11.83" rx="3.83" ry="3.83" transform="translate(106.22 145.03) rotate(180)"/>
+      <rect class="cls-3" x="58.09" y="65.26" width="7.66" height="11.83" rx="3.83" ry="3.83" transform="translate(123.84 142.36) rotate(180)"/>
+      <rect class="cls-3" x="65.12" y="63.93" width="7.66" height="11.83" rx="3.83" ry="3.83" transform="translate(137.9 139.68) rotate(180)"/>
+    </g>
+    <path class="cls-4" d="M35.41,42.74h3.16a5.17,5.17,0,0,1,5.17,5.17v65.81a5.17,5.17,0,0,1-5.17,5.17H35.41a0,0,0,0,1,0,0V42.74a0,0,0,0,1,0,0Z" transform="translate(120.39 41.24) rotate(90)"/>
+    <path class="cls-1" d="M1.5,71v6.08a2.57,2.57,0,0,0,2.57,2.57h71a2.57,2.57,0,0,0,2.57-2.57V71h0V53.8H71V73H8.18V53.8H1.5V71h0Z"/>
+    <rect class="cls-2" x="26.79" y="2.94" width="25.57" height="76.15" transform="translate(-1.44 80.6) rotate(-90)"/>
+    <path class="cls-5" d="M14.32,32H64.84a0,0,0,0,1,0,0V91.78A25.26,25.26,0,0,1,39.58,117h0A25.26,25.26,0,0,1,14.32,91.78V32a0,0,0,0,1,0,0Z"/>
+    <line class="cls-6" x1="39.92" y1="92.5" x2="39.92" y2="38.5"/>
+    <g>
+      <path class="cls-3" d="M17.86,30.87h0a3.83,3.83,0,0,1,3.83,3.83v8a0,0,0,0,1,0,0H14a0,0,0,0,1,0,0v-8A3.83,3.83,0,0,1,17.86,30.87Z" transform="translate(35.72 73.57) rotate(180)"/>
+      <path class="cls-3" d="M10.2,29.53h0A3.83,3.83,0,0,1,14,33.36v8a0,0,0,0,1,0,0H6.37a0,0,0,0,1,0,0v-8a3.83,3.83,0,0,1,3.83-3.83Z" transform="translate(20.4 70.89) rotate(180)"/>
+      <path class="cls-3" d="M26.67,32.21h0A3.83,3.83,0,0,1,30.5,36v8a0,0,0,0,1,0,0H22.84a0,0,0,0,1,0,0V36A3.83,3.83,0,0,1,26.67,32.21Z" transform="translate(53.34 76.24) rotate(180)"/>
+      <path class="cls-3" d="M35.48,33.1h0a3.83,3.83,0,0,1,3.83,3.83v8a0,0,0,0,1,0,0H31.65a0,0,0,0,1,0,0v-8A3.83,3.83,0,0,1,35.48,33.1Z" transform="translate(70.97 78.02) rotate(180)"/>
+      <path class="cls-3" d="M44.3,33.1h0a3.83,3.83,0,0,1,3.83,3.83v8a0,0,0,0,1,0,0H40.47a0,0,0,0,1,0,0v-8A3.83,3.83,0,0,1,44.3,33.1Z" transform="translate(88.59 78.02) rotate(180)"/>
+      <path class="cls-3" d="M53.11,32.21h0A3.83,3.83,0,0,1,56.94,36v8a0,0,0,0,1,0,0H49.28a0,0,0,0,1,0,0V36A3.83,3.83,0,0,1,53.11,32.21Z" transform="translate(106.22 76.24) rotate(180)"/>
+      <path class="cls-3" d="M69,29.53h0a3.83,3.83,0,0,1,3.83,3.83v8a0,0,0,0,1,0,0H65.12a0,0,0,0,1,0,0v-8A3.83,3.83,0,0,1,69,29.53Z" transform="translate(137.9 70.89) rotate(180)"/>
+      <path class="cls-3" d="M61.92,30.87h0a3.83,3.83,0,0,1,3.83,3.83v8a0,0,0,0,1,0,0H58.09a0,0,0,0,1,0,0v-8A3.83,3.83,0,0,1,61.92,30.87Z" transform="translate(123.84 73.57) rotate(180)"/>
+    </g>
+    <path class="cls-7" d="M77.65,36.57V30a2,2,0,0,0-2-2H3.53a2,2,0,0,0-2,2v6.56h0V53.8H8.18V34.66H71V53.8h6.68V36.57h0Z"/>
+    <path class="cls-1" d="M36.73-17.66H47a0,0,0,0,1,0,0V58.49a0,0,0,0,1,0,0H36.73a4.61,4.61,0,0,1-4.61-4.61V-13.05A4.61,4.61,0,0,1,36.73-17.66Z" transform="translate(59.99 -19.16) rotate(90)"/>
+    <path class="cls-7" d="M31,22.27V13.8a0.32,0.32,0,0,1,.32-0.32H47.81a0.32,0.32,0,0,1,.32.32v8.47a1.48,1.48,0,0,0,1.48,1.48H53.5A1.48,1.48,0,0,0,55,22.27V10.06a3.42,3.42,0,0,0-3.42-3.42h-24a3.42,3.42,0,0,0-3.42,3.42V22.27a1.48,1.48,0,0,0,1.48,1.48h3.89A1.48,1.48,0,0,0,31,22.27Z"/>
+  </g>
+</svg>
