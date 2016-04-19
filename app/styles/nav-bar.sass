@@ -1,0 +1,88 @@
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
+.nav-bar
+  margin: 0 auto
+  text-align: center
+  padding-top: 10px
+  height: 100px
+
+  .nav-bar-right
+    float: right
+
+  .nav-bar-center
+    position: absolute;
+    top: 0
+    left: 0
+    right: 0
+    height: 0
+
+  .logo
+    position: relative
+    top: -40px
+    transform: scale(0.6)
+    height: 236px
+    width: 259px
+    margin: 0 auto
+    background: url('/animated_logo.png')
+
+    &.ooze-open
+      position: relative
+      transform: scale(0.595)
+      top: -59px
+      left: -1px
+      background: url('/ooze_open_glow.png')
+      animation: oozeopen 1s 1 steps(39)
+
+    &.ooze-close
+      position: relative
+      transform: scale(0.595)
+      top: -59px
+      left: -1px
+      background: url('/ooze_open_glow.png')
+      animation: oozeopen 1s 1 steps(39) reverse
+
+    &.ooze
+      position: relative
+      transform: scale(0.595)
+      top: -59px
+      left: -1px
+      background: url('/ooze_anim_glow.png')
+      animation: ooze 3s steps(105) infinite
+
+    &.open
+      background-position: 0px -21240px
+
+    &.closed
+      background-position: 0px 0px
+
+    &.animate-close
+      animation: close 2.5s steps(90)
+      background-position: 0px 0px
+      animation-fill-mode: forwards;
+
+    &.animate-open
+      animation: open 2.5s steps(90)
+      animation-fill-mode: forwards;
+      background-position: 0px -21240px
+
+
++keyframes(ooze)
+  100%
+    background-position: 0px -24780px
+
++keyframes(oozeopen)
+  100%
+    background-position: 0px -9204px
+
+
+.preload
+  left: -999999999px
+  position: absolute

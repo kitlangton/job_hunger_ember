@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import Devise from 'ember-simple-auth/authenticators/devise';
 
 const { RSVP: { Promise }, isEmpty, run } = Ember;
