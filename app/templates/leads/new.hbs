@@ -1,1 +1,19 @@
-{{outlet}}
+<h3>New Lead</h3>
+
+<form>
+  <div class="form-group">
+    <label>Name</label>
+    {{input value=model.name class="form-control"}}
+  </div>
+
+  <select value=model.company_id>
+    <option value=''></option>
+    {{#each model as |company|}}
+      <option value={{company.id}}>
+        {{ company.name }}
+      </option>
+    {{/each}}
+  </select>
+
+  <button class="btn-success" {{action "createLead" model}}>Create Lead</button>
+</form>

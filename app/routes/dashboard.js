@@ -61,10 +61,16 @@ export default Ember.Route.extend({
     console.log('dashboard');
   },
 
+  sessionAccount: Ember.inject.service(),
+
   model() {
+    let currentUser = this.get('sessionAccount.currentUser');
+
     return RSVP.hash({
-      companies: this.store.findAll('company'),
-      leads: this.store.query('lead', { include: 'company'} )
+      user: this.store.findRecord('user', currentUser.id, {include: 'company'}),
+      // companies: this.store.findAll('company'),
+      leads: this.store.findAll('lead'),
+      jobs: this.store.findAll('job')
     });
   },
 
