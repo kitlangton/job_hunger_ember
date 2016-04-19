@@ -105,13 +105,23 @@ body, h1 {
   height: 10px;
 }
 
-@keyframes play {
-  0%{
+@keyframes open {
+  from{
     background-position: 0 0px;
   }
 
-  100%{
+  to{
     background-position: 0 -21240px;
+  }
+}
+
+@keyframes close {
+  from{
+    background-position: 0 -21240px;
+  }
+
+  to{
+    background-position: 0 0px;
   }
 }
 
