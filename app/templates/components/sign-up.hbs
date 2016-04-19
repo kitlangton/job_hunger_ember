@@ -1,0 +1,50 @@
+<h1>
+  {{#text-type class="h1" fade="true"}}
+  A dark briefcase floats before you in the night.
+  {{/text-type}}
+
+  {{#text-type class="h1" delay=3000 fade=validEmail}}
+  You feel strangely compelled to give it a valid <span class="focus">email address</span>:
+  {{/text-type}}
+</h1>
+
+{{wide-input value=email id="email" hidden=hideEmail}}
+
+{{#if validEmail}}
+{{#text-type class="h1" fade=passwordLengthValid}}
+<h1>
+  And a decent <span class="focus">password</span>:
+</h1>
+{{/text-type}}
+{{/if}}
+
+{{wide-input value=password id="password" hidden=invalidEmail type='password'}}
+
+{{#if passwordLengthValid}}
+{{#text-type class="h1" fade=validPassword}}
+<h1>
+  You begin to sweat profusely...
+</h1>
+<h3>Maybe confirming that password will help:</h3>
+{{/text-type}}
+{{/if}}
+
+{{wide-input value=passwordConfirmation id="passwordConfirmation" hidden=passwordTooShort type='password'}}
+
+{{#if validPassword}}
+
+  {{#text-type class="h1"}}
+  <h1>
+    There is not much time!
+  </h1>
+  <h1>
+    I cannot continue to build fake tension!
+  </h1>
+  {{/text-type}}
+
+  <button class="special-button large light" {{action "signUp"}}>Sign Up</button>
+{{/if}}
+
+
+
+<div class="rain"></div>
