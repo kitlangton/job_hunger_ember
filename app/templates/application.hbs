@@ -2,7 +2,7 @@
 
 {{#if session.isAuthenticated}}
 <button class="submit btn btn-danger" {{action "invalidateSession"}}>Log Out</button>
-{{ partial 'score' }}
+<span class="label label-info">Score: {{ sessionAccount.currentUser.score }}</span>
 {{else}}
 {{link-to "Log In" "login"}}
 {{/if}}

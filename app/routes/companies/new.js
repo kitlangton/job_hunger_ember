@@ -10,10 +10,18 @@ export default Ember.Route.extend({
 
   actions: {
     createCompany(model) {
+      console.log('createCompany');
       let currentUser = this.get('sessionAccount.currentUser');
+
       model.set('user', currentUser);
       model.save();
+
+      currentUser.incrementProperty('score');
+      console.log(currentUser);
+      currentUser.save();
+
       this.transitionTo('dashboard');
-    }
+    },
+
   }
 });
