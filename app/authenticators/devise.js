@@ -4,7 +4,7 @@ const { RSVP: { Promise }, isEmpty, run } = Ember;
 
 export default Devise.extend({
 
-  serverTokenEndpoint: '/auth/sign_in',
+  serverTokenEndpoint: '/users/sign_in',
 
     restore(data){
     return new Promise((resolve, reject) => {
