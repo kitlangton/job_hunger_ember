@@ -15,8 +15,8 @@ Router.map(function() {
     this.route('company', { path: '/:company_id'});
   });
   this.route('leads', function() {
-    this.route('lead'), { path: '/:lead_id'};
     this.route('new');
+    this.route('lead', { path: '/:lead_id'});
   });
 });
 
