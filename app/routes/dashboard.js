@@ -71,6 +71,10 @@ export default Ember.Route.extend({
 
   setupController(controller, model) {
 
+    let currentUser = this.get('sessionAccount.currentUser');
+    console.log('currentUser');
+    console.log(currentUser);
+
     let suggestions = [];
     let companyName = model.companies.content[0]._data.name;
     suggestions.push( "Follow " + companyName + " on Twitter.");

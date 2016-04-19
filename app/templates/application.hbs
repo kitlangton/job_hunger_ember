@@ -2,9 +2,12 @@
 
 {{#if session.isAuthenticated}}
 <button class="submit btn btn-danger" {{action "invalidateSession"}}>Log Out</button>
+{{ partial 'score' }}
 {{else}}
 {{link-to "Log In" "login"}}
 {{/if}}
+<br/>
+
 
 <div class="container">
   {{outlet}}
