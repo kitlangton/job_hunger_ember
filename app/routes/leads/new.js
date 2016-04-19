@@ -7,15 +7,14 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    createLead(model) {
-      console.log("gets here");
-
+    createLead(name, companyId) {
       let lead = this.store.createRecord('lead', {
-        company_id: model.company_id,
-        name: model.name
+        company_id: companyId,
+        name: name
       });
       lead.save();
       this.transitionTo('dashboard');
     }
   }
+
 });

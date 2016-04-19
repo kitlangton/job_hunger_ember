@@ -22,6 +22,7 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
+* `ember server --proxy http://localhost:3000` to hit a local Rails server (run that with `rails s`)
 * `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 

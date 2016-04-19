@@ -1,8 +1,11 @@
 import Devise from 'ember-simple-auth/authenticators/devise';
 
-const { RSVP: { Promise }, isEmpty, run, get, $ } = Ember;
+const { RSVP: { Promise }, isEmpty, run } = Ember;
 
 export default Devise.extend({
+
+  serverTokenEndpoint: '/auth/sign_in',
+
     restore(data){
     return new Promise((resolve, reject) => {
       if (!isEmpty(data.accessToken) && !isEmpty(data.expiry) &&

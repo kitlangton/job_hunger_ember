@@ -1,0 +1,81 @@
+
+A major part of Job Hunger functionality is the point system.  The point system exists largely for two reasons.
+
+1.  The user wants to be able to evaluate and motivate his overall level of activity in the job search.
+2.  The user also wants to be able to measure _where_ he is spending his time and energy, so that he has the opportunity budget his resources appropriately to maximum impact.
+
+///////
+
+To that end, let's consider all the actions scoped to our app that the user could do to increase his points.
+
+1. He can get find a lead.
+  1a.  He can get valuable info towards contacting or build a rel'p with the lead.
+    1ai.  He can get same info towards a lead at a company he wants to work for.
+    1aii.  He can get same info towards a peer colleague lead.
+    1aiii.  He can get same info towards a lead with market knowledge/domain expertise.
+2. He can add a company.
+  2a. He can find important info about the company (tech stack, funding, etc)
+  2b. He can learn infomation about the organizational structure of the company valuable to focusing effort toward the optimal team and role within the company.
+3. He can add a job.
+  3a. He can apply for a job.
+  3b. He can gain info relevant to the job to add credibility to a side-door path.
+4. He can attend non-company related career activity (conference, meetup).
+5. He can react to public social media.
+  5a. Others can reply.
+  5b. Relevant leads can reply.
+6. He can create on public social media.
+  6a. Others can reply.
+  6b. Relevant leads can reply.
+
+///////
+
+You could say this is reasonably comprehensive but it's all ad hoc.  In a more fundamental way, you can say that the users actions add value along three vectors:
+
+1. Contextual Organizational Knowledge
+2. Personal relationships, specifically towards building credibility and personal compatibility
+3. Action and Connection
+
+Complementary to that, the user can interest level to a company as well as a job within a company, as strong, medium or weak.  I don't think we want to do anything more granular for that, we don't want the user to be stuck on assignments.  If, as I suspect is typical, the user is not particularly motivated to differentiate, he can always assign medium to everything.
+
+In fact, I'd recommend setting it that way as a default choice in the UI so that the user only needs to make a change if he is motivated to do it.
+
+Bearing all this in mind, here's a first cut for a point system.
+
+1. Finding a company of interest - 2 points
+2. Finding a role at a company of interest - 2 points
+3. Finding information to create contextual organizational knowledge - 3 points.
+3. Associating with a relevant person on passive social media - 1 point.
+4. Sending an email or LinkedIn request - 2 points.
+5. Applying to job/sending resume - 6 points (not duplicative with email)
+5. Relevant person accepts LinkedIn request - 1 point
+6. Relevant personal emails you - 3 points
+7. Relevant person calls you - 10 points.
+8. Get a phone screen for a job - 6 points
+9. Get a coding challenge for a job - 6 points
+10. Getting multistage interview for a job. - 15 points.
+11. Getting an offer 25 points.
+
+For each of these the user is prompted to add an appropriate small/medium/large qualifier to submit with the input, defaulting to medium.  The precise nature of the qualifier is specified by where it fits among three categores:
+
+1. Developments regarding contextual organizational knowledge or leads, ie, people are evaulated for relvance.
+2. Developments regarding jobs or companies are evaluated for interest.
+3. Developments regarding actions are evalutated for the propensity to create personal relationships based on credibility and compatibility.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
