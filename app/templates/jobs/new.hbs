@@ -1,5 +1,19 @@
 <h1>New Jobs</h1>
 
 <form>
+  <div class="form-group">
+    <label>Title</label>
+    {{input value=title class='form-control'}}
+  </div>
 
+  <select onchange={{action "selectCompany" value="target.value"}}>
+    <option value=''>Please Select Company</option>
+    {{#each model.companies as |company|}}
+      <option value={{company.id}}>
+        {{ company.name }}
+      </option>
+    {{/each}}
+  </select>
+
+  <button class="btn btn-success" {{action "createJob" title selectedCompany}} disabled={{isDisabled}}>Create Lead</button>
 </form>
