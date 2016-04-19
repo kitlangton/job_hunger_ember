@@ -1,0 +1,17 @@
+<div class="top">
+
+<div class="front {{if active 'active'}}">
+  <div class="points">+{{points}}</div>
+</div>
+
+<div class="content">
+  <div class="sentence">{{sentence}}</div>
+</div>
+
+</div>
+
+<div class="bottom">
+  <div class="input">
+    {{input value=value focus-in=(action 'activate') focus-out=(action 'deactivate')}}
+  </div>
+</div>

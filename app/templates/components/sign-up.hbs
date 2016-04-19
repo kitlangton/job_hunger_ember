@@ -1,0 +1,23 @@
+<h1>
+  {{#text-type class="h1" fade="true"}}
+  A dark briefcase floats before you in the night.
+  {{/text-type}}
+
+  {{#text-type class="h1" delay=3000}}
+  You feel strangely compelled to give it a valid email address...
+  {{/text-type}}
+</h1>
+
+<div class="wide-input">
+  {{input value=email id="email"}}
+  <div class="border"></div>
+</div>
+
+<div class="password-input {{if validEmail '' 'hidden' }}">
+  <div class="wide-input">
+    {{input value=password id="password"}}
+    <div class="border"></div>
+  </div>
+</div>
+
+<div class="rain"></div>

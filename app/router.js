@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('login');
   // this.route('protected', { path: '/' });
   this.route('dashboard');
+  this.route('freestyle');
   this.route('companies', function() {
     this.route('new');
     this.route('company', { path: '/:company_id'});

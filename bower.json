@@ -8,6 +8,11 @@
     "bootstrap-sass": "^3.3.6",
     "pretender": "~0.10.1",
     "lodash": "~3.7.0",
-    "Faker": "~3.0.0"
+    "Faker": "~3.0.0",
+    "remarkable": "1.6.2",
+    "highlightjs": "9.1.0",
+    "velocity": "^1.2.3",
+    "blast": "^0.1.0",
+    "blast-text": "^2.0.0"
   }
 }
