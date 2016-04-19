@@ -1,0 +1,46 @@
+{{#freestyle-guide
+    title='Job Hunger'
+    subtitle='Living Style Guide'
+}}
+
+  {{#freestyle-section name='Components' as |section|}}
+      {{#freestyle-usage 'next-action' title='Next Action'}}
+        {{next-action}}
+        {{next-action sentence="Add a lead for Apple"}}
+        {{next-action sentence="Send an email to Susan Susannson"}}
+      {{/freestyle-usage}}
+
+      {{#freestyle-usage 'text-type' title='Text Type'}}
+        {{text-type sentence="Send an email to Susan Susannson"}}
+      {{/freestyle-usage}}
+  {{/freestyle-section}}
+
+  {{#freestyle-section name='Visual Style' as |section|}}
+
+    {{#freestyle-subsection name='Typography' section=section}}
+
+      {{#freestyle-usage 'typography-times' title='Times New Roman'}}
+        {{freestyle-typeface fontFamily='Times New Roman'}}
+      {{/freestyle-usage}}
+
+      {{#freestyle-usage 'typography-helvetica' title='Helvetica'}}
+        {{freestyle-typeface fontFamily='Helvetica'}}
+      {{/freestyle-usage}}
+
+    {{/freestyle-subsection}}
+
+    {{#freestyle-subsection name='Color' section=section}}
+
+      {{#freestyle-usage 'fp' title='Freestyle Palette' usageTitle='Usage'}}
+        {{freestyle-palette
+            colorPalette=colorPalette
+            title='Dummy App Color Palette'
+            description='This component displays the color palette specified in freestyle/palette.json'
+        }}
+      {{/freestyle-usage}}
+
+    {{/freestyle-subsection}}
+
+  {{/freestyle-section}}
+
+{{/freestyle-guide}}

@@ -3,9 +3,9 @@ import Ember from 'ember';
 const { service }  = Ember.inject;
 
 export default Ember.Controller.extend({
-
   session: service(),
   store: service(),
+  jobDemon: service(),
   email: null,
   password: null,
 
@@ -19,13 +19,6 @@ export default Ember.Controller.extend({
     signUp() {
       let email = this.get('email');
       let password = this.get('password');
-      // let store = this.get('store');
-      // this.get('store').createRecord('user', {
-      //   email: email,
-      //   password: password
-      // }).save().then( _ => {
-      //   this.get('session').authenticate('authenticator:devise', email, password);
-      // });
 
       Ember.$.ajax({
         type: "POST",
@@ -34,9 +27,15 @@ export default Ember.Controller.extend({
           email: email,
           password: password
         }
-      }).then( _ => {
+      }).then( () => {
         this.get('session').authenticate('authenticator:devise', email, password);
       });
+    },
+
+    animate() {
+      let open = this.get('jobDemon.open');
+      this.set('jobDemon.open', !open);
+      console.log(open);
     }
   }
 });

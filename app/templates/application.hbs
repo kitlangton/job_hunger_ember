@@ -1,14 +1,9 @@
-<h2 id="title">Job Hunger</h2>
-
-{{#if session.isAuthenticated}}
-<button class="submit btn btn-danger" {{action "invalidateSession"}}>Log Out</button>
-<span class="label label-info">Score: {{ sessionAccount.currentUser.score }}</span>
-{{else}}
-{{link-to "Log In" "login"}}
-{{/if}}
-<br/>
-
-
 <div class="container">
+  {{nav-bar invalidateSession=(action 'invalidateSession')}}
   {{outlet}}
+</div>
+
+<div class="preload">
+  <img src="ooze_anim_glow.png" alt="">
+  <img src="ooze_open_glow.png" alt="">
 </div>
