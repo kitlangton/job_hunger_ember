@@ -1,9 +1,9 @@
-<h3>New Lead</h3>
+<h1>New Jobs</h1>
 
 <form>
   <div class="form-group">
-    <label>Name</label>
-    {{input value=name class="form-control"}}
+    <label>Title</label>
+    {{input value=title class='form-control'}}
   </div>
 
   <select onchange={{action "selectCompany" value="target.value"}}>
@@ -15,5 +15,5 @@
     {{/each}}
   </select>
 
-  <button class="btn btn-success" {{action "createLead" name selectedCompany}} disabled={{isDisabled}}>Create Lead</button>
+  <button class="btn btn-success" {{action "createJob" title selectedCompany}} disabled={{isDisabled}}>Create Lead</button>
 </form>

@@ -10,21 +10,13 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    createLead(model, name, company) {
-
-      let lead = this.store.createRecord('lead', {
+    createJob(title, company) {
+      let job = this.store.createRecord('job', {
         company: company,
-        name: name
+        title: title
       });
-      lead.save();
-
-      // let currentUser = this.get('sessionAccount.currentUser');
-      // model.incrementProperty('score');
-      // console.log(model);
-      // model.save();
-
+      job.save();
       this.transitionTo('dashboard');
     }
   }
-
 });

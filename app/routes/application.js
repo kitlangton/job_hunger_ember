@@ -5,7 +5,8 @@ const { service } = Ember.inject;
 export default Ember.Route.extend( ApplicationRouteMixin,
 {
   sessionAccount: service('session-account'),
-    beforeModel() {
+  
+  beforeModel() {
     return this._loadCurrentUser();
   },
 
