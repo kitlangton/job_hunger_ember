@@ -2,28 +2,34 @@
   <div class="panel panel-default">
     <div class="panel-heading">
         <h5 class="panel-title">Leads</h5>
+        {{link-to "Add Lead" 'leads.new'}}
     </div>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>
-            Name
-          </th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {{#each model.leads as |lead| }}
-        <tr>
-          <td>
-            {{ lead.name }}
-          </td>
-        </tr>
-        {{/each }}
-      </tbody>
-    </table>
-
-
+    <div class="panel-body">
+      <table class='table' style="table-layout: fixed">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Blog</th>
+            <th>Other</th>
+            <th>Contacted?</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model.leads as |lead| }}
+            <tr>
+              <td >
+                {{#link-to "leads.lead" lead}}
+                  {{lead.name}}
+                {{/link-to}}
+              </td>
+              <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ lead.blog }}>{{lead.blog}}</a></td>
+              <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ lead.linked_in }}>{{lead.linked_in}}</a></td>
+              <td>Yes</td>
+            </tr>
+          {{/each }}
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

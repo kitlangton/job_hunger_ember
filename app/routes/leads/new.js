@@ -2,17 +2,23 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
+  sessionAccount: Ember.inject.service(),
 
-  // model() {
-  //   return this.store.createRecord('lead');
-  // },
-  //
-  // actions: {
-  //   createLead(model) {
-  //     let currentUser = this.get('sessionAccount.currentUser');
-  //     model.set('user', currentUser);
-  //     model.save();
-  //     this.transitionTo('dashboard');
-  //   }
-  // }
+  model() {
+    let currentUser = this.get('sessionAccount.currentUser');
+    return this.store.findRecord('user', currentUser.id, {include: 'companies'});
+  },
+
+  actions: {
+    createLead(name, company) {
+
+      let lead = this.store.createRecord('lead', {
+        company: company,
+        name: name
+      });
+      lead.save();
+      this.transitionTo('dashboard');
+    }
+  }
+
 });
