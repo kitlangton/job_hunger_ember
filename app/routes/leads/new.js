@@ -10,7 +10,7 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    createLead(model, name, company) {
+    createLead(name, company) {
 
       let lead = this.store.createRecord('lead', {
         company: company,
