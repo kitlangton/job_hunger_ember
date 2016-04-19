@@ -32,7 +32,30 @@
     width: 259px
     margin: 0 auto
     background: url('/animated_logo.png')
-    transition: all 0.3s
+
+    &.ooze-open
+      position: relative
+      transform: scale(0.595)
+      top: -59px
+      left: -1px
+      background: url('/ooze_open_glow.png')
+      animation: oozeopen 1s 1 steps(39)
+
+    &.ooze-close
+      position: relative
+      transform: scale(0.595)
+      top: -59px
+      left: -1px
+      background: url('/ooze_open_glow.png')
+      animation: oozeopen 1s 1 steps(39) reverse
+
+    &.ooze
+      position: relative
+      transform: scale(0.595)
+      top: -59px
+      left: -1px
+      background: url('/ooze_anim_glow.png')
+      animation: ooze 3s steps(105) infinite
 
     &.open
       background-position: 0px -21240px
@@ -49,3 +72,16 @@
       animation: open 2.5s steps(90)
       animation-fill-mode: forwards;
       background-position: 0px -21240px
+
+
++keyframes(ooze)
+  100%
+    background-position: 0px -24780px
+
++keyframes(oozeopen)
+  100%
+    background-position: 0px -9204px
+
+
+.preload
+  display: none !important

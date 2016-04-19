@@ -8,16 +8,15 @@ export default Ember.Component.extend({
   jobDemon: service(),
   backgroundColor: service(),
   email: null,
-  password: null,
+  password: '',
   hideEmail: true,
 
   didInsertElement() {
     this.get('backgroundColor').setDark();
     this.get('jobDemon').close();
-    this.get('jobDemon').set('animation', 'float');
     Ember.run.later(this, () => {
       this.set('hideEmail', false);
-    }, 5000);
+    }, 5500);
   },
 
   willDestroyElement() {
@@ -33,6 +32,39 @@ export default Ember.Component.extend({
     return re.test(email);
   }),
 
+  passwordTooShort: Ember.computed('password', function() {
+    let password = this.get('password');
+    if (password.length < 9) {
+      return true;
+    }
+    return false;
+  }),
+
+  oozeTheCase: Ember.observer('passwordLengthValid', function() {
+    if (this.get('oozing')) {
+      return;
+    }
+    if (this.get('passwordLengthValid')) {
+      this.get('jobDemon').ooze();
+      this.get('backgroundColor').setVeryDark();
+      this.set('oozing', true);
+    }
+  }),
+
+  passwordLengthValid: Ember.computed.not('passwordTooShort'),
+
+  validPassword: Ember.computed('password', 'passwordConfirmation', function() {
+    let password = this.get('password');
+    let passwordConfirmation = this.get('passwordConfirmation');
+    var valid = true;
+    if (password.length < 9) {
+      valid = false;
+    } else if (password !== passwordConfirmation) {
+      valid = false;
+    }
+    return valid;
+  }),
+
   actions: {
     signUp() {
       let email = this.get('email');
@@ -40,7 +72,7 @@ export default Ember.Component.extend({
 
       Ember.$.ajax({
         type: "POST",
-        url: '/users',
+        url: '/auth/',
         data: {
           email: email,
           password: password
@@ -48,6 +80,18 @@ export default Ember.Component.extend({
       }).then( () => {
         this.get('session').authenticate('authenticator:devise', email, password);
       });
+    },
+
+    ooze() {
+      this.get('jobDemon').ooze();
+    },
+
+    open() {
+      this.get('jobDemon').open();
+    },
+
+    close() {
+      this.get('jobDemon').close();
     },
 
     animate() {

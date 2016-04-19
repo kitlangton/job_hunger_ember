@@ -1,9 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
+
+  setVeryDark() {
+    Ember.$('html').addClass('very-dark');
+  },
+
   setDark() {
     Ember.$('html').addClass('dark');
-    var nbDrop = 458;
+    var nbDrop = 1458;
 
     // function to generate a random number range.
     function randRange( minNum, maxNum) {
@@ -11,7 +16,7 @@ export default Ember.Service.extend({
     }
 
     // function to generate drops
-    let height = screen.height;
+    let height = window.innerHeight;
     var delay = 100;
     for(var i=1;i<nbDrop;i++) {
       var dropLeft = randRange(0,screen.width);
@@ -24,7 +29,7 @@ export default Ember.Service.extend({
         left: dropLeft
       });
       drop.velocity({
-        translateY: height - 170
+        translateY: height - 0
       }, {
         duration: 1000,
         delay: delay,
@@ -41,5 +46,6 @@ export default Ember.Service.extend({
 
   setLight() {
     Ember.$('html').removeClass('dark');
+    Ember.$('html').removeClass('very-dark');
   }
 });

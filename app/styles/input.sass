@@ -25,3 +25,20 @@
 
 // .not-visible
 //   opacity: 0
+.special-button
+  outline: none
+  border: 0
+  font-weight: bold
+  border-radius: 5px
+  -webkit-font-smoothing: antialiased
+  transition: all 0.3s
+  background-color: rgba(255,255,255, 0.0)
+  box-shadow: 0px 0px 10px rgba(0,0,0,0)
+  &.large
+    font-size: 30px
+  &.light
+    color: white
+  &:hover
+    transform: scale(1.2)
+    background-color: rgba(255,255,255, 0.15)
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.15)

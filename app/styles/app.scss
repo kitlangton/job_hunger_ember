@@ -13,9 +13,17 @@ body, h1 {
     background-color: rgba(45,45,70,1);
   }
 
-  h1 {
+  h1, h2, h3, h4 h5 {
     opacity: 0.8;
     color: white;
+  }
+
+}
+
+.very-dark {
+  body {
+    transition: all 1.5s;
+    background-color: rgba(25,25,20,1);
   }
 }
 
