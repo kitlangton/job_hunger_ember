@@ -18,7 +18,7 @@ export default Ember.Route.extend({
       // currentUser.incrementProperty('score');
       // currentUser.save();
 
-      this.transitionTo('dashboard');
+      this.transitionTo('companies.company', model);
     },
 
   }
