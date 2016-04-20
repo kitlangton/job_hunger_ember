@@ -5,11 +5,17 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Ember.Route.extend(AuthenticatedRouteMixin,{
 
   sessionAccount: Ember.inject.service(),
+  session: Ember.inject.service(),
 
   model() {
     return this.get('sessionAccount').loadCurrentUser().then(()=> {
       let currentUser = this.get('sessionAccount.currentUser');
-      return this.store.findRecord('user', currentUser.id, {include: 'companies,jobs,leads,recommendations'});
+      if(currentUser) {
+        return this.store.findRecord('user', currentUser.get('id'), {include: 'companies,jobs,leads,recommendations'});
+      } else {
+        this.get('session').invalidate();
+        this.transitionTo('login');
+      }
     });
   },
 
