@@ -4,6 +4,7 @@ const { inject: { service }, RSVP } = Ember;
 
 export default Ember.Service.extend({
   session: service(),
+  jobDemon: service(),
   store: service(),
 
   loadCurrentUser() {
@@ -12,6 +13,7 @@ export default Ember.Service.extend({
       if (!Ember.isEmpty(uid)) {
         return this.get('store').query('user', { filter: { email: uid  } } ).then(account => {
           this.set('currentUser', account.get('firstObject'));
+          this.get('jobDemon').open();
           resolve();
         }, reject);
       } else {
