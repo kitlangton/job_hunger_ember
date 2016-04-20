@@ -3,7 +3,7 @@
 <form>
   <div class="form-group">
     <label>Title</label>
-    {{input value=title class='form-control'}}
+    {{wide-input value=title inputId="title" label="Job Title"}}
   </div>
 
   <select onchange={{action "selectCompany" value="target.value"}}>
@@ -15,5 +15,7 @@
     {{/each}}
   </select>
 
-  <button class="btn btn-success" {{action "createJob" title selectedCompany}} disabled={{isDisabled}}>Create Job</button>
+  <br>
+  <br>
+  {{normal-button onClick=(action "createJob" title selectedCompany) text="Create Job" size="large"}}
 </form>

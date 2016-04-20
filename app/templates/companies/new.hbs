@@ -2,9 +2,8 @@
 
 <form>
   <div class="form-group">
-    <label>Name</label>
-    {{input value=model.name class="form-control"}}
+    {{wide-input value=model.name inputId="model.name" label="Company Name"}}
   </div>
-
-  <button class="btn btn-success" {{action "createCompany" model}} disabled={{isDisabled}}>Create Company</button>
+  <br>
+  {{normal-button onClick=(action "createCompany" model) text="Create Company" size="large" }}
 </form>
