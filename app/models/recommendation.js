@@ -4,10 +4,7 @@ import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
   user: belongsTo('user'),
-  // company: belongsTo('company', { polymorphic: true }),
-  // lead: belongsTo('lead', { polymorphic: true }),
-  recommendable_type: attr('string'),
-  recommendable_id: attr('number'),
+  recommendable: belongsTo({ polymorphic: true }),
   start_date: attr('date'),
   action: attr('string'),
   completed: attr('boolean')

@@ -16,7 +16,8 @@
               <td>{{input type="checkbox" checked=recommendation.completed }}</td>
               </form>
               <td>{{ recommendation.action }}</td>
-              <td>{{ recommendation.recommendable_type }}</td>
+              <td>{{ recommendation.recommendable.name }}</td>
+              <!-- {{link-to recommendation.recommendable.name 'recommendable' recommendation.recommendable}} -->
             </tr>
           {{/each }}
         </tbody>

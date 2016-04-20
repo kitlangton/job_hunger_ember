@@ -1,8 +1,8 @@
-import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
+import Recommendable from './recommendable';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 
-export default Model.extend({
+export default Recommendable.extend({
   name: attr('string'),
   notes: attr('string'),
   user: belongsTo('user'),

@@ -1,8 +1,9 @@
-import Model from 'ember-data/model';
+// import Model from 'ember-data/model';
+import Recommendable from './recommendable';
 import attr from 'ember-data/attr';
 import { belongsTo } from 'ember-data/relationships';
 
-export default Model.extend({
+export default Recommendable.extend({
   company: belongsTo('company'),
   name: attr('string'),
   linked_in: attr('string'),

@@ -23,6 +23,8 @@ Router.map(function() {
   this.route('jobs', function() {
     this.route('new');
   });
+
+  this.route('recommendable', {path: '/:recommendable_type/:recommendable_id'});
 });
 
 export default Router;
