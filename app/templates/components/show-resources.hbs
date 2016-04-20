@@ -5,9 +5,29 @@
     </div>
 
     <div class="list-group">
-      <div class="list-group-item">{{model.address}}</div>
-      <a href={{model.blog}} class="list-group-item"><strong>{{model.name}}'s  Blog</strong></a>
-      <a href={{model.website}} class="list-group-item"><strong>{{model.name}}'s Website</strong></a>
+
+      <div class="list-group-item clearfix">
+        {{ember-inline-edit
+          value=model.address
+          onSave=(action "updateCompany" model)}}
+      </div>
+      <div class='list-group-item clearfix'>
+        <label><strong>Blog:</strong> </label>
+        {{ember-inline-edit
+          class="inline"
+          value=model.blog
+          onSave='updateCompany'}}
+        <a class="pull-right" href={{model.blog}}>Link</a>
+      </div>
+
+      <div class='list-group-item clearfix'>
+        <label><strong>Website:</strong> </label>
+        {{ember-inline-edit
+          class="inline"
+          value=model.website
+          onSave='updateCompany'}}
+        <a class="pull-right" href={{model.website}}>Link</a>
+      </div>
     </div>
 
   </div>

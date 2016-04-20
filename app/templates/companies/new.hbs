@@ -6,5 +6,5 @@
     {{input value=model.name class="form-control"}}
   </div>
 
-  <button class="btn btn-success" {{action "createCompany" model}}>Create Company</button>
+  <button class="btn btn-success" {{action "createCompany" model}} disabled={{isDisabled}}>Create Company</button>
 </form>
