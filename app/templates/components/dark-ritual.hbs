@@ -1,6 +1,9 @@
 {{yield}}
 
-<div class="complete"></div>
+<!-- <div class="complete"></div> -->
+<div class="complete" {{action 'complete'}}>
+  <img class="page" src="/page.png" alt="">
+</div>
 {{link-to recommendation.recommendable.name recommendation.recommendable.route recommendation.recommendable}}
 —
 {{recommendation.action}}

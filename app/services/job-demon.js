@@ -43,9 +43,19 @@ export default Ember.Service.extend({
     if (this.get('transitioningTo') === 'ooze') {
       return;
     }
+    let state = this.get('state');
+    console.log(state);
     this.set('transitioningTo', 'ooze');
 
-    this.set('state', 'ooze-open');
-    Ember.run.later(this, function() { this.set('state', 'ooze'); }, 1000);
+    if (state === 'closed' || state === 'animate-close') {
+      this.set('state', 'ooze-open');
+      Ember.run.later(this, function() { this.set('state', 'ooze'); }, 1000);
+    } else if (state === 'open' || state === 'animate-open') {
+      this.close();
+      Ember.run.later(this, this.ooze, 2000);
+    } else {
+      this.set('state', 'ooze');
+    }
+
   }
 });
