@@ -8,5 +8,6 @@ export default Model.extend({
   score: attr('number'),
   companies: hasMany('company'),
   leads: hasMany('lead'),
-  jobs: hasMany('job')
+  jobs: hasMany('job'),
+  recommendations: hasMany('recommendation')
 });
