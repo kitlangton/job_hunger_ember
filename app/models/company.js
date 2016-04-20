@@ -9,5 +9,6 @@ export default Model.extend({
   jobs: hasMany('job'),
   leads: hasMany('lead'),
   website: attr('string'),
-  blog: attr('string')
+  blog: attr('string'),
+  address: attr('string')
 });

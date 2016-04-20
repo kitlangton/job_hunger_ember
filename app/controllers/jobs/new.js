@@ -6,7 +6,6 @@ export default Ember.Controller.extend({
 
       let company = this.get('model.companies').findBy("id", id);
       this.set('selectedCompany', company);
-
     }
   }
 });

@@ -16,6 +16,11 @@ export default Ember.Route.extend({
         title: title
       });
       job.save();
+
+      // let currentUser = this.get('sessionAccount.currentUser');
+      // currentUser.incrementProperty('score');
+      // currentUser.save();
+
       this.transitionTo('dashboard');
     }
   }
