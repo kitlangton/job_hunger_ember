@@ -5,14 +5,18 @@
   <div class="col-sm-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-          <h5 class="panel-title">Suggestions</h5>
+          <h5 class="panel-title">Recommendations</h5>
       </div>
 
-      <table class="dashboard-suggestion">
+      <table class="dashboard-recommendation table table-striped">
         <tbody>
-          {{#each suggestions as |suggestion| }}
+          {{#each model.recommendations as |recommendation| }}
             <tr>
-              <td>{{ suggestion }}</td>
+              <form>
+              <td>{{input type="checkbox" checked=recommendation.completed }}</td>
+              </form>
+              <td>{{ recommendation.action }}</td>
+              <td>{{ recommendation.recommendable_type }}</td>
             </tr>
           {{/each }}
         </tbody>

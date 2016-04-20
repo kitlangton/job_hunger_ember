@@ -1,0 +1,14 @@
+<div class="row col-md-10">
+    <div class="panel-heading">
+        <h5 class="panel-title">Recommendations</h5>
+    </div>
+
+    <div class="panel panel-default">
+      {{#each model.recommendations as |recommendation| }}
+        <div class="panel-body dashboard-recommendation">
+        {{ recommendation }}
+        </div>
+      {{/each }}
+      <br>
+    </div>
+</div>
