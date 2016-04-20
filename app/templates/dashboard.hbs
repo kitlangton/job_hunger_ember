@@ -10,7 +10,7 @@
 
       <table class="dashboard-recommendation table table-striped">
         <tbody>
-          {{#each model.recommendations as |recommendation| }}
+          {{#each recommendations as |recommendation| }}
             <tr>
               <form>
               <td>{{input type="checkbox" checked=recommendation.completed }}</td>
