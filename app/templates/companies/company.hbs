@@ -28,7 +28,10 @@
         <tbody>
           {{#each model.jobs as |job| }}
             <tr>
-              <td>{{ job.title }}</td>
+              <td>{{ember-inline-edit
+                    value=job.title
+                    field='textarea'
+                    onSave=(action "updateJob" job)}}</td>
             </tr>
           {{/each }}
         </tbody>

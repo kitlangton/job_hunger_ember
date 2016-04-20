@@ -5,7 +5,10 @@
     </div>
 
     <div class="panel-body">
-      <textarea style="width: 100%; max-width: 100%; overflow: auto" class="form-control" value={{model.notes}}></textarea>
+      {{ember-inline-edit
+        value=model.notes
+        field='textarea'
+        onSave=(action "updateCompany" model)}}
     </div>
   </div>
 </div>
