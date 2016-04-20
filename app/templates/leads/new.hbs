@@ -2,8 +2,7 @@
 
 <form>
   <div class="form-group">
-    <label>Name</label>
-    {{input value=name class="form-control"}}
+    {{wide-input value=name inputId="name" label="Lead Name"}}
   </div>
 
   <select onchange={{action "selectCompany" value="target.value"}}>
@@ -14,6 +13,7 @@
       </option>
     {{/each}}
   </select>
-
-  <button class="btn btn-success" {{action "createLead" name selectedCompany}} disabled={{isDisabled}}>Create Lead</button>
+  <br>
+  <br>
+  {{normal-button onClick=(action "createLead" name selectedCompany) text="Create Lead" size="large"}}
 </form>
