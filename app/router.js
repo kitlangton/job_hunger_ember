@@ -9,7 +9,7 @@ Router.map(function() {
   this.route('sign-up');
   this.route('login');
   // this.route('protected', { path: '/' });
-  this.route('dashboard');
+  this.route('dashboard', { path: '' });
   this.route('freestyle');
   this.route('companies', function() {
     this.route('new');

@@ -6,6 +6,8 @@
   position: relative
 
   .input-label
+    pointer-events: none
+    z-index: -10
     transition: all 0.3s
     height: 0;
     color: rgba(0,0,0,0.4)
@@ -61,8 +63,6 @@
   &.large
     font-size: 30px
   &.light
-    color: white
-    color: #F88
     &:hover
       background-color: rgba(255,255,255, 0.15)
   &:hover
@@ -76,4 +76,3 @@
   height: 1px
   margin: -10px 0px
   padding: 0px
-

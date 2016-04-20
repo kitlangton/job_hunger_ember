@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ENV from 'job-hunger/config/environment';
 
 const { service }  = Ember.inject;
 
@@ -72,9 +73,11 @@ export default Ember.Component.extend({
       let email = this.get('email');
       let password = this.get('password');
 
+      console.log(ENV);
+
       Ember.$.ajax({
         type: "POST",
-        url: '/auth/',
+        url: ENV['devise-url'] + '/auth/',
         data: {
           email: email,
           password: password

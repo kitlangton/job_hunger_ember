@@ -6,11 +6,9 @@
 <div class="nav-bar-right">
   {{#if session.isAuthenticated}}
   <a {{action "invalidateSession"}}>Log Out</a>
-  {{link-to "Log In" "login"}}
   {{link-to "Dashboard" "dashboard"}}
   {{else}}
   {{link-to "Log In" "login"}}
   {{link-to "Sign Up" "sign-up"}}
-  {{link-to "Dashboard" "dashboard"}}
   {{/if}}
 </div>

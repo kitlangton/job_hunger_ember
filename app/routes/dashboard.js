@@ -7,9 +7,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
   sessionAccount: Ember.inject.service(),
 
   model() {
-    let currentUser = this.get('sessionAccount.currentUser');
-    return this.store.findRecord('user', currentUser.id, {include: 'companies,jobs,leads'});
+    this.get('sessionAccount').loadCurrentUser().then(()=> {
+      let currentUser = this.get('sessionAccount.currentUser');
+      return this.store.findRecord('user', currentUser.id, {include: 'companies,jobs,leads'});
+    });
   }
-
-
 });

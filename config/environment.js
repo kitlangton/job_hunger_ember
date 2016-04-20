@@ -19,10 +19,15 @@ module.exports = function(environment) {
     }
   };
 
+    ENV['ember-simple-auth'] = {
+      routeAfterAuthentication: 'dashboard'
+    };
+
   if (environment === 'development') {
     ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV['devise-url'] = '';
 
     ENV.contentSecurityPolicy = {
       'connect-src': "'self' http://localhost:3000",
@@ -39,6 +44,7 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
+    ENV['devise-url'] = '';
     ENV.baseURL = '/';
     ENV.locationType = 'none';
 
@@ -50,7 +56,11 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV['devise-url'] = 'https://mysterious-shelf-41013.herokuapp.com';
+    ENV['ember-simple-auth'] = {
+      routeAfterAuthentication: '/dashboard',
+      routeIfAlreadyAuthenticated: 'dashboard'
+    };
   }
 
   return ENV;

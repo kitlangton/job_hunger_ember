@@ -1,11 +1,12 @@
 import Ember from 'ember';
 import Devise from 'ember-simple-auth/authenticators/devise';
+import ENV from 'job-hunger/config/environment';
 
 const { RSVP: { Promise }, isEmpty, run } = Ember;
 
 export default Devise.extend({
 
-  serverTokenEndpoint: '/auth/sign_in',
+  serverTokenEndpoint: ENV['devise-url'] + '/auth/sign_in',
 
     restore(data){
     return new Promise((resolve, reject) => {
