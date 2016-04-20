@@ -16,8 +16,8 @@ export default Ember.Route.extend({
       model.set('user', currentUser);
       model.save();
 
-      currentUser.incrementProperty('score');
-      currentUser.save();
+      // currentUser.incrementProperty('score');
+      // currentUser.save();
 
       this.transitionTo('dashboard');
     },

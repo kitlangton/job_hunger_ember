@@ -20,19 +20,30 @@
       <div class="panel-heading">
         Resources
       </div>
-      <div class="panel-body">
-      </div>
+
+        <div class="list-group">
+        <!-- <a href={{ember-inline-edit
+          class="list-group-item"
+          value=model.email
+          }} -->
+          <!-- <a href={{model.email}} class="list-group-item"><strong>{{model.name}}'s Email</strong></a> -->
+          <a href={{model.blog}} class="list-group-item"><strong>{{model.name}}'s  Blog</strong></a>
+          <a href={{model.linked_in}} class="list-group-item"><strong>{{model.name}}'s LinkedIn</strong></a>
+        </div>
+
     </div>
   </div>
 
   <div class="col-sm-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Notes
+          <h5 class="panel-title">notes</h5>
       </div>
+
       <div class="panel-body">
-        {{ model.notes }}
+        <textarea style="width: 100%; max-width: 100%; overflow: auto" class="form-control" value={{model.notes}}></textarea>
       </div>
     </div>
   </div>
+
 </div>
