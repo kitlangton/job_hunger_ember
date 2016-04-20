@@ -11,6 +11,5 @@ export default Ember.Route.extend({
     return this.store.findRecord('company', params.company_id, {include: 'leads,jobs'});
   },
 
-  
 
 });
