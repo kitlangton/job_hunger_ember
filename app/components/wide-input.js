@@ -2,15 +2,20 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['wide-input'],
-  classNameBindings: ['active:active'],
+  classNameBindings: ['active:active', 'light:light', 'present:present'],
   type: 'text',
 
   didInsertElement() {
     if (this.get('hidden')) {
       this.$('.border').css('opacity', 0);
       this.$('').css('display', 'none');
+    } else {
+      this.$('.border').css('opacity', 0);
+      this.$('.border').velocity('transition.fadeIn');
     }
   },
+
+  present: Ember.computed.gte('value.length', 1),
 
   animate: Ember.observer('hidden', function() {
     if (this.get('hidden')) {

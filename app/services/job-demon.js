@@ -1,9 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-  state: null,
+  state: 'closed',
+  transitioningTo: null,
 
   close() {
+    if (this.get('transitioningTo') === 'closed') {
+      return;
+    }
+    this.set('transitioningTo', 'closed');
+
     let state = this.get('state');
     if (state === 'open' || state === 'animate-open') {
       this.set('state', 'animate-close');
@@ -13,10 +19,16 @@ export default Ember.Service.extend({
     } else {
       this.set('state', 'closed');
     }
+
   },
 
   open() {
+    if (this.get('transitioningTo') === 'open') {
+      return;
+    }
     let state = this.get('state');
+    this.set('transitioningTo', 'open');
+
     if (state === 'closed' || state === 'animate-close') {
       this.set('state', 'animate-open');
     } else if (state === 'ooze') {
@@ -28,6 +40,11 @@ export default Ember.Service.extend({
   },
 
   ooze() {
+    if (this.get('transitioningTo') === 'ooze') {
+      return;
+    }
+    this.set('transitioningTo', 'ooze');
+
     this.set('state', 'ooze-open');
     Ember.run.later(this, function() { this.set('state', 'ooze'); }, 1000);
   }

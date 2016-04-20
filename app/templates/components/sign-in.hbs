@@ -1,0 +1,14 @@
+{{#text-type class="input-label"}}
+<h1>Feed the briefcase.</h1>
+<h4>It yearns for your credentials:</h4>
+{{/text-type}}
+
+<form action="">
+  {{wide-input value=email inputId="email" label="Email"}}
+
+  <div class="spacer"></div>
+
+  {{wide-input value=password inputId="password" type="password" label="Password"}}
+
+  {{normal-button onClick=(action "authenticate") text="Log In"}}
+</form>
