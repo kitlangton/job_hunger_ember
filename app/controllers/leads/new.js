@@ -4,10 +4,18 @@ export default Ember.Controller.extend({
 
   store: Ember.inject.service(),
 
+  companyId: '',
+  isEmpty: Ember.computed.empty('name'),
+  isValidInput: Ember.computed.not('isEmpty'),
+  notSelected: Ember.computed.match('companyId', /^$/),
+  isValidSelection: Ember.computed.not('notSelected'),
+  isValid: Ember.computed.and('isValidInput', 'isValidSelection'),
+  isDisabled: Ember.computed.not('isValid'),
+
   actions: {
     selectCompany(id) {
-
       let company = this.get('model.companies').findBy("id", id);
+      this.set('companyId', id);
       this.set('selectedCompany', company);
     },
 
@@ -18,7 +26,7 @@ export default Ember.Controller.extend({
       });
       this.set('name', '');
       lead.save();
-      this.transitionToRoute('dashboard');
+      this.transitionToRoute('leads.lead', lead);
     }
   }
 });

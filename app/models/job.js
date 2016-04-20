@@ -4,5 +4,6 @@ import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
   title: attr('string'),
-  company: belongsTo('company')
+  company: belongsTo('company'),
+  // application_status: attr('string')
 });
