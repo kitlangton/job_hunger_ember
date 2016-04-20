@@ -10,5 +10,6 @@ export default Recommendable.extend({
   leads: hasMany('lead'),
   website: attr('string'),
   blog: attr('string'),
-  address: attr('string')
+  address: attr('string'),
+  route: 'companies.company'
 });
