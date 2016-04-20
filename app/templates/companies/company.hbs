@@ -14,8 +14,8 @@
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-          <h5 class="panel-title">Jobs</h5>
-          {{link-to "Add Job" 'jobs.new'}}
+        <h5 class="panel-title">Jobs</h5>
+        {{link-to "Add Job" 'jobs.new'}}
       </div>
 
       <table class="table">
@@ -28,10 +28,12 @@
         <tbody>
           {{#each model.jobs as |job| }}
             <tr>
-              <td>{{ember-inline-edit
-                    value=job.title
-                    field='textarea'
-                    onSave=(action "updateJob" job)}}</td>
+              <td>
+                {{ember-inline-edit
+                  value=job.title
+                  field='textarea'
+                  onSave=(action "updateJob" job)}}
+                </td>
             </tr>
           {{/each }}
         </tbody>
