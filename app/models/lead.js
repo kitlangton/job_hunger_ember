@@ -9,5 +9,6 @@ export default Recommendable.extend({
   linked_in: attr('string'),
   email: attr('string'),
   blog: attr('string'),
-  notes: attr('string')
+  notes: attr('string'),
+  route: 'leads.lead'
 });

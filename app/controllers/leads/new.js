@@ -25,8 +25,9 @@ export default Ember.Controller.extend({
         name: name
       });
       this.set('name', '');
-      lead.save();
-      this.transitionToRoute('leads.lead', lead);
+      lead.save().then(() => {
+        this.transitionToRoute('leads.lead', lead);
+      });
     }
   }
 });
