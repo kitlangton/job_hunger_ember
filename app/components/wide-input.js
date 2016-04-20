@@ -8,6 +8,7 @@ export default Ember.Component.extend({
   didInsertElement() {
     if (this.get('hidden')) {
       this.$('.border').css('opacity', 0);
+      this.$('').css('display', 'none');
     }
   },
 
@@ -15,6 +16,7 @@ export default Ember.Component.extend({
     if (this.get('hidden')) {
       this.$('.border').velocity('transition.fadeOut');
     } else {
+      this.$('').css('display', 'block');
       this.$('.border').velocity('transition.expandIn');
     }
   }),

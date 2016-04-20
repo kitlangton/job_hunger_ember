@@ -11,30 +11,18 @@ test('visiting /sign-up', function(assert) {
   });
 });
 
-test('should be able to sign up', function(assert) {
-  visit('/sign-up');
-
-  fillIn('#email', 'foo@bar.com');
-  fillIn('#password', '123123123');
-  click('button.submit');
-
-  andThen(() => {
-    assert.equal(currentURL(), '/');
-  });
-});
-
-test('password field not visible until valid email address entered', function(assert) {
-  visit('/sign-up');
-
-  fillIn('#email', 'blah');
-
-  andThen(() => {
-    assert.equal(find('.password-input.hidden').length, 1);
-  });
-});
+// test('password field not visible until valid email address entered', function(assert) {
+//   visit('/sign-up');
+//
+//   fillIn('#email', 'blah');
+//
+//   andThen(() => {
+//     assert.equal(find('.password-input.hidden').length, 1);
+//   });
+// });
 
 test('logged out user should be redirected to the sign in page', function(assert) {
-  visit('/');
+  visit('/dashboard');
 
   andThen(() => {
     assert.equal(currentURL(), '/login');
