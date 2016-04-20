@@ -1,5 +1,6 @@
 <div class="container">
   {{nav-bar invalidateSession=(action 'invalidateSession')}}
+  <span class="label label-info">Score: {{ sessionAccount.currentUser.score }}</span>
   {{outlet}}
 </div>
 
