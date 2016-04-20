@@ -37,6 +37,7 @@
             <th>Name</th>
             <th>Website</th>
             <th>Blog</th>
+            <th>Remove</th>
           </tr>
         </thead>
         <tbody>
@@ -49,6 +50,7 @@
               </td>
               <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ company.website }}>{{company.website}}</a></td>
               <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ company.blog }}>{{company.blog}}</a></td>
+              <td><button class="btn btn-danger btn-small" {{action "removeCompany" company}}>X</button></td>
             </tr>
           {{/each }}
         </tbody>
@@ -71,6 +73,7 @@
               <th>Blog</th>
               <th>Other</th>
               <th>Contacted?</th>
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody>
@@ -84,6 +87,7 @@
                 <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ lead.blog }}>{{lead.blog}}</a></td>
                 <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ lead.linked_in }}>{{lead.linked_in}}</a></td>
                 <td>Yes</td>
+                <td><button class="btn btn-danger btn-small" {{action "removeLead" lead}}>X</button></td>
               </tr>
             {{/each }}
           </tbody>
@@ -105,12 +109,15 @@
         <thead>
           <tr>
             <th>Position</th>
+            <th>Application Status</th>
           </tr>
         </thead>
         <tbody>
           {{#each model.jobs as |job| }}
             <tr>
               <td>{{ job.title }}</td>
+              <td>{{ job.application_status }}</td>
+              <td><button class="btn btn-danger btn-small" {{action "removeLead" job}}>X</button></td>
             </tr>
           {{/each }}
         </tbody>

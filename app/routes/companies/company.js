@@ -11,14 +11,6 @@ export default Ember.Route.extend({
     return this.store.findRecord('company', params.company_id, {include: 'leads,jobs'});
   },
 
-
-  actions: {
-    // createCompany(model) {
-    //   let currentUser = this.get('sessionAccount.currentUser');
-    //   model.set('user', currentUser);
-    //   model.save();
-    //   this.transitionTo('dashboard');
-    // }
-  }
+  
 
 });
