@@ -33,6 +33,7 @@ export default Ember.Component.extend({
   }),
 
   passwordTooShort: Ember.computed('password', function() {
+    console.log('short');
     let password = this.get('password');
     if (password.length < 9) {
       return true;
@@ -41,6 +42,7 @@ export default Ember.Component.extend({
   }),
 
   oozeTheCase: Ember.observer('passwordLengthValid', function() {
+    console.log('oozetheCase');
     if (this.get('oozing')) {
       return;
     }

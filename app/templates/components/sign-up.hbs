@@ -8,43 +8,33 @@
   {{/text-type}}
 </h1>
 
-{{wide-input value=email id="email" hidden=hideEmail}}
+{{wide-input value=email inputId="email" hidden=hideEmail light="true"}}
 
 {{#if validEmail}}
 {{#text-type class="h1" fade=passwordLengthValid}}
-<h1>
-  And a decent <span class="focus">password</span>:
-</h1>
+<h1>And a decent <span class="focus">password</span>:</h1>
 {{/text-type}}
 {{/if}}
 
-{{wide-input value=password id="password" hidden=invalidEmail type='password'}}
+{{wide-input value=password id="password" hidden=invalidEmail type='password' light="true"}}
 
 {{#if passwordLengthValid}}
 {{#text-type class="h1" fade=validPassword}}
-<h1>
-  You begin to sweat profusely...
-</h1>
-<h3>Maybe confirming that password will help:</h3>
+<h1>You begin to sweat profusely...</h1>
+<h3>Maybe <span class="focus">confirming</span> that password will help:</h3>
 {{/text-type}}
 {{/if}}
 
-{{wide-input value=passwordConfirmation id="passwordConfirmation" hidden=passwordTooShort type='password'}}
+{{wide-input value=passwordConfirmation id="password-confirmation" hidden=passwordTooShort type='password' light="true"}}
 
 {{#if validPassword}}
-
   {{#text-type class="h1"}}
-  <h1>
-    There is not much time!
-  </h1>
-  <h1>
-    I cannot continue to build fake tension!
-  </h1>
+  <h1>There is not much time!</h1>
+  <h3>I cannot continue to build fake tension!</h3>
   {{/text-type}}
 
-  <button class="special-button large light" {{action "signUp"}}>Sign Up</button>
+  <!-- <button class="special&#45;button large light" id="sign&#45;up" {{action "signUp"}}>Sign Up</button> -->
+  {{normal-button class="light" onClick=(action "signUp") text="Sign Up"}}
 {{/if}}
-
-
 
 <div class="rain"></div>
