@@ -61,6 +61,9 @@ module.exports = function(environment) {
       routeAfterAuthentication: '/dashboard',
       routeIfAlreadyAuthenticated: 'dashboard'
     };
+    ENV['contentSecurityPolicy'] = {
+      'connect-src': "'self' https://mysterious-shelf-41013.herokuapp.com"
+    };
   }
 
   return ENV;
