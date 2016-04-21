@@ -53,10 +53,11 @@
               <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ company.website }}>{{company.website}}</a></td>
               <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ company.blog }}>{{company.blog}}</a></td>
               <td>
+                {{company.interest}}
                 {{#if (eq company.interest 1)}}
-                  <span class="glyphicon glyphicon-heart" {{action "toggleHeart" company}}></span>
+                  <span class="glyphicon glyphicon-heart" {{action 'toggleHeart' company company.interest}}></span>
                 {{else}}
-                  <span class="glyphicon glyphicon-heart-empty" {{action "toggleHeart" company}}></span>
+                  <span class="glyphicon glyphicon-heart-empty" {{action 'toggleHeart' company company.interest}}></span>
                 {{/if}}
               </td>
               <td>

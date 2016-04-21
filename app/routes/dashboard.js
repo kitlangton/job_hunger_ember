@@ -21,8 +21,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 
   actions: {
 
-    toggleHeart(company) {
-      if (company.interest === 1) {
+    toggleHeart(company, interest) {
+      if (interest === 1) {
         company.interest = 0;
       } else {
         company.interest = 1;

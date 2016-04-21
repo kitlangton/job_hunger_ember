@@ -8,16 +8,6 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-
-    toggleHeart(company) {
-      if (company.interest === 1) {
-        company.interest = 0;
-      } else {
-        company.interest = 1;
-      }
-      company.save();
-    },
-
     updateJob(model) {
       model.save();
     },

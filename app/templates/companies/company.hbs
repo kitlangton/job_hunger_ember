@@ -2,9 +2,9 @@
 <h2>
   {{model.name}}
   {{#if (eq model.interest 1)}}
-    <span class="glyphicon glyphicon-heart" {{action "toggleHeart" model}}></span>
+    <span class="glyphicon glyphicon-heart" {{action "toggleHeart" model model.interest}}></span>
   {{else}}
-    <span class="glyphicon glyphicon-heart-empty" {{action "toggleHeart" model}}></span>
+    <span class="glyphicon glyphicon-heart-empty" {{action "toggleHeart" model model.interest}}></span>
   {{/if}}
 </h2>
 
