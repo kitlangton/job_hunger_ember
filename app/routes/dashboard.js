@@ -21,6 +21,15 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 
   actions: {
 
+    toggleHeart(company) {
+      if (company.interest === 1) {
+        company.interest = 0;
+      } else {
+        company.interest = 1;
+      }
+      company.save();
+    },
+
     removeLead(lead) {
       let bool = confirm("Are you sure you want to remove this Lead?");
       if (bool) {

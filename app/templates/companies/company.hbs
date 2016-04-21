@@ -1,5 +1,12 @@
 <!-- app/templates/dashboard.hbs -->
-<h2>{{model.name}}</h2>
+<h2>
+  {{model.name}}
+  {{#if (eq model.interest 1)}}
+    <span class="glyphicon glyphicon-heart" {{action "toggleHeart" model}}></span>
+  {{else}}
+    <span class="glyphicon glyphicon-heart-empty" {{action "toggleHeart" model}}></span>
+  {{/if}}
+</h2>
 
 
 <div class="row">

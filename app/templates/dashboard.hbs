@@ -28,7 +28,9 @@
         <div class="pull-right">
           {{link-to "Add Company" 'companies.new'}}
         </div>
-        <h5 class="panel-title">Companies</h5>
+        <h5 class="panel-title">
+          Companies
+        </h5>
       </div>
 
       <table class="table" style="table-layout: fixed">
@@ -37,6 +39,7 @@
             <th>Name</th>
             <th>Website</th>
             <th>Blog</th>
+            <th>Favorite</th>
           </tr>
         </thead>
         <tbody>
@@ -50,7 +53,14 @@
               <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ company.website }}>{{company.website}}</a></td>
               <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ company.blog }}>{{company.blog}}</a></td>
               <td>
-                <button class="btn btn-danger btn-small" {{action "removeCompany" company}}>X</button>
+                {{#if (eq company.interest 1)}}
+                  <span class="glyphicon glyphicon-heart" {{action "toggleHeart" company}}></span>
+                {{else}}
+                  <span class="glyphicon glyphicon-heart-empty" {{action "toggleHeart" company}}></span>
+                {{/if}}
+              </td>
+              <td>
+                <button class="btn btn-danger btn-small pull-right" {{action "removeCompany" company}}>X</button>
               </td>
             </tr>
 

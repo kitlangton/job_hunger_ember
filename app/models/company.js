@@ -11,5 +11,6 @@ export default Recommendable.extend({
   website: attr('string'),
   blog: attr('string'),
   address: attr('string'),
+  interest: attr('number'),
   route: 'companies.company'
 });
