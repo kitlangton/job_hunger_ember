@@ -5,11 +5,6 @@ const {service} = Ember.inject;
 export default Ember.Component.extend({
   session: service(),
   sessionAccount: service(),
-  jobDemon: service(),
-
-  didInsertElement() {
-    this.get('jobDemon').open();
-  },
 
   actions: {
     authenticate() {

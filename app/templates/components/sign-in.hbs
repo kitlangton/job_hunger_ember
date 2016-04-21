@@ -4,11 +4,13 @@
 {{/text-type}}
 
 <form action="">
-  {{wide-input value=email inputId="email" label="Email"}}
+  <div class="wide-input-container">
+    {{wide-input value=email inputId="email" label="Email"}}
+  </div>
 
-  <div class="spacer"></div>
-
-  {{wide-input value=password inputId="password" type="password" label="Password"}}
+  <div class="wide-input-container">
+    {{wide-input value=password inputId="password" type="password" label="Password"}}
+  </div>
 
   {{normal-button onClick=(action "authenticate") text="Log In" size="large"}}
 </form>

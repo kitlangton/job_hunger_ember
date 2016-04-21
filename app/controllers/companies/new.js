@@ -8,13 +8,13 @@ export default Ember.Controller.extend({
   isDisabled: Ember.computed.not('validInput'),
 
   actions: {
-    createCompany(model) {
+    createCompany(company) {
       let currentUser = this.get('sessionAccount.currentUser');
 
-      model.set('user', currentUser);
-      model.save();
-
-      this.transitionToRoute('companies.company', model);
+      company.set('user', currentUser);
+      company.save().then(() => {
+        this.transitionToRoute('companies.company', company);
+      });
     },
   }
 });

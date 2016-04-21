@@ -11,15 +11,16 @@ export default Ember.Service.extend({
     this.set('transitioningTo', 'closed');
 
     let state = this.get('state');
+    console.log('closing',state);
+
     if (state === 'open' || state === 'animate-open') {
       this.set('state', 'animate-close');
     } else if (state === 'ooze') {
       this.set('state', 'ooze-close');
       Ember.run.later(this, function() { this.set('state', 'closed'); }, 1000);
     } else {
-      this.set('state', 'closed');
+      // this.set('state', 'closed');
     }
-
   },
 
   open() {
@@ -28,10 +29,11 @@ export default Ember.Service.extend({
     }
     let state = this.get('state');
     this.set('transitioningTo', 'open');
+    console.log('opening',state);
 
     if (state === 'closed' || state === 'animate-close') {
       this.set('state', 'animate-open');
-    } else if (state === 'ooze') {
+    } else if (state === 'ooze' || state === 'ooze-close') {
       this.close();
       Ember.run.later(this, this.open, 1000);
     } else {
@@ -44,7 +46,7 @@ export default Ember.Service.extend({
       return;
     }
     let state = this.get('state');
-    console.log(state);
+    console.log('oozing',state);
     this.set('transitioningTo', 'ooze');
 
     if (state === 'closed' || state === 'animate-close') {
@@ -56,6 +58,5 @@ export default Ember.Service.extend({
     } else {
       this.set('state', 'ooze');
     }
-
   }
 });

@@ -9,7 +9,7 @@
       <div class="list-group-item clearfix">
         {{ember-inline-edit
           value=model.address
-          onSave=(action "updateCompany" model)}}
+          onSave="updateCompany"}}
       </div>
       <div class='list-group-item clearfix'>
         <label><strong>Blog:</strong> </label>

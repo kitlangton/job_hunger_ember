@@ -16,8 +16,13 @@ export default Ember.Component.extend({
       }
     },
 
-    updateCompany(model) {
-      model.save();
+    updateCompany() {
+      this.get('model').save().then(() => {
+        this.get('model.recommendations').forEach( rec => {
+          rec.reload();
+        });
+      });
+
 
       let toggle = this.get('toggled');
 
