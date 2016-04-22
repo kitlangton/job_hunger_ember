@@ -17,17 +17,16 @@
 
     <button {{action 'findMeetups'}}>Find Meetups</button>
   </form>
-  
+
   <br>
 
   <div class="list-group">
     {{#each meetups as |event|}}
-      <a href={{event.event_url}} class="list-group-item">
+      {{event.date}}
+      <a href={{event.event_url}} target="_newTab" class="list-group-item">
         <div class="row">
           <div class="col-xs-2">
-            {{event.date}}
-            <br>
-            <h3>{{event.time}}</h3>
+            <h4>{{event.time}}</h4>
           </div>
           <div class="col-xs-8">
             <h4>{{event.group}}</h4>
