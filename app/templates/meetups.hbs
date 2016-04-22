@@ -17,14 +17,26 @@
 
     <button {{action 'findMeetups'}}>Find Meetups</button>
   </form>
+  
+  <br>
 
   <div class="list-group">
     {{#each meetups as |event|}}
-      <a href={{event.event_url}}>
-        <div class="list-group-item">
-          <h3>{{event.group.name}}</h3>
-          <h2>{{event.name}}</h2>
-          {{event.yes_rsvp_count}}
+      <a href={{event.event_url}} class="list-group-item">
+        <div class="row">
+          <div class="col-xs-2">
+            {{event.date}}
+            <br>
+            <h3>{{event.time}}</h3>
+          </div>
+          <div class="col-xs-8">
+            <h4>{{event.group}}</h4>
+            <h3>{{event.name}}</h3>
+            {{event.yes_rsvp_count}} Going
+          </div>
+          <div class="col-xs-2">
+            {{event.distance}} miles away
+          </div>
         </div>
       </a>
     {{/each}}
