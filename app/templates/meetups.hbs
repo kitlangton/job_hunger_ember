@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Meetups</h1>
+
+  <form>
+    <select onchange={{action "selectCategoryIds" value="target.value"}}>
+      <option>Choose a category</option>
+      {{#each model.results as |category|}}
+        <option value={{category.category_ids}}>{{category.name}}</option>
+      {{/each}}
+    </select>
+    <select class="dropdown" onchange={{action "selectRadius" value="target.value"}}>
+      {{#each populateRange as |range|}}
+        <option value={{range}}>{{range}} miles</option>
+      {{/each}}
+    </select>
+    {{input value=zip placeholder="Enter Zip Code"}}
+
+    <button {{action 'findMeetups'}}>Find Meetups</button>
+  </form>
+
+  <div class="list-group">
+    {{#each meetups as |event|}}
+      <a href={{event.event_url}}>
+        <div class="list-group-item">
+          <h3>{{event.group.name}}</h3>
+          <h2>{{event.name}}</h2>
+          {{event.yes_rsvp_count}}
+        </div>
+      </a>
+    {{/each}}
+  </div>
+</div>
+{{outlet}}
