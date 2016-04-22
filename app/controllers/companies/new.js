@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
       let currentUser = this.get('sessionAccount.currentUser');
 
       model.set('user', currentUser);
-      model.interest = 0;
+      model.set('interest', 0);
       model.save();
 
       this.transitionToRoute('companies.company', model);
