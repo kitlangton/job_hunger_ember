@@ -7,5 +7,7 @@ export default Model.extend({
   recommendable: belongsTo('recommendable', { polymorphic: true }),
   start_date: attr('date'),
   action: attr('string'),
+  query: attr('string'),
+  field: attr('string'),
   completed: attr('boolean')
 });

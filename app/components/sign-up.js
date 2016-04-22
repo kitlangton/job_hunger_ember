@@ -22,7 +22,7 @@ export default Ember.Component.extend({
 
   willDestroyElement() {
     this.get('backgroundColor').setLight();
-    this.get('jobDemon').open();
+    // this.get('jobDemon').open();
   },
 
   invalidEmail: Ember.computed.not('validEmail'),

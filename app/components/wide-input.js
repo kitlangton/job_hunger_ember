@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['wide-input'],
-  classNameBindings: ['active:active', 'light:light', 'present:present'],
+  classNameBindings: ['active', 'light', 'present', 'narrow', 'small'],
   type: 'text',
 
   didInsertElement() {
@@ -36,5 +36,12 @@ export default Ember.Component.extend({
     deactivate() {
       this.set('active', false);
     },
+
+    enterPressed() {
+      let func = this.get('enterPressed');
+      if (func) {
+        func();
+      }
+    }
   }
 });

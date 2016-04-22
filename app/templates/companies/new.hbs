@@ -1,9 +1,8 @@
 <h3>New Company</h3>
 
 <form>
-  <div class="form-group">
+  <div class="wide-input-container">
     {{wide-input value=model.name inputId="model.name" label="Company Name"}}
   </div>
-  <br>
   {{normal-button onClick=(action "createCompany" model) text="Create Company" size="large" }}
 </form>

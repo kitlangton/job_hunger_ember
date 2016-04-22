@@ -1,3 +1,7 @@
+<!-- <button {{action 'ooze'}}>ooze</button> -->
+<!-- <button {{action 'open'}}>open</button> -->
+<!-- <button {{action 'close'}}>close</button> -->
+
 <h1>
   {{#text-type class="h1" fade="true"}}
   A dark briefcase floats before you in the night.
@@ -8,7 +12,9 @@
   {{/text-type}}
 </h1>
 
-{{wide-input value=email inputId="email" hidden=hideEmail light="true"}}
+<div class="wide-input-container">
+  {{wide-input value=email inputId="email" hidden=hideEmail light="true"}}
+</div>
 
 {{#if validEmail}}
 {{#text-type class="h1" fade=passwordLengthValid}}
@@ -16,7 +22,9 @@
 {{/text-type}}
 {{/if}}
 
+<div class="wide-input-container">
 {{wide-input value=password id="password" hidden=invalidEmail type='password' light="true"}}
+</div>
 
 {{#if passwordLengthValid}}
 {{#text-type class="h1" fade=validPassword}}
@@ -25,16 +33,19 @@
 {{/text-type}}
 {{/if}}
 
-{{wide-input value=passwordConfirmation id="password-confirmation" hidden=passwordTooShort type='password' light="true"}}
+<div class="wide-input-container">
+  {{wide-input value=passwordConfirmation id="password-confirmation" hidden=passwordTooShort type='password' light="true"}}
+</div>
+
 
 {{#if validPassword}}
-  {{#text-type class="h1"}}
-  <h1>There is not much time!</h1>
-  <h3>I cannot continue to build fake tension!</h3>
-  {{/text-type}}
+{{#text-type class="h1"}}
+<h1>There is not much time!</h1>
+<h3>I cannot continue to build fake tension!</h3>
+{{/text-type}}
 
-  <!-- <button class="special&#45;button large light" id="sign&#45;up" {{action "signUp"}}>Sign Up</button> -->
-  {{normal-button class="light" onClick=(action "signUp") text="Sign Up" size='large'}}
+<!-- <button class="special&#45;button large light" id="sign&#45;up" {{action "signUp"}}>Sign Up</button> -->
+{{normal-button class="light" onClick=(action "signUp") text="Sign Up" size='large'}}
 {{/if}}
 
 <div class="rain"></div>

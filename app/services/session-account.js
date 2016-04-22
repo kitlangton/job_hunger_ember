@@ -13,6 +13,7 @@ export default Ember.Service.extend({
       if (!Ember.isEmpty(uid)) {
         return this.get('store').query('user', { filter: { email: uid  } } ).then(account => {
           this.set('currentUser', account.get('firstObject'));
+          console.log("LOADING CURRENT");
           this.get('jobDemon').open();
           resolve();
         }, reject);

@@ -4,8 +4,10 @@ export default Ember.Controller.extend({
   dashboardController: Ember.inject.controller('dashboard'),
 
   store: Ember.inject.service(),
-  recommendations: Ember.computed('model.recommendations', function() {
-    return this.get('model.recommendations');
+
+  recommendations: Ember.computed('model.recommendations.@each.completed', function(){
+    console.log('computing recommendations');
+    return this.get('model.recommendations').filterBy('completed', false).slice(0,3);
   }),
 
   actions: {
