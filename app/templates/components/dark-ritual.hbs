@@ -1,12 +1,9 @@
-{{yield}}
-
-<!-- <div class="complete"></div> -->
 <div class="complete">
   <img class="page" src="/page.png" alt="">
 </div>
 
 {{#if query}}
-<a href="http://google.com/#q={{query}}" target="_blank" {{action "focus" value="target.event"}}>{{recommendation.action}}</a>
+<a href="#" {{action "focus"}}>{{recommendation.action}}</a>
 {{else}}
 {{recommendation.action}}
 {{/if}}

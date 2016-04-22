@@ -5,12 +5,10 @@ export default Ember.Controller.extend({
   store: Ember.inject.service(),
 
   recommendations: Ember.computed('model.recommendations.@each.completed', function(){
-    console.log('computing recommendations');
     return this.get('model.recommendations').filterBy('completed', false).slice(0,3);
   }),
 
   actions: {
-
     updateJob(model) {
       model.save();
     },
@@ -19,5 +17,4 @@ export default Ember.Controller.extend({
       model.notes = model.notes;
     }
   }
-
 });

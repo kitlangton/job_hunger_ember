@@ -10,7 +10,7 @@ export default Ember.Component.extend({
     let query = this.get('recommendation.query');
     console.log(query);
     if (query) {
-      return query.split(' ').join('+');
+      return encodeURI(query);
     }
   }),
 
@@ -39,7 +39,7 @@ export default Ember.Component.extend({
 
   actions: {
 
-    focus(huh) {
+    focus() {
       this.$('.wide-input input').focus();
       window.open('http://www.google.com/#q=' + this.get('query'), '_blank');
     },
@@ -58,9 +58,6 @@ export default Ember.Component.extend({
 
     complete() {
       this.$().velocity('transition.fadeOut');
-      // let recommendation = this.get('recommendation');
-      // recommendation.set('completed', true);
-      // recommendation.save();
 
       let demon = this.get('jobDemon');
       this.set('processing', true);

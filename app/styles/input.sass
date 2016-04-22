@@ -1,9 +1,14 @@
 .wide-input-container
-  margin: 20px 0
+  margin: 30px 0
 
 .wide-input
+  box-sizing: border-box
   width: 100%
   &.narrow
+    margin-left: 10px
+    position: absolute
+    &.active
+      margin-left: 0px
     width: auto
   transition: all 0.3s
   border-radius: 5px;
