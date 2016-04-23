@@ -39,10 +39,6 @@ export default Ember.Controller.extend({
     return time;
   },
 
-  convertAddress: {
-
-  },
-
   actions: {
     clickss() {
       console.log(this.get('category_ids'));
