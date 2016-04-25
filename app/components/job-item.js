@@ -13,6 +13,3 @@ export default Ember.Component.extend({
     }
   }
 });
-
-
-// http://stackoverflow.com/questions/35348059/how-do-i-pass-in-more-than-one-paramter-to-the-onchange-action-for-the-select-el

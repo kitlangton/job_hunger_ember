@@ -127,9 +127,8 @@
           {{#each model.jobs as |job| }}
             <tr>
               <td>{{ job.title }}</td>
-              <td>{{ job.application_status }}</td>
-              <td><a href={{ job.url }} target="_blank">{{ job.url }}</a></td>
               <td>{{job-item jobItem=job}}</td>
+              <td><a href={{ job.url }} target="_blank">{{ job.url }}</a></td>
               <td>
                 <button class="btn btn-danger btn-small" {{action "removeJob" job}}>X</button>
               </td>

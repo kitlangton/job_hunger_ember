@@ -1,8 +1,8 @@
 {{yield}}
 
 
-<select onchange={{action "updateJobStatus" value="target.value"}}>
+<select class="diy-dropdown" onchange={{action "updateJobStatus" value="target.value"}}>
   {{#each statuses as |status|}}
-    <option value={{status}} selected={{ jobItem.application_status }}>{{status}}</option>
+    <option value={{status}} selected={{eq jobItem.application_status status }}>{{status}}</option>
   {{/each}}
 </select>
