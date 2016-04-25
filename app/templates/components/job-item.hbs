@@ -1,0 +1,8 @@
+{{yield}}
+
+
+<select onchange={{action "updateJobStatus" value="target.value"}}>
+  {{#each statuses as |status|}}
+    <option value={{status}} selected={{eq value status}}>{{status}}</option>
+  {{/each}}
+</select>
