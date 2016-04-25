@@ -25,6 +25,7 @@ Router.map(function() {
   });
 
   this.route('recommendable', {path: '/:recommendable_type/:recommendable_id'});
+  this.route('welcome');
 });
 
 export default Router;

@@ -19,9 +19,14 @@ module.exports = function(environment) {
     }
   };
 
+    // ENV['ember-simple-auth'] = {
+    //   routeAfterAuthentication: 'dashboard'
+    // };
+
     ENV['ember-simple-auth'] = {
-      routeAfterAuthentication: 'dashboard'
+      routeAfterAuthentication: 'freestyle'
     };
+
 
   if (environment === 'development') {
     ENV.APP.LOG_TRANSITIONS = true;
@@ -55,11 +60,22 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
+  // if (environment === 'production') {
+  //   ENV['devise-url'] = 'https://mysterious-shelf-41013.herokuapp.com';
+  //   ENV['ember-simple-auth'] = {
+  //     routeAfterAuthentication: '/dashboard',
+  //     routeIfAlreadyAuthenticated: 'dashboard'
+  //   };
+  //   ENV['contentSecurityPolicy'] = {
+  //     'connect-src': "'self' https://mysterious-shelf-41013.herokuapp.com"
+  //   };
+  // }
+
   if (environment === 'production') {
     ENV['devise-url'] = 'https://mysterious-shelf-41013.herokuapp.com';
     ENV['ember-simple-auth'] = {
-      routeAfterAuthentication: '/dashboard',
-      routeIfAlreadyAuthenticated: 'dashboard'
+      routeAfterAuthentication: '/freestyle',
+      routeIfAlreadyAuthenticated: 'freestyle'
     };
     ENV['contentSecurityPolicy'] = {
       'connect-src': "'self' https://mysterious-shelf-41013.herokuapp.com"
