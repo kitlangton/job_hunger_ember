@@ -5,11 +5,20 @@ export default Ember.Component.extend({
 
   actions: {
     updateJobStatus(value) {
-      let jobItem = this.get('jobItem')
-      jobItem.set('application_status', value)
+      let jobItem = this.get('jobItem');
+      jobItem.set('application_status', value);
       jobItem.save().then(() => {
+        jobItem.reload();
+      });
+    },
+
+    updateUrl(url) {
+      let jobItem = this.get('jobItem');
+      this.get('jobItem').save().then(() => {
         jobItem.reload();
       });
     }
   }
+
+
 });
