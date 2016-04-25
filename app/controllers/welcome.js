@@ -10,6 +10,13 @@ export default Ember.Controller.extend({
   interest2: '',
   zipCode: '',
   hideInterest: false,
+  companies: [],
+
+  haveCompanies: Ember.computed('companies', function() {
+    console.log('haveCompanies');
+    console.log(this.get('companies'));
+    return this.get('companies').length > 0;
+  }),
 
   isInterested1: Ember.computed('interest1', function() {
     return this.get('interest1') !== '';
@@ -28,6 +35,8 @@ export default Ember.Controller.extend({
   },
 
   glassdoorAPICall() {
+    let that = this;
+
     let base_string = "http://api.glassdoor.com/api/api.htm";
 
     let partner_str = "t.p=" + "62023"
@@ -59,7 +68,9 @@ export default Ember.Controller.extend({
       url: request_string,
       dataType: "jsonp",
       success: function(data) {
-        console.log(data)
+        // console.log(data);
+        that.set('companies', data.response.employers);
+        // console.log(companies);
       }
     });
   },    

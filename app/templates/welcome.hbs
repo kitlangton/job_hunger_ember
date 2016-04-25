@@ -28,6 +28,25 @@
 </div>
 {{/if}}
 
-
-
 {{normal-button class="light" onClick=(action "submitInterestsAndLocation") text="Find Me Jobs!" size='large'}}
+
+{{#if haveCompanies}}
+  <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+            <th>Company</th>
+            <th>Rating</th>
+            <th>Add This Company!</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each companies as |company|}}
+          <tr>
+              <td>{{company.name}}</td>
+              <td>{{company.overallRating}}</td>
+              <td>Link here</td>
+          </tr>
+      {{/each}}
+      </tbody>
+  </table>
+{{/if}}
