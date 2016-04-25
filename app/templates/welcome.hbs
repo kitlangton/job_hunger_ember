@@ -1,9 +1,41 @@
 
 
-<h4>Welcome Page</h4><br/>
 
-<p>Glad you could be with us</p>
-<p>Select two keyword interests and well find some relevant companies for you</p>
-
+<h2>Glad you could be with us</h2>
+<h4>Select two keyword interests and well find some relevant companies for you</h4>
 
 
+
+<h3>
+  {{#text-type class="h1" fade="true"}}
+  Please enter a keyword interest
+  {{/text-type}}
+</h3>
+
+<div class="wide-input-container">
+  {{wide-input value=interest1 inputId="interest1" hidden=hideInterest light="true"}}
+</div>
+
+{{#if isInterested1}}
+{{#text-type class="h1"}}
+<h3>And another keyword interest</h3>
+{{/text-type}}
+
+<div class="wide-input-container">
+{{wide-input value=interest2 id="interest2" light="true"}}
+</div>
+{{/if}}
+
+{{#if isInterested2}}
+{{#text-type class="h1"}}
+<h3>Enter a zip code for location</h3>
+{{/text-type}}
+
+<div class="wide-input-container">
+{{wide-input value=zipCode id="zipCode" light="true"}}
+</div>
+{{/if}}
+
+
+
+{{normal-button class="light" onClick=(action "submitInterestsAndLocation") text="Find Me Jobs!" size='large'}}
