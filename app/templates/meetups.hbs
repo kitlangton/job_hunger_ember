@@ -2,19 +2,17 @@
   <h1>Meetups</h1>
 
   <form>
-    <select onchange={{action "selectCategoryIds" value="target.value"}}>
-      <option>Choose a category</option>
-      {{#each model.results as |category|}}
-        <option value={{category.category_ids}}>{{category.name}}</option>
-      {{/each}}
-    </select>
+    {{input value=text placeholder="Search by Keyword"}}
+    {{input value=zip placeholder="Enter Zip Code"}}
     <select class="dropdown" onchange={{action "selectRadius" value="target.value"}}>
       {{#each populateRange as |range|}}
-        <option value={{range}}>{{range}} miles</option>
+        {{#if (eq range 25)}}
+          <option value={{range}} selected="selected">{{range}} miles</option>
+        {{else}}
+          <option value={{range}}>{{range}} miles</option>
+        {{/if}}
       {{/each}}
     </select>
-    {{input value=zip placeholder="Enter Zip Code"}}
-
     <button {{action 'findMeetups'}}>Find Meetups</button>
   </form>
 
