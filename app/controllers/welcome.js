@@ -11,6 +11,7 @@ export default Ember.Controller.extend({
   zipCode: '',
   hideInterest: false,
   companies: [],
+  sessionAccount: Ember.inject.service(),
 
   haveCompanies: Ember.computed('companies', function() {
     // console.log('haveCompanies');
@@ -92,11 +93,16 @@ export default Ember.Controller.extend({
 
     createCompany(company) {
       let currentUser = this.get('sessionAccount.currentUser');
+      console.log(currentUser);
       let newCompany = this.store.createRecord('company');
 
       newCompany.set('user', currentUser);
+      // newCompany.set('user_id', userID);
       newCompany.set('name', company.name)
-      newCompany.save();
+      newCompany.save().then((response) => {
+        console.log('trying to save');
+        console.log(response);
+      });
       // company.save().then(() => {
       //   this.transitionToRoute('companies.company', company);
       // });
