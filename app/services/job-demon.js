@@ -58,5 +58,34 @@ export default Ember.Service.extend({
     } else {
       this.set('state', 'ooze');
     }
-  }
+  },
+
+    animatePage(from) {
+      let to = Ember.$('.logo').offset();
+      let page = Ember.$("<img class='page' src='/page.png'>");
+      page.css({
+        height: '30px',
+        position: 'absolute',
+        left: from.left,
+        top: from.top
+      });
+      Ember.$('body').append(page);
+      page.velocity({
+        top: to.top + 35,
+        left: to.left + 60,
+        rotateZ: '360deg'
+      }, {
+        // easing: 'spring',
+        duration: 600
+      }).velocity({
+        opacity: 0,
+        rotateZ: '500deg'
+      }, {
+        easing: 'linear',
+        complete: () => {
+          page.remove();
+        }
+      });
+    },
+
 });

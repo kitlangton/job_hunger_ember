@@ -1,11 +1,15 @@
 .wide-input-container
-  margin: 20px 0
+  margin: 30px 0
 
 .wide-input
+  box-sizing: border-box
   width: 100%
   &.narrow
+    // margin-left: 10px
+    // margin-right: 10px
+    // position: absolute
     width: auto
-  transition: all 0.3s
+  transition: margin 0.3s, padding 0.3s, background-color 0.3s, box-shadow 0.3s
   border-radius: 5px;
   margin: 0px
   display: inline-block
@@ -37,17 +41,17 @@
   .border
     height: 2px
     background-color: rgba(0,0,0,0.3)
-    transition: background-color 0.3s
+    transition: background-color 0.5s
   &.active
     .input-label
       // font-size: 13px
     .border
-      background-color: rgba(0,0,0,0.6)
-      box-shadow: 0px 0px 10px rgba(0,0,0,0.1)
-    background-color: rgba(255,255,255,0.8)
-    padding: 10px
-    margin: -10px
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.10)
+      // background-color: rgba(0,0,0,0.6)
+      background-color: #F88
+    // background-color: rgba(255,255,255,0.8)
+    // padding: 10px
+    // margin: -10px
+    // box-shadow: 0px 0px 10px rgba(0,0,0,0.10)
   &.light
     color: white
     background-color: rgba(255,255,255,0.0)
@@ -55,9 +59,9 @@
       background-color: rgba(255,255,255,0.3)
     &.active
       .border
-        background-color: rgba(255,255,255,0.6)
-        box-shadow: 0px 0px 10px rgba(255,255,255,0.1)
-      background-color: rgba(255,255,255,0.1)
+        background-color: #F88
+        // box-shadow: 0px 0px 10px rgba(255,255,255,0.1)
+      // background-color: rgba(255,255,255,0.1)
 
 .special-button
   outline: none
@@ -73,17 +77,40 @@
   box-shadow: 0px 0px 10px rgba(0,0,0,0)
   &.large
     font-size: 30px
-  &.light
-    &:hover
-      background-color: rgba(255,255,255, 0.15)
+  // &.light
+  //   &:hover
+  //     background-color: rgba(255,255,255, 0.15)
   &:hover
-    // transform: scale(1.2)
-    padding: 10px
-    margin: -10px
-    background-color: rgba(255,255,255,0.8)
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.15)
+    transform: scale(0.9)
+    color: #F88 - 20
 
 .spacer
   height: 1px
   margin: -10px 0px
   padding: 0px
+
+.focus
+  border-bottom: 0px solid #88F
+
+a
+  transition: all 0.3s
+
+a
+  cursor: pointer
+  color: #F88
+  font-weight: bold
+  text-decoration: none
+  transition: all 0.3s
+  &:hover
+    color: #C55
+    text-decoration: none
+  &.active
+    &:hover
+      text-decoration: none
+    cursor: default
+    color: #C55
+
+.crumbs
+  // text-align: center
+  font-size: 30px
+

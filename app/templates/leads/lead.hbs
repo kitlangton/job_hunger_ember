@@ -1,79 +1,9 @@
-<div class="container-fluid lead-container">
-
-<h3 class="text-center">{{ model.name }} @ {{ model.company.name }}</h3>
+<div class="crumbs">
+  {{link-to 'Dashboard' 'dashboard'}} • {{link-to model.company.name 'companies.company' model.company}} • {{link-to model.name 'leads.lead' model}}
+</div>
 
 <div class="row">
   <div class="col-sm-12">
-
-    <br>
-    {{#text-type}}
-    <h3>Try these Dark Rituals.</h3>
-    <!-- <h4>It yearns for your credentials:</h4> -->
-    {{/text-type}}
-
-    <div class="rituals">
-      {{#each recommendations as |recommendation|}}
-      {{dark-ritual recommendation=recommendation}}
-      {{/each}}
-    </div>
-
-    <br>
-
+    {{ritual-group recommendations=recommendations}}
   </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Resources
-      </div>
-
-      <div class="list-group">
-        <!-- Need to make this into a component -->
-        <div class='list-group-item clearfix'>
-          <label><strong>Email:</strong> </label>
-          {{ember-inline-edit
-          class="inline"
-          value=model.email
-          onSave='updateLead'}}
-        </div>
-        <div class='list-group-item clearfix'>
-          <label><strong>Blog:</strong> </label>
-          {{ember-inline-edit
-          class="inline"
-          value=model.blog
-          onSave='updateLead'}}
-          <a class="pull-right" href={{model.blog}}>Link</a>
-        </div>
-        <div class='list-group-item clearfix'>
-          <label><strong>LinkedIn:</strong> </label>
-          {{ember-inline-edit
-          class="inline"
-          value=model.linked_in
-          onSave='updateLead'}}
-          <a class="pull-right" href={{model.linked_in}}>Link</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="col-sm-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h5 class="panel-title">notes</h5>
-      </div>
-
-      <div class="panel-body">
-        {{ember-inline-edit
-        value=model.notes
-        field='textarea'
-        onSave=(action "updateLead" model)
-        onClose=(action "rollback" model)}}
-      </div>
-    </div>
-  </div>
-
-</div>
 </div>

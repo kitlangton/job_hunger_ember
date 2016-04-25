@@ -14,6 +14,7 @@ export default Ember.Controller.extend({
       company.set('interest', 0);
       company.set('user', currentUser);
       company.save().then(() => {
+        this.get('sessionAccount.currentUser').reload();
         this.transitionToRoute('companies.company', company);
       });
     },

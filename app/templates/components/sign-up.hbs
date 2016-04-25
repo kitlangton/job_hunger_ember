@@ -13,7 +13,7 @@
 </h1>
 
 <div class="wide-input-container">
-  {{wide-input value=email inputId="email" hidden=hideEmail light="true"}}
+  {{wide-input value=email inputId="email" hidden=hideEmail light=true}}
 </div>
 
 {{#if validEmail}}
@@ -23,7 +23,7 @@
 {{/if}}
 
 <div class="wide-input-container">
-{{wide-input value=password id="password" hidden=invalidEmail type='password' light="true"}}
+{{wide-input value=password id="password" hidden=invalidEmail type='password' light=true}}
 </div>
 
 {{#if passwordLengthValid}}
@@ -34,7 +34,7 @@
 {{/if}}
 
 <div class="wide-input-container">
-  {{wide-input value=passwordConfirmation id="password-confirmation" hidden=passwordTooShort type='password' light="true"}}
+  {{wide-input value=passwordConfirmation id="password-confirmation" hidden=passwordTooShort type='password' light=true}}
 </div>
 
 
@@ -47,5 +47,3 @@
 <!-- <button class="special&#45;button large light" id="sign&#45;up" {{action "signUp"}}>Sign Up</button> -->
 {{normal-button class="light" onClick=(action "signUp") text="Sign Up" size='large'}}
 {{/if}}
-
-<div class="rain"></div>
