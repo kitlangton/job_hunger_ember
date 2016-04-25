@@ -13,8 +13,8 @@ export default Ember.Controller.extend({
   companies: [],
 
   haveCompanies: Ember.computed('companies', function() {
-    console.log('haveCompanies');
-    console.log(this.get('companies'));
+    // console.log('haveCompanies');
+    // console.log(this.get('companies'));
     return this.get('companies').length > 0;
   }),
 
@@ -81,13 +81,26 @@ export default Ember.Controller.extend({
       // let interest2 = this.get('interest2');
       let zipCode = this.get('zipCode');
 
-      console.log(interest1);
-      // console.log(interest2);
-      console.log(zipCode);
-      console.log(ENV);
+      // console.log(interest1);
+      // // console.log(interest2);
+      // console.log(zipCode);
+      // console.log(ENV);
 
       this.glassdoorAPICall();
-    }
+    },
+
+
+    createCompany(company) {
+      let currentUser = this.get('sessionAccount.currentUser');
+      let newCompany = this.store.createRecord('company');
+
+      newCompany.set('user', currentUser);
+      newCompany.set('name', company.name)
+      newCompany.save();
+      // company.save().then(() => {
+      //   this.transitionToRoute('companies.company', company);
+      // });
+    },
 
   }
 

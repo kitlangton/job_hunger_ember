@@ -35,16 +35,20 @@
       <thead>
         <tr>
             <th>Company</th>
-            <th>Rating</th>
+            <th>Glassdoor Rating</th>
             <th>Add This Company!</th>
         </tr>
       </thead>
       <tbody>
       {{#each companies as |company|}}
           <tr>
-              <td>{{company.name}}</td>
-              <td>{{company.overallRating}}</td>
-              <td>Link here</td>
+              <td >{{company.name}}</td>
+              <td>
+                <div class="label label-info">{{company.overallRating}}</div>
+              </td>
+              <td>
+                <button type="button" class="btn btn-info" {{action "createCompany" company}}>Follow this Company!</button>
+              </td>
           </tr>
       {{/each}}
       </tbody>
