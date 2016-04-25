@@ -4,6 +4,7 @@ const { service } = Ember.inject;
 
 export default Ember.Component.extend({
   session: service(),
+  sessionAccount: service(),
   jobDemon: service(),
   classNames: ['nav-bar'],
 
@@ -18,6 +19,7 @@ export default Ember.Component.extend({
   },
 
   actions: {
+
     invalidateSession() {
       this.get('invalidateSession')();
     }

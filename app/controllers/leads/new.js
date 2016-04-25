@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 
   store: Ember.inject.service(),
+  sessionAccount: Ember.inject.service(),
 
   companyId: '',
   isEmpty: Ember.computed.empty('name'),
@@ -26,6 +27,7 @@ export default Ember.Controller.extend({
       });
       this.set('name', '');
       lead.save().then(() => {
+        this.get('sessionAccount.currentUser').reload();
         this.transitionToRoute('leads.lead', lead);
       });
     }

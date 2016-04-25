@@ -1,67 +1,43 @@
-<!-- app/templates/companies/company.hbs -->
-
-<div> 
-  <h2>{{model.name}}</h2> 
-  <span class="label label-info">Glassdoor rating: {{model.glassdoor_rating}}</span>
+<div class="crumbs">
+  {{link-to 'Dashboard' 'dashboard'}} • {{link-to model.name 'companies.company' model}}
 </div>
 
 <div class="row">
   <div class="col-sm-12">
+    {{ritual-group recommendations=recommendations}}
+  </div>
+</div>
 
-    <br>
-    {{#text-type}}
-    <h3>Try these Dark Rituals.</h3>
-    <!-- <h4>It yearns for your credentials:</h4> -->
-    {{/text-type}}
+<div class="row">
+  <div class="col-sm-6">
+    <h3 class="special" data-title-type="info">Info </h3>
+    <div class="list">
+      <div class="item" data-lead-id="{{lead.id}}">
+        <div class="item">
+          {{model.address}}
+        </div>
 
-    <div class="rituals">
-      {{#each recommendations as |recommendation|}}
-      {{dark-ritual recommendation=recommendation}}
+        <div class="item">
+          {{model.blog}}
+        </div>
+
+        <div class="item">
+          {{model.website}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <h3 class="special" data-title-type="leads">Leads <span>{{link-to "+" "leads.new"}}</span></h3>
+    <div class="list">
+      {{#each model.leads as |lead| }}
+      <div class="item" data-lead-id="{{lead.id}}">
+        <a href="">
+          {{link-to lead.name 'leads.lead' lead}}
+        </a>
+      </div>
       {{/each}}
     </div>
-
-    <br>
-
   </div>
-</div>
-
-
-<div class="row">
-  {{show-resources model=model}}
-  {{show-leads model=model}}
-
-  <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h5 class="panel-title">Jobs</h5>
-        {{link-to "Add Job" 'jobs.new'}}
-      </div>
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Application Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each model.jobs as |job| }}
-            <tr>
-              <td>
-                {{ember-inline-edit
-                  value=job.title
-                  field='textarea'
-                  onSave=(action "updateJob" job)}}
-                </td>
-            </tr>
-          {{/each }}
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-</div>
-
-<div class="row">
-  {{show-notes model=model}}
 </div>

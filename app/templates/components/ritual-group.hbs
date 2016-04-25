@@ -1,0 +1,9 @@
+{{#if recommendations}}
+    <h3><span class="focus special">Recommendations</span></h3>
+{{/if}}
+
+<div class="rituals">
+  {{#each recommendations as |recommendation|}}
+  {{dark-ritual recommendation=recommendation data-ritual-id=recommendation.id}}
+  {{/each}}
+</div>

@@ -1,15 +1,15 @@
 {{#text-type class="input-label"}}
 <h1>Feed the briefcase.</h1>
-<h4>It yearns for your credentials:</h4>
+<h4>It yearns for your <span class="focus">credentials</span></h4>
 {{/text-type}}
 
 <form action="">
   <div class="wide-input-container">
-    {{wide-input value=email inputId="email" label="Email"}}
+    {{wide-input value=email inputId="signInEmail" label="Email"}}
   </div>
 
   <div class="wide-input-container">
-    {{wide-input value=password inputId="password" type="password" label="Password"}}
+    {{wide-input value=password inputId="signInPassword" type="password" label="Password"}}
   </div>
 
   {{normal-button onClick=(action "authenticate") text="Log In" size="large"}}

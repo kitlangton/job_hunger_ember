@@ -1,8 +1,16 @@
+$primary-color: #F88;
+$secondary-color: #88F;
+
 @import 'bootstrap';
 @import 'ember-freestyle';
 @import 'nav-bar';
 @import 'input';
 @import 'rituals';
+@import 'list';
+
+.special {
+  // text-decoration: underline;
+}
 
 body, h1 {
   transition: all 1.5s;
