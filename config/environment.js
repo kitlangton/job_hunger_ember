@@ -23,9 +23,9 @@ module.exports = function(environment) {
     //   routeAfterAuthentication: 'dashboard'
     // };
 
-    ENV['ember-simple-auth'] = {
-      routeAfterAuthentication: 'freestyle'
-    };
+  ENV['ember-simple-auth'] = {
+    routeAfterAuthentication: 'welcome'
+  };
 
 
   if (environment === 'development') {
@@ -36,6 +36,10 @@ module.exports = function(environment) {
 
     ENV.contentSecurityPolicy = {
       'connect-src': "'self' http://localhost:3000",
+    };
+
+    ENV['ember-simple-auth'] = {
+      routeAfterAuthentication: 'welcome'
     };
 
     // ENV.APP.LOG_RESOLVER = true;
@@ -74,8 +78,8 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV['devise-url'] = 'https://mysterious-shelf-41013.herokuapp.com';
     ENV['ember-simple-auth'] = {
-      routeAfterAuthentication: '/freestyle',
-      routeIfAlreadyAuthenticated: 'freestyle'
+      routeAfterAuthentication: '/welcome',
+      routeIfAlreadyAuthenticated: 'welcome'
     };
     ENV['contentSecurityPolicy'] = {
       'connect-src': "'self' https://mysterious-shelf-41013.herokuapp.com"

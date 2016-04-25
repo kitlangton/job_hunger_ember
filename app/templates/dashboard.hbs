@@ -36,6 +36,7 @@
         <thead>
           <tr>
             <th>Name</th>
+            <th>Rating</th>
             <th>Website</th>
             <th>Blog</th>
           </tr>
@@ -47,8 +48,13 @@
                 {{#link-to "companies.company" company}}
                   {{company.name}}
                 {{/link-to}}
+              </td>              
+              <td>
+                <div class="label label-info">{{company.glassdoor_rating}}</div>
               </td>
-              <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ company.website }}>{{company.website}}</a></td>
+              <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">
+                  <a href={{ company.glassdoor_website }}>{{company.glassdoor_website}}</a>
+              </td>
               <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><a href={{ company.blog }}>{{company.blog}}</a></td>
               <td>
                 <button class="btn btn-danger btn-small" {{action "removeCompany" company}}>X</button>

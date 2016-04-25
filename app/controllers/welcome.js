@@ -14,18 +14,12 @@ export default Ember.Controller.extend({
   sessionAccount: Ember.inject.service(),
 
   haveCompanies: Ember.computed('companies', function() {
-    // console.log('haveCompanies');
-    // console.log(this.get('companies'));
     return this.get('companies').length > 0;
   }),
 
   isInterested1: Ember.computed('interest1', function() {
     return this.get('interest1') !== '';
   }),
-
-  // isInterested2: Ember.computed('interest2', function() {
-  //   return this.get('interest2') !== '';
-  // }),
 
   didInsertElement() {
     // this.get('backgroundColor').setDark();
@@ -79,33 +73,22 @@ export default Ember.Controller.extend({
   actions: {
     submitInterestsAndLocation() {
       let interest1 = this.get('interest1');
-      // let interest2 = this.get('interest2');
       let zipCode = this.get('zipCode');
-
-      // console.log(interest1);
-      // // console.log(interest2);
-      // console.log(zipCode);
-      // console.log(ENV);
-
       this.glassdoorAPICall();
     },
 
 
     createCompany(company) {
       let currentUser = this.get('sessionAccount.currentUser');
-      console.log(currentUser);
+      // console.log(currentUser);
       let newCompany = this.store.createRecord('company');
 
       newCompany.set('user', currentUser);
-      // newCompany.set('user_id', userID);
       newCompany.set('name', company.name)
       newCompany.save().then((response) => {
         console.log('trying to save');
-        console.log(response);
+        // console.log(response);
       });
-      // company.save().then(() => {
-      //   this.transitionToRoute('companies.company', company);
-      // });
     },
 
   }
