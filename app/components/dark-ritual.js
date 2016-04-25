@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['dark-ritual'],
   jobDemon: Ember.inject.service(),
+  backgroundColor: Ember.inject.service(),
+  attributeBindings: ['data-ritual-id'],
   recAction: "Find a blog",
   // query: "Khan+Academy+company+blog",
 
@@ -24,17 +26,21 @@ export default Ember.Component.extend({
   }),
 
   didInsertElement() {
-    this.$().css('opacity',0);
-    this.$().velocity('transition.fadeIn', { duration: 1000});
+    // this.$().css('opacity',0);
+    this.$('.page').velocity('transition.expandIn');
+    // this.$().velocity('transition.fadeIn', { duration: 1000});
   },
 
   fadeOut() {
-      this.$().velocity('transition.fadeOut');
-
-      let demon = this.get('jobDemon');
-      this.set('processing', true);
-      demon.ooze();
-      Ember.run.later(demon, demon.open, 5000);
+    // this.get('backgroundColor').setDark();
+    let from = this.$('.page').offset();
+    this.$().velocity('transition.fadeOut');
+    this.get('jobDemon').animatePage(from);
+    // this.$('.complete').css('opacity', 0);
+    let demon = this.get('jobDemon');
+    this.set('processing', true);
+    demon.ooze();
+    Ember.run.later(demon, demon.open, 5000);
   },
 
   actions: {
@@ -57,6 +63,7 @@ export default Ember.Component.extend({
     },
 
     complete() {
+      this.$('input').blur();
       this.$().velocity('transition.fadeOut');
 
       let demon = this.get('jobDemon');

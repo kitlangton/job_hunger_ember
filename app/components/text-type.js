@@ -31,7 +31,8 @@ export default Ember.Component.extend({
       delay: delay,
       complete: () => {
         this.$('.focus').velocity({
-          color: '#BBF'
+          color: '#88F',
+          // borderBottomWidth: '1px'
         });
       }
     });
