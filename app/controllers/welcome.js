@@ -86,10 +86,23 @@ export default Ember.Controller.extend({
       newCompany.set('user', currentUser);
       newCompany.set('name', company.name)
       newCompany.save().then((response) => {
-        console.log('trying to save');
+        // console.log('trying to save');
         // console.log(response);
       });
     },
+
+    allDone() {
+      let currentUser = this.get('sessionAccount.currentUser');
+      currentUser.set('hasOnboarded', true);
+      currentUser.save().then((response) => {
+        // console.log('trying to save');
+        // console.log(response);
+        
+        console.log("attempt trans");
+        this.transitionToRoute('dashboard');
+      });
+    },
+
 
   }
 

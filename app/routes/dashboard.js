@@ -10,6 +10,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
   model() {
     return this.get('sessionAccount').loadCurrentUser().then(()=> {
       let currentUser = this.get('sessionAccount.currentUser');
+      if( !currentUser.get('hasOnboarded') ){
+        this.transitionTo('welcome');
+      }
       return this.store.findRecord('user', currentUser.get('id'), {include: 'companies,jobs,leads,recommendations'});
     });
   },
