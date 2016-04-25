@@ -119,12 +119,16 @@
         <thead>
           <tr>
             <th>Position</th>
+            <th>Status</th>
+            <th>Link to Job Posting</th>
           </tr>
         </thead>
         <tbody>
           {{#each model.jobs as |job| }}
             <tr>
               <td>{{ job.title }}</td>
+              <td>{{ job.application_status }}</td>
+              <td><a href={{ job.url }} target="_blank">{{ job.url }}</a></td>
               <td>
                 <button class="btn btn-danger btn-small" {{action "removeJob" job}}>X</button>
               </td>
