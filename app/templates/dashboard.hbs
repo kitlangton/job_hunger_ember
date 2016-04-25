@@ -130,6 +130,17 @@
               <td>{{ job.application_status }}</td>
               <td><a href={{ job.url }} target="_blank">{{ job.url }}</a></td>
               <td>
+
+<div>
+<select onchange={{action "updateJobStatus" value="target.value"}}>
+  {{#each statuses as |status|}}
+    <option value={{status}} selected={{eq value status}}>{{status}}</option>
+  {{/each}}
+</select>
+</div>
+
+</td>
+              <td>
                 <button class="btn btn-danger btn-small" {{action "removeJob" job}}>X</button>
               </td>
             </tr>
