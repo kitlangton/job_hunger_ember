@@ -20,7 +20,7 @@
 
 {{#if isInterested1}}
 {{#text-type class="h1"}}
-<h3>Enter a zip code for location</h3>
+<h3>Enter a location (Zip Code or city)</h3>
 {{/text-type}}
 
 <div class="wide-input-container">
@@ -30,29 +30,32 @@
 
 {{normal-button class="light" onClick=(action "submitInterestsAndLocation") text="Find Me Jobs!" size='large'}}
 
-{{#if haveCompanies}}
-  <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-            <th>Company</th>
-            <th>Glassdoor Rating</th>
-            <th>Add This Company!</th>
-        </tr>
-      </thead>
-      <tbody>
-      {{#each companies as |company|}}
+{{#if calledGlassdoor}}
+  {{#if haveCompanies}}
+    <table class="table table-bordered table-striped">
+        <thead>
           <tr>
-              <td >{{company.name}}</td>
-              <td>
-                <div class="label label-info">{{company.overallRating}}</div>
-              </td>
-              <td>
-                <button type="button" class="btn btn-info" {{action "createCompany" company}}>Follow this Company!</button>
-              </td>
+              <th>Company</th>
+              <th>Glassdoor Rating</th>
+              <th>Add This Company!</th>
           </tr>
-      {{/each}}
-      </tbody>
-  </table>
+        </thead>
+        <tbody>
+        {{#each companies as |company|}}
+            <tr>
+                <td >{{company.name}}</td>
+                <td>
+                  <div class="label label-info">{{company.overallRating}}</div>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-info" {{action "createCompany" company}}>Follow this Company!</button>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+  {{ else }}
+    <h4>Sorry, search didn't return any results.  Search again with new terms or click "All Done!" to move on.</h4>
+  {{/if}}
+  <button type="button" class="btn btn-info btn-lg" {{action "allDone" company}}>All Done!</button>
 {{/if}}
-
-<button type="button" class="btn btn-info btn-lg" {{action "allDone" company}}>All Done!</button>
