@@ -1,8 +1,16 @@
+$primary-color: #F88;
+$secondary-color: #88F;
+
 @import 'bootstrap';
 @import 'ember-freestyle';
 @import 'nav-bar';
 @import 'input';
 @import 'rituals';
+@import 'list';
+
+.special {
+  // text-decoration: underline;
+}
 
 body, h1 {
   transition: all 1.5s;
@@ -163,4 +171,13 @@ body {
   padding: 6px 12px;
   font-size: 14px;
   border-radius: 4px;
+}
+
+.dark-ritual .text {
+  color: $primary-color;
+  font-weight: bold;
+}
+
+.ember-inline-edit-save {
+  color: black;
 }

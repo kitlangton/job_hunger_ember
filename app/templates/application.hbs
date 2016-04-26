@@ -1,9 +1,9 @@
 <div class="container">
   {{nav-bar invalidateSession=(action 'invalidateSession')}}
   {{#if session.isAuthenticated}}
-    <span class="label label&#45;info">Score: {{ sessionAccount.currentUser.score }}</span>
+    <!-- <span class="label label&#38;#45;info">Score: {{ sessionAccount.currentUser.score }}</span> -->
   {{/if}}
-  {{outlet}}
+  {{liquid-outlet}}
 </div>
 
 <div class="preload">
@@ -12,3 +12,5 @@
   <div class="logo ooze"></div>
   </div>
 </div>
+
+<div class="rain"></div>

@@ -17,6 +17,15 @@ export default Ember.Component.extend({
       this.get('jobItem').save().then(() => {
         jobItem.reload();
       });
+    },
+
+    removeJob(job) {
+      let jobItem = this.get('jobItem');
+      let bool = confirm("Are you sure you want to remove this Job?");
+      if (bool) {
+        jobItem.deleteRecord();
+        jobItem.save();
+      }
     }
   }
 

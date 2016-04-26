@@ -1,3 +1,12 @@
+<div class="nav-bar-left">
+  <div class="page-title">
+    Scoreboard
+  </div>
+  <div id="score">
+    {{liquid-bind sessionAccount.currentUser.score}}
+  </div>
+</div>
+
 <div class="nav-bar-center">
   <div class="logo {{jobDemon.state}} {{jobDemon.animation}}">
   </div>
@@ -12,3 +21,4 @@
   {{link-to "Sign Up" "sign-up"}}
   {{/if}}
 </div>
+
