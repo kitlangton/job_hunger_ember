@@ -20,10 +20,13 @@ export default Ember.Controller.extend({
     },
 
     deleteCompany() {
-      console.log("trying to delete company");
-
-      this.get('model').deleteRecord()
-      this.transitionToRoute('dashboard');
+      let company = this.get('model');
+      let bool = confirm("Are you sure you want to remove this Company?");
+      if (bool) {
+        company.deleteRecord();
+        company.save();
+        this.transitionToRoute('dashboard');
+      }
     },
     
   }
