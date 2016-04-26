@@ -9,18 +9,17 @@ export default Ember.Controller.extend({
   isDisabled: Ember.computed.not('validInput'),
   errors: DS.Errors.create(),
 
-  validate() {
-    console.log('hi')
-    this.set('errors', DS.Errors.create());
-    if (this.get('isEmpty')) {
-      this.get('errors').add('name', "name can't be empty");
-    }
-    return this.get('errors.isEmpty');
-  },
+  // validate() {
+  //   this.set('errors', DS.Errors.create());
+  //   if (this.get('isEmpty')) {
+  //     this.get('errors').add('value', "can't be empty");
+  //   }
+  //   return this.get('errors.isEmpty');
+  // },
 
   actions: {
     createCompany(company) {
-      if(this.validate()) {
+
         let currentUser = this.get('sessionAccount.currentUser');
 
         company.set('interest', 0);
@@ -28,8 +27,10 @@ export default Ember.Controller.extend({
         company.save().then(() => {
           this.get('sessionAccount.currentUser').reload();
           this.transitionToRoute('companies.company', company);
+        }).catch(function(errors) {
+          debugger;
         });
-      }
+
     }
   }
 });

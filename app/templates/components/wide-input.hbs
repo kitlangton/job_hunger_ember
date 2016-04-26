@@ -7,6 +7,9 @@
 {{empty}}
 {{input value=value focus-in="activate" focus-out="deactivate" type=type disabled=hidden id=inputId insert-newline="enterPressed"}}
 <div class="border"></div>
+{{#each errors as |error|}}
+  <span class="help-block">{{error.message}}</span>
+{{/each}}
 {{else}}
 
 {{#if value}}
@@ -24,4 +27,7 @@ Not Provided
 {{empty}}
 {{input value=value focus-in="activate" focus-out="deactivate" type=type disabled=hidden id=inputId insert-newline="enterPressed"}}
 <div class="border"></div>
+{{#each errors as |error|}}
+  <span class="help-block">{{error.message}}</span>
+{{/each}}
 {{/if}}
