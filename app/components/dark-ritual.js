@@ -43,6 +43,8 @@ export default Ember.Component.extend({
     Ember.run.later(demon, demon.open, 5000);
   },
 
+  isShowModal: false,
+
   actions: {
 
     focus() {
@@ -70,6 +72,14 @@ export default Ember.Component.extend({
       this.set('processing', true);
       demon.ooze();
       Ember.run.later(demon, demon.open, 5000);
+    },
+
+    showModal() {
+      this.toggleProperty('isShowModal');
+    },
+
+    toggleHelperCursor() {
+      $('.complete').toggleClass('helper');
     }
   }
 });

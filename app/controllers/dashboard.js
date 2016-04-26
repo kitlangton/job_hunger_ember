@@ -14,5 +14,9 @@ export default Ember.Controller.extend({
       }
       company.save();
     },
+
+    showModal() {
+      
+    }
   }
 });

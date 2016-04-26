@@ -1,5 +1,14 @@
-<div class="complete">
+<div class="complete" {{action "showModal"}}
+                      {{action "toggleHelperCursor" on="mouseEnter"}}
+                      {{action "toggleHelperCursor" on="mouseLeave"}}>
   <img class="page" src="/page.png" alt="">
+  {{#if isShowModal}}
+    {{#tether-dialog close="showModal"
+                      target=target
+                      container-class="modal-window"}}
+      Fill in or complete a recommendation to earn points.
+    {{/tether-dialog}}
+  {{/if}}
 </div>
 
 {{#if query}}
@@ -17,4 +26,3 @@ for
   <!-- <a href="#" {{action "focus"}}>Search</a> -->
   {{wide-input value=value narrow=true small=true label=label enterPressed=(action "save")}}
 </div>
-
