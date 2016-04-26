@@ -28,6 +28,18 @@ export default Ember.Component.extend({
 
   active: null,
 
+  click() {
+    if(this.get('editable')) {
+      if (!this.get('editing')) {
+        this.set('editing', true);
+        Ember.run.next(this, function() {
+          this.$('.border').velocity('transition.expandIn');
+          this.$('input').focus();
+        });
+      }
+    }
+  },
+
   actions: {
     activate() {
       this.set('active', true);
@@ -39,6 +51,9 @@ export default Ember.Component.extend({
 
     enterPressed() {
       let func = this.get('enterPressed');
+      if (this.get('editable')) {
+        this.set('editing', false);
+      }
       if (func) {
         func();
       }
