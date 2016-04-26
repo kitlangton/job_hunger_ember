@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   sessionAccount: Ember.inject.service(),
-  meetups: '',
 
   convertTimestamp: function(timestamp) {
     var d = new Date(timestamp),	// Convert the passed timestamp to milliseconds
@@ -38,7 +37,7 @@ export default Ember.Route.extend({
   model() {
     let currentUser = this.get('sessionAccount.currentUser');
     let radius = 25;
-    let text = currentUser.get('defaultKeyword');
+    let text = encodeURI(currentUser.get('defaultKeyword'));
     let zip = currentUser.get('defaultLocation');
     let timeStamp = this.get('convertTimestamp');
 
