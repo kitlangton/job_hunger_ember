@@ -10,6 +10,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
   model() {
     return this.get('sessionAccount').loadCurrentUser().then(()=> {
       let currentUser = this.get('sessionAccount.currentUser');
+      if( !currentUser.get('hasOnboarded') ){
+        this.transitionTo('welcome');
+      }
       return this.store.findRecord('user', currentUser.get('id'), {include: 'companies,jobs,leads,recommendations'});
     });
   },
@@ -29,14 +32,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
       if (bool) {
         company.deleteRecord();
         company.save();
-      }
-    },
-
-    removeJob(job) {
-      let bool = confirm("Are you sure you want to remove this Job?");
-      if (bool) {
-        job.deleteRecord();
-        job.save();
       }
     }
   }

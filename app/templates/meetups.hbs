@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Meetups</h1>
+
+  <form>
+    {{input value=text placeholder="Search by Keyword"}}
+    {{input value=zip placeholder="Enter Zip Code"}}
+    <select class="dropdown" onchange={{action "selectRadius" value="target.value"}}>
+      {{#each populateRange as |range|}}
+        {{#if (eq range 25)}}
+          <option value={{range}} selected="selected">{{range}} miles</option>
+        {{else}}
+          <option value={{range}}>{{range}} miles</option>
+        {{/if}}
+      {{/each}}
+    </select>
+    <button {{action 'findMeetups'}}>Find Meetups</button>
+  </form>
+
+  <br>
+
+  <div class="list-group">
+    {{#each meetups as |event|}}
+      {{event.date}}
+      <a href={{event.event_url}} target="_newTab" class="list-group-item">
+        <div class="row">
+          <div class="col-xs-2">
+            <h4>{{event.time}}</h4>
+          </div>
+          <div class="col-xs-8">
+            <h4>{{event.group}}</h4>
+            <h3>{{event.name}}</h3>
+            {{event.yes_rsvp_count}} Going
+          </div>
+          <div class="col-xs-2">
+            {{event.distance}} miles away
+          </div>
+        </div>
+      </a>
+    {{/each}}
+  </div>
+</div>
+{{outlet}}

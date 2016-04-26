@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  dashboardController: Ember.inject.controller('dashboard'),
 
   store: Ember.inject.service(),
 
@@ -9,6 +10,7 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
+    
     updateJob(model) {
       model.save();
     },
