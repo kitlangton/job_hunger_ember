@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   sessionAccount: Ember.inject.service(),
-  meetups: '',
 
   convertTimestamp: function(timestamp) {
     var d = new Date(timestamp),	// Convert the passed timestamp to milliseconds
@@ -36,13 +35,12 @@ export default Ember.Route.extend({
   },
 
   model() {
-    // let currentUser = this.get('sessionAccount.currentUser');
-    // let user = this.store('user', currentUser.id);
-    // let radius = 25;
-    // let text = user.defaultKeyword;
-    // let zip = user.defaultLocation;
-    // let timeStamp = this.get('convertTimestamp');
-    // c
+    let currentUser = this.get('sessionAccount.currentUser');
+    let radius = 25;
+    let text = encodeURI(currentUser.get('defaultKeyword'));
+    let zip = currentUser.get('defaultLocation');
+    let timeStamp = this.get('convertTimestamp');
+
     return $.ajax({
       url: 'https://api.meetup.com/2/open_events?&sign=true&photo-host=public&zip=' + zip + '&text=' + text + '&radius=' + radius + '&page=20&key=707d395716d1d2a7b6d3c6514732343',
       dataType: "jsonp"
