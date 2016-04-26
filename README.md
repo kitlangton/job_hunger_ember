@@ -1,3 +1,6 @@
+[![Code Climate](https://codeclimate.com/github/kitlangton/job_hunger_ember/badges/gpa.svg)](https://codeclimate.com/github/kitlangton/job_hunger_ember)
+[![Dependency Status](https://david-dm.org/kitlangton/job_hunger_ember.svg)](https://david-dm.org/kitlangton/job_hunger_ember.svg)
+
 # Job Hunger
 
 ### Live website: http://job-hunger.surge.sh/
