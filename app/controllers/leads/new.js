@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+  queryParams: ['defaultCompanyId', 'defaultCompanyName'],
   store: Ember.inject.service(),
   sessionAccount: Ember.inject.service(),
 
@@ -17,10 +18,17 @@ export default Ember.Controller.extend({
     selectCompany(id) {
       let company = this.get('model.companies').findBy("id", id);
       this.set('companyId', id);
-      this.set('selectedCompany', company);
+      // this.set('selectedCompany', company);
     },
 
-    createLead(name, company) {
+    createLead(name) {
+      let company;
+      if(this.get('companyId') !== '') {
+        company = this.get('model.companies').findBy("id", this.get('companyId'));
+      } else {
+        company = this.get('model.companies').findBy("id", this.get('defaultCompanyId'));
+      }
+
       let lead = this.get('store').createRecord('lead', {
         company: company,
         name: name
