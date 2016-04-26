@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
   calledGlassdoor: false,
   companies: [],
   sessionAccount: Ember.inject.service(),
-  // selectedCompanies: [],
+  selectedCompanies: [],
 
   haveCompanies: Ember.computed('companies', function() {
     return this.get('companies').length > 0;
@@ -23,7 +23,12 @@ export default Ember.Controller.extend({
     return this.get('interest1') !== '';
   }),
 
-  hasSelectedCompany: Ember.computed('selectedCompanies', function(){
+  hasSelectedCompany: Ember.computed('selectedCompanies', function(name){
+    if (this.get('selectedCompanies').indexOf(name) > -1) {
+      return true;
+    } else {
+      return false;
+    }
 
   }),
 
@@ -97,8 +102,6 @@ export default Ember.Controller.extend({
 
 
     createCompany(company) {
-
-
       let currentUser = this.get('sessionAccount.currentUser');
       // console.log(currentUser);
       let newCompany = this.store.createRecord('company');
@@ -110,8 +113,8 @@ export default Ember.Controller.extend({
         // console.log(response);
       });
 
-      // this.selectedCompanies.push( company.name );
-      // console.log( selectedCompanies );
+      this.selectedCompanies.push( company.name );
+      console.log( this.selectedCompanies );
     },
 
     allDone() {
