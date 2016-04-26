@@ -3,6 +3,9 @@
 <form>
   <div class="wide-input-container">
     {{wide-input value=name inputId="name" label="Lead Name"}}
+    {{#each errors.name as |error|}}
+      <span class="help-block">{{error.message}}</span>
+    {{/each}}
   </div>
 
   <select onchange={{action "selectCompany" value="target.value"}}>
@@ -13,6 +16,9 @@
       </option>
     {{/each}}
   </select>
+  {{#each errors.company as |error|}}
+    <span class="help-block">{{error.message}}</span>
+  {{/each}}
   <br>
   <br>
   {{normal-button onClick=(action "createLead" name selectedCompany) text="Create Lead" size="large"}}

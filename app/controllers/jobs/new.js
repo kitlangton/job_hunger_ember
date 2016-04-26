@@ -1,9 +1,11 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 
 export default Ember.Controller.extend({
 
   store: Ember.inject.service(),
   companyId: '',
+  errors: DS.Errors.create(),
 
   isEmpty: Ember.computed.empty('title'),
   isValidInput: Ember.computed.not('isEmpty'),
@@ -11,6 +13,17 @@ export default Ember.Controller.extend({
   isValidSelection: Ember.computed.not('notSelected'),
   isValid: Ember.computed.and('isValidInput', 'isValidSelection'),
   isDisabled: Ember.computed.not('isValid'),
+
+  validate() {
+    this.set('errors', DS.Errors.create());
+    if (this.get('isEmpty')) {
+      this.get('errors').add('title', "title can't be empty");
+    }
+    if(this.get('notSelected')) {
+      this.get('errors').add('company', "select a company")
+    }
+    return this.get('errors.isEmpty');
+  },
 
   actions: {
     selectCompany(id) {
@@ -20,13 +33,15 @@ export default Ember.Controller.extend({
     },
 
     createJob(title, company) {
-      let job = this.get('store').createRecord('job', {
-        company: company,
-        title: title
-      });
-      this.set('title', '');
-      job.save();
-      this.transitionToRoute('dashboard');
+      if(this.validate()) {
+        let job = this.get('store').createRecord('job', {
+          company: company,
+          title: title
+        });
+        this.set('title', '');
+        job.save();
+        this.transitionToRoute('dashboard');
+      }
     }
   }
 });
