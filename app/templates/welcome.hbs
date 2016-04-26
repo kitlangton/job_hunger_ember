@@ -15,42 +15,52 @@
 
 
 {{#if isInterested1}}
-{{#text-type class="h1" fade="true"}}
-<h3>Enter your zip code:</h3>
-{{/text-type}}
+  {{#text-type class="h1" fade="true"}}
+    <h3>Enter a location (Zip Code or city)</h3>
+  {{/text-type}}
 
-<div class="wide-input-container">
-{{wide-input value=zipCode id="zipCode" light="true"}}
-</div>
+  <div class="wide-input-container">
+    {{wide-input value=zipCode id="zipCode" light="true"}}
+  </div>
 {{/if}}
 
 {{normal-button class="light" onClick=(action "submitInterestsAndLocation") text="Find Companies to Follow" size='large'}}
 
-{{#if haveCompanies}}
-  <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-            <th>Company</th>
-            <th>Glassdoor Rating</th>
-            <th>Add This Company!</th>
-        </tr>
-      </thead>
-      <tbody>
-      {{#each companies as |company|}}
+{{#if calledGlassdoor}}
+  {{#if haveCompanies}}
+    <table class="table table-bordered table-striped">
+        <thead>
           <tr>
-              <td >{{company.name}}</td>
-              <td>
-                <div class="label label-info">{{company.overallRating}}</div>
-              </td>
-              <td>
-                <button type="button" class="btn btn-info" {{action "createCompany" company}}>Follow</button>
-              </td>
+              <th>Company</th>
+              <th>Glassdoor Rating</th>
+              <th>Add This Company!</th>
           </tr>
-      {{/each}}
-      </tbody>
-  </table>
+        </thead>
+        <tbody>
+        {{#each companies as |company|}}
+            <tr>
+                <td >{{company.name}}</td>
+                <td>
+                  <div class="label label-info">{{company.overallRating}}</div>
+                </td>
+                <td>
+                  {{#if company.selected}}
+                    <button type="button" class="btn btn-danger">Already been Selected</button>
+                  {{else}}
+                    <button type="button" class="btn btn-info" {{action "createCompany" company}}>Follow this Company!</button>
+                  {{/if}}
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+  {{ else }}
+    <h4>Sorry, search didn't return any results.  Search again with new terms or click "All Done!" to move on.</h4>
+  {{/if}}
+  {{normal-button class="light" onClick=(action "allDone") text="All Done" size='large'}}
 {{/if}}
 
 
 {{normal-button class="light" onClick=(action "allDone") text="All Done" size='large'}}
+
 

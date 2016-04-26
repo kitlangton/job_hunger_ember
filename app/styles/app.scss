@@ -7,6 +7,8 @@ $secondary-color: #88F;
 @import 'input';
 @import 'rituals';
 @import 'list';
+@import 'ember-modal-dialog/ember-modal-structure';
+@import 'ember-modal-dialog/ember-modal-appearance';
 
 .special {
   // text-decoration: underline;
@@ -158,6 +160,15 @@ body {
 
 .inline {
   display: inline-block;
+}
+
+.helper {
+  cursor: help;
+}
+
+.modal-window {
+  font-size: 13px;
+  padding: 4px 5px;
 }
 
 .diy-dropdown {
