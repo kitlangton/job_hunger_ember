@@ -11,6 +11,7 @@ export default Ember.Controller.extend({
     createCompany(company) {
       let currentUser = this.get('sessionAccount.currentUser');
 
+      company.set('interest', 0);
       company.set('user', currentUser);
       company.save().then(() => {
         this.get('sessionAccount.currentUser').reload();

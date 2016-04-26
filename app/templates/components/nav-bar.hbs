@@ -15,6 +15,7 @@
 <div class="nav-bar-right">
   {{#if session.isAuthenticated}}
   {{link-to "Dashboard" "dashboard"}}
+  {{link-to "Meetups" "meetups"}}
   {{link-to "About" "about"}}
   <a href="#" {{action "invalidateSession"}}>Log Out</a>
   {{else}}
