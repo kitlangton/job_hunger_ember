@@ -27,6 +27,12 @@ export default function(){
   );
 
   this.transition(
+    this.hasClass('crossfade'),
+    this.toValue(true),
+    this.useAndReverse('crossFade')
+  );
+
+  this.transition(
     this.fromRoute('companies'),
     this.toRoute('leads'),
     this.use('crossFade'),

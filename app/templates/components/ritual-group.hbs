@@ -1,6 +1,6 @@
-{{#if recommendations}}
+{{#liquid-if recommendations class="crossfade"}}
     <h3><span class="focus special">Recommendations</span></h3>
-{{/if}}
+{{/liquid-if}}
 
 <div class="rituals">
   {{#each recommendations as |recommendation|}}
