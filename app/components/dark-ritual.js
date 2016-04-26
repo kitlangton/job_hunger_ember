@@ -18,6 +18,8 @@ export default Ember.Component.extend({
   label: Ember.computed('recommendation.field', function() {
     let field = this.get('recommendation.field');
     if (field) {
+      console.log('field');
+      console.log(field);
       return field.split('_').map((word) => {
         return word.charAt(0).toUpperCase() + word.slice(1);
       }).join(' ');
