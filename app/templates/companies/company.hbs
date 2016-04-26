@@ -1,6 +1,7 @@
 
 <div class="crumbs">
-  {{link-to 'Dashboard' 'dashboard'}} • {{link-to model.name 'companies.company' model}}
+  {{link-to 'Dashboard' 'dashboard'}} • {{link-to model.name 'companies.company' model}} • <a href="#" {{action "deleteCompany"}}>X</a>
+
 </div>
 
 <div class="row">
@@ -25,6 +26,10 @@
         <div class="subheading">Website</div>
         <div class="item">
           {{wide-input editable=true value=model.website small=true label="Website" enterPressed=(action "updateCompany")}}
+        </div>
+        <div class="subheading">Glassdoor Rating</div>
+        <div class="item">
+          {{model.glassdoor_rating}}
         </div>
       </div>
     </div>
