@@ -1,14 +1,10 @@
 
 
-
-<h2>Glad you could be with us</h2>
-<h5>Select a keyword (interest or industry are good ones) and well find some relevant companies for you</h5>
-
-
+<h3 class="h1">Glad you could be with us.</h3>
 
 <h3>
   {{#text-type class="h1" fade="true"}}
-  Please enter a keyword
+  Please enter an industry you're interested in:
   {{/text-type}}
 </h3>
 
@@ -19,8 +15,8 @@
 
 
 {{#if isInterested1}}
-{{#text-type class="h1"}}
-<h3>Enter a zip code for location</h3>
+{{#text-type class="h1" fade="true"}}
+<h3>Enter your zip code:</h3>
 {{/text-type}}
 
 <div class="wide-input-container">
@@ -28,7 +24,7 @@
 </div>
 {{/if}}
 
-{{normal-button class="light" onClick=(action "submitInterestsAndLocation") text="Find Me Jobs!" size='large'}}
+{{normal-button class="light" onClick=(action "submitInterestsAndLocation") text="Find Companies to Follow" size='large'}}
 
 {{#if haveCompanies}}
   <table class="table table-bordered table-striped">
@@ -47,12 +43,10 @@
                 <div class="label label-info">{{company.overallRating}}</div>
               </td>
               <td>
-                <button type="button" class="btn btn-info" {{action "createCompany" company}}>Follow this Company!</button>
+                <button type="button" class="btn btn-info" {{action "createCompany" company}}>Follow</button>
               </td>
           </tr>
       {{/each}}
       </tbody>
   </table>
 {{/if}}
-
-<button type="button" class="btn btn-info btn-lg" {{action "allDone" company}}>All Done!</button>
