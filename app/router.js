@@ -11,10 +11,12 @@ Router.map(function() {
   // this.route('protected', { path: '/' });
   this.route('dashboard', { path: '' });
   this.route('freestyle');
+
   this.route('companies', function() {
     this.route('new');
     this.route('company', { path: '/:company_id'});
   });
+
   this.route('leads', function() {
     this.route('new');
     this.route('lead', { path: '/:lead_id'});
@@ -26,7 +28,7 @@ Router.map(function() {
 
   this.route('recommendable', {path: '/:recommendable_type/:recommendable_id'});
   this.route('about');
-  this.route('meetups', { path: '/meetups' });
+  this.route('meetups');
   this.route('welcome');
 });
 
