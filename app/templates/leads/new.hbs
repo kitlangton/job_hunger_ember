@@ -5,7 +5,7 @@
     {{wide-input value=name inputId="name" label="Lead Name"}}
   </div>
 
-  <select onchange={{action "selectCompany" value="target.value"}}>
+  <select onchange={{action "selectCompany" value="target.value"}} class="diy-dropdown">
     <option value=''>Please Select Company</option>
     {{#each model.companies as |company|}}
       <option value={{company.id}}>
