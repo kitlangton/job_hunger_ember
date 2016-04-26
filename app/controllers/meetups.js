@@ -51,7 +51,7 @@ export default Ember.Controller.extend({
       let text = this.get('text');
       let zip = this.get('zip');
       let timeStamp = this.get('convertTimestamp');
-
+      console.log('https://api.meetup.com/2/open_events?&sign=true&photo-host=public&zip=' + zip + '&text=' + text + '&radius=' + radius + '&page=20&key=707d395716d1d2a7b6d3c6514732343');
       $.ajax({
         url: 'https://api.meetup.com/2/open_events?&sign=true&photo-host=public&zip=' + zip + '&text=' + text + '&radius=' + radius + '&page=20&key=707d395716d1d2a7b6d3c6514732343',
         dataType: "jsonp",
@@ -71,7 +71,7 @@ export default Ember.Controller.extend({
             };
             parsedResponse.push(obj);
           });
-          that.set('meetups', parsedResponse);
+          that.set('model', parsedResponse);
         }
       });
     }
