@@ -125,9 +125,6 @@ export default Ember.Controller.extend({
       let currentUser = this.get('sessionAccount.currentUser');
       currentUser.set('hasOnboarded', true);
       currentUser.save().then((response) => {
-        // console.log('trying to save');
-        // console.log(response);
-        
         console.log("attempt trans");
         this.transitionToRoute('dashboard');
       });

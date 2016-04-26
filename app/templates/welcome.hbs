@@ -1,14 +1,10 @@
 
 
-
-<h2>Glad you could be with us</h2>
-<h5>Select a keyword (interest or industry are good ones) and well find some relevant companies for you</h5>
-
-
+<h3 class="h1">Glad you could be with us.</h3>
 
 <h3>
   {{#text-type class="h1" fade="true"}}
-  Please enter a keyword
+  Please enter an industry you're interested in:
   {{/text-type}}
 </h3>
 
@@ -19,16 +15,16 @@
 
 
 {{#if isInterested1}}
-{{#text-type class="h1"}}
-<h3>Enter a location (Zip Code or city)</h3>
-{{/text-type}}
+  {{#text-type class="h1" fade="true"}}
+    <h3>Enter a location (Zip Code or city)</h3>
+  {{/text-type}}
 
-<div class="wide-input-container">
-{{wide-input value=zipCode id="zipCode" light="true"}}
-</div>
+  <div class="wide-input-container">
+    {{wide-input value=zipCode id="zipCode" light="true"}}
+  </div>
 {{/if}}
 
-{{normal-button class="light" onClick=(action "submitInterestsAndLocation") text="Find Me Jobs!" size='large'}}
+{{normal-button class="light" onClick=(action "submitInterestsAndLocation") text="Find Companies to Follow" size='large'}}
 
 {{#if calledGlassdoor}}
   {{#if haveCompanies}}
@@ -61,5 +57,6 @@
   {{ else }}
     <h4>Sorry, search didn't return any results.  Search again with new terms or click "All Done!" to move on.</h4>
   {{/if}}
-  <button type="button" class="btn btn-info btn-lg" {{action "allDone" company}}>All Done!</button>
+  {{normal-button class="light" onClick=(action "allDone") text="All Done" size='large'}}
 {{/if}}
+
