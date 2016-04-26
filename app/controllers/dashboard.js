@@ -13,10 +13,7 @@ export default Ember.Controller.extend({
         company.set('interest', 1);
       }
       company.save();
-    },
-
-    showModal() {
-      
     }
+
   }
 });
