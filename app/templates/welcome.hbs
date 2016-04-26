@@ -48,7 +48,11 @@
                   <div class="label label-info">{{company.overallRating}}</div>
                 </td>
                 <td>
+                  {{#if company.selected}}
+                    <button type="button" class="btn btn-danger">Already been Selected</button>
+                  {{else}}
                     <button type="button" class="btn btn-info" {{action "createCompany" company}}>Follow this Company!</button>
+                  {{/if}}
                 </td>
             </tr>
         {{/each}}

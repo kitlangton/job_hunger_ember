@@ -77,9 +77,12 @@ export default Ember.Controller.extend({
       dataType: "jsonp",
       success: function(data) {
         // console.log(data);
-        that.set('companies', data.response.employers);
+
+        that.set('companies', data.response.employers.map(function(company){
+          return Ember.Object.create(company)
+        }));
         that.set('calledGlassdoor', true);
-        // console.log(data.response.employers);
+        console.log(data.response.employers);
       }
     });
   },    
@@ -107,7 +110,8 @@ export default Ember.Controller.extend({
       let newCompany = this.store.createRecord('company');
 
       newCompany.set('user', currentUser);
-      newCompany.set('name', company.name)
+      newCompany.set('name', company.name);
+      company.set('selected', true);
       newCompany.save().then((response) => {
         // console.log('trying to save');
         // console.log(response);
