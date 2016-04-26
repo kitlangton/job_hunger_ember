@@ -19,7 +19,7 @@
   <br>
 
   <div class="list-group">
-    {{#each meetups as |event|}}
+    {{#each model as |event|}}
       {{event.date}}
       <a href={{event.event_url}} target="_newTab" class="list-group-item">
         <div class="row">
