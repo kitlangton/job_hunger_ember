@@ -10,8 +10,10 @@ export default Ember.Controller.extend({
   interest2: '',
   zipCode: '',
   hideInterest: false,
+  calledGlassdoor: false,
   companies: [],
   sessionAccount: Ember.inject.service(),
+  selectedCompanies: [],
 
   haveCompanies: Ember.computed('companies', function() {
     return this.get('companies').length > 0;
@@ -19,6 +21,15 @@ export default Ember.Controller.extend({
 
   isInterested1: Ember.computed('interest1', function() {
     return this.get('interest1') !== '';
+  }),
+
+  hasSelectedCompany: Ember.computed('selectedCompanies', function(name){
+    if (this.get('selectedCompanies').indexOf(name) > -1) {
+      return true;
+    } else {
+      return false;
+    }
+
   }),
 
   didInsertElement() {
@@ -30,6 +41,7 @@ export default Ember.Controller.extend({
   },
 
   glassdoorAPICall() {
+    console.log('glassdoor call')
     let that = this;
 
     let base_string = "http://api.glassdoor.com/api/api.htm";
@@ -57,6 +69,7 @@ export default Ember.Controller.extend({
     ];
 
     let request_string = base_string + "?" + query_arr.join("&");
+    console.log( request_string );
 
     Ember.$.ajax({
       type: "GET",
@@ -64,8 +77,12 @@ export default Ember.Controller.extend({
       dataType: "jsonp",
       success: function(data) {
         // console.log(data);
-        that.set('companies', data.response.employers);
-        // console.log(companies);
+
+        that.set('companies', data.response.employers.map(function(company){
+          return Ember.Object.create(company)
+        }));
+        that.set('calledGlassdoor', true);
+        console.log(data.response.employers);
       }
     });
   },    
@@ -74,6 +91,15 @@ export default Ember.Controller.extend({
     submitInterestsAndLocation() {
       let interest1 = this.get('interest1');
       let zipCode = this.get('zipCode');
+
+      let currentUser = this.get('sessionAccount.currentUser');
+      currentUser.set('defaultKeyword', interest1);
+      currentUser.set('defaultLocation', zipCode);
+      currentUser.save().then((response) => {
+        // console.log('trying to save');
+        // console.log(response);
+      });
+
       this.glassdoorAPICall();
     },
 
@@ -84,11 +110,15 @@ export default Ember.Controller.extend({
       let newCompany = this.store.createRecord('company');
 
       newCompany.set('user', currentUser);
-      newCompany.set('name', company.name)
+      newCompany.set('name', company.name);
+      company.set('selected', true);
       newCompany.save().then((response) => {
         // console.log('trying to save');
         // console.log(response);
       });
+
+      this.selectedCompanies.push( company.name );
+      console.log( this.selectedCompanies );
     },
 
     allDone() {

@@ -11,6 +11,6 @@ export default Model.extend({
   jobs: hasMany('job'),
   recommendations: hasMany('recommendation'),
   hasOnboarded: attr('boolean'),
-  defaultLocation: attr('number'),
+  defaultLocation: attr('string'),
   defaultKeyword: attr('string')
 });
