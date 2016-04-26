@@ -159,3 +159,26 @@ body {
 .inline {
   display: inline-block;
 }
+
+.diy-dropdown {
+  background-color: white;
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px #CCC solid;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  font-size: large;
+}
+
+.dark-ritual .text {
+  color: $primary-color;
+  font-weight: bold;
+}
+
+.ember-inline-edit-save {
+  color: black;
+}

@@ -10,7 +10,6 @@ export default Ember.Component.extend({
 
   query: Ember.computed('recommendation.query', function() {
     let query = this.get('recommendation.query');
-    console.log(query);
     if (query) {
       return encodeURI(query);
     }

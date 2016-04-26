@@ -30,14 +30,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
         company.deleteRecord();
         company.save();
       }
-    },
-
-    removeJob(job) {
-      let bool = confirm("Are you sure you want to remove this Job?");
-      if (bool) {
-        job.deleteRecord();
-        job.save();
-      }
     }
   }
 });

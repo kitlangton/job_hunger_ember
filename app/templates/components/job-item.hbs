@@ -1,0 +1,32 @@
+{{yield}}
+
+<div class="row dark-ritual">
+
+  <div class="col-sm-4 text">
+    {{ jobItem.title }}
+  </div>
+
+  <div class="col-sm-2">
+    <select class="diy-dropdown" onchange={{action "updateJobStatus" value="target.value"}}>
+      {{#each statuses as |status|}}
+        <option value={{status}} selected={{eq jobItem.application_status status }}>{{status}}</option>
+      {{/each}}
+    </select>
+  </div>
+
+  <div class="col-sm-5 text">
+    {{ember-inline-edit
+      value=jobItem.url
+      onSave="updateUrl"}}
+  </div>
+
+  <div class="col-sm-1">
+    <button class="btn btn-default btn-small" {{action "removeJob" job}}>x</button>
+  </div>
+
+</div>
+
+
+
+
+
