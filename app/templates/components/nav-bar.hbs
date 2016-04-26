@@ -1,6 +1,6 @@
 <div class="nav-bar-left">
   <div class="page-title">
-    Job Hunger
+    Scoreboard
   </div>
   <div id="score">
     {{liquid-bind sessionAccount.currentUser.score}}
@@ -16,8 +16,10 @@
   {{#if session.isAuthenticated}}
   {{link-to "Dashboard" "dashboard"}}
   {{link-to "Meetups" "meetups"}}
+  {{link-to "About" "about"}}
   <a href="#" {{action "invalidateSession"}}>Log Out</a>
   {{else}}
+  {{link-to "About" "about"}}
   {{link-to "Log In" "login"}}
   {{link-to "Sign Up" "sign-up"}}
   {{/if}}

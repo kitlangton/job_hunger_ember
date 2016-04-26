@@ -9,5 +9,6 @@ export default Model.extend({
   companies: hasMany('company'),
   leads: hasMany('lead'),
   jobs: hasMany('job'),
-  recommendations: hasMany('recommendation')
+  recommendations: hasMany('recommendation'),
+  hasOnboarded: attr('boolean')
 });

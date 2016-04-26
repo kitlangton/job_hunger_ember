@@ -11,19 +11,20 @@
 
 <div class="row">
   <div class="col-sm-6">
-    <h3 class="special" data-title-type="info">Info </h3>
-    <div class="list">
-      <div class="item" data-lead-id="{{lead.id}}">
+    <h3 class="special" data-title-type="info">Information</h3>
+    <div class="info">
+      <div data-lead-id="{{lead.id}}">
+        <div class="subheading">Address</div>
         <div class="item">
-          {{model.address}}
+          {{wide-input editable=true value=model.address small=true label="Address" enterPressed=(action "updateCompany")}}
         </div>
-
+        <div class="subheading">Blog</div>
         <div class="item">
-          {{model.blog}}
+          {{wide-input editable=true value=model.blog small=true label="Blog" enterPressed=(action "updateCompany")}}
         </div>
-
+        <div class="subheading">Website</div>
         <div class="item">
-          {{model.website}}
+          {{wide-input editable=true value=model.website small=true label="Website" enterPressed=(action "updateCompany")}}
         </div>
       </div>
     </div>

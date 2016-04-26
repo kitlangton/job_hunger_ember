@@ -7,3 +7,21 @@
     {{ritual-group recommendations=recommendations}}
   </div>
 </div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3 class="special" data-title-type="info">Information</h3>
+    <div class="info">
+      <div data-lead-id="{{lead.id}}">
+        <div class="subheading">Blog</div>
+        <div class="item">
+          {{wide-input editable=true value=model.blog small=true label="Blog" enterPressed=(action "updateLead")}}
+        </div>
+        <div class="subheading">Website</div>
+        <div class="item">
+          {{wide-input editable=true value=model.website small=true label="Website" enterPressed=(action "updateLead")}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

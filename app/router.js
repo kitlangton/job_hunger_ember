@@ -25,7 +25,9 @@ Router.map(function() {
   });
 
   this.route('recommendable', {path: '/:recommendable_type/:recommendable_id'});
+  this.route('about');
   this.route('meetups', { path: '/meetups' });
+  this.route('welcome');
 });
 
 export default Router;

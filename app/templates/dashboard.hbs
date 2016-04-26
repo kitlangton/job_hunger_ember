@@ -22,6 +22,7 @@
           {{link-to company.name 'companies.company' company}}
         </a>
       </div>
+
       {{/each}}
     </div>
   </div>
@@ -32,8 +33,23 @@
       {{#each model.leads as |lead| }}
       {{lead-card lead=lead data-lead-id=lead.id}}
       {{/each}}
+
     </div>
   </div>
 </div>
+
+<div class="row job-table">
+  <div class="col-sm-12">
+    <h3 class="special" data-title-type="jobs">Jobs <span>{{link-to "+" "jobs.new"}}</span></h3>
+    <div class="list">
+      {{#each model.jobs as |job| }}
+      {{ job-item jobItem=job }}
+      {{/each}}
+    </div>
+
+  </div>
+</div>
+
+
 
 {{outlet}}

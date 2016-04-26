@@ -1,0 +1,54 @@
+
+
+<h3 class="h1">Glad you could be with us.</h3>
+
+<h3>
+  {{#text-type class="h1" fade="true"}}
+  Please enter an industry you're interested in:
+  {{/text-type}}
+</h3>
+
+<div class="wide-input-container">
+  {{wide-input value=interest1 inputId="interest1" hidden=hideInterest light="true"}}
+</div>
+
+
+
+{{#if isInterested1}}
+{{#text-type class="h1" fade="true"}}
+<h3>Enter your zip code:</h3>
+{{/text-type}}
+
+<div class="wide-input-container">
+{{wide-input value=zipCode id="zipCode" light="true"}}
+</div>
+{{/if}}
+
+{{normal-button class="light" onClick=(action "submitInterestsAndLocation") text="Find Companies to Follow" size='large'}}
+
+{{#if haveCompanies}}
+  <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+            <th>Company</th>
+            <th>Glassdoor Rating</th>
+            <th>Add This Company!</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each companies as |company|}}
+          <tr>
+              <td >{{company.name}}</td>
+              <td>
+                <div class="label label-info">{{company.overallRating}}</div>
+              </td>
+              <td>
+                <button type="button" class="btn btn-info" {{action "createCompany" company}}>Follow</button>
+              </td>
+          </tr>
+      {{/each}}
+      </tbody>
+  </table>
+{{/if}}
+
+{{normal-button class="light" onClick=(action "allDone") text="All Done" size='large'}}

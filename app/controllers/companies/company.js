@@ -10,9 +10,8 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    
-    updateJob(model) {
-      model.save();
+    updateCompany() {
+      this.get('model').save();
     },
 
     rollback(model) {
