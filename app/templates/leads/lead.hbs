@@ -1,5 +1,9 @@
 <div class="crumbs">
-  {{link-to 'Dashboard' 'dashboard'}} • {{link-to model.company.name 'companies.company' model.company}} • {{link-to model.name 'leads.lead' model}} • <a href="#" {{action "deleteLead"}}>X</a>
+  {{link-to 'Dashboard' 'dashboard'}} • {{link-to model.company.name 'companies.company' model.company}} • {{link-to model.name 'leads.lead' model}}
+
+  <div class="pull-right special-button small">
+    <a href="#" {{action "deleteLead"}}>Delete</a>
+  </div>
 </div>
 
 <div class="row">

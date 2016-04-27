@@ -6,8 +6,9 @@
     {{errorMessage errorList.name}}
   </div>
 
-  <select onchange={{action "selectCompany" value="target.value"}}>
-    <option value={{defaultCompanyId}}>{{defaultCompanyName}}</option>
+  <select onchange={{action "selectCompany" value="target.value"}} class="diy-dropdown">
+    <option value=''>Please Select Company</option>
+
     {{#each model.user.companies as |company|}}
       <option value={{company.id}}>
         {{ company.name }}
