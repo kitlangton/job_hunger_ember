@@ -10,8 +10,16 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
+    saved() {
+      this.get('model.recommendations').reload();
+    },
+
     updateCompany() {
-      this.get('model').save();
+      this.get('model').save().then(() => {
+        this.get('model.recommendations').forEach( rec => {
+          rec.reload();
+        });
+      });
     },
 
     rollback(model) {

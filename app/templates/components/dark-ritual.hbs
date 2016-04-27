@@ -1,6 +1,4 @@
-<div class="complete" {{action "showModal"}}
-                      {{action "toggleHelperCursor" on="mouseEnter"}}
-                      {{action "toggleHelperCursor" on="mouseLeave"}}>
+<div class="complete helper" {{action "showModal"}}>
   <img class="page" src="/page.png" alt="">
   {{#if isShowModal}}
     {{#tether-dialog close="showModal"
@@ -13,14 +11,21 @@
 
 {{#if query}}
 <a href="#" {{action "focus"}}>{{recommendation.action}}</a>
+{{else if link}}
+<a href="{{link}}" target="_blank">{{recommendation.action}}</a>
 {{else}}
 {{recommendation.action}}
 {{/if}}
 
-{{link-to recommendation.recommendable.name recommendation.recommendable.route recommendation.recommendable}}
+for
 
+{{link-to recommendation.recommendable.name recommendation.recommendable.route recommendation.recommendable}}
 
 <div class="right-side">
   <!-- <a href="#" {{action "focus"}}>Search</a> -->
+  {{#if isActionable}}
+  {{normal-button onClick=(action "complete") text="I did it!"}}
+  {{else}}
   {{wide-input value=value narrow=true small=true label=label enterPressed=(action "save")}}
+  {{/if}}
 </div>

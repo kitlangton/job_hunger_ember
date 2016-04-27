@@ -16,7 +16,12 @@ export default Ember.Controller.extend({
     },
 
     showModal() {
-      
+    },
+
+    saved() {
+      this.get('model.companies').reload();
+      this.get('model.recommendations').reload();
+      this.get('model.leads').reload();
     }
   }
 });

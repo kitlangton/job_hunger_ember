@@ -32,10 +32,10 @@ export default Ember.Component.extend({
     if(this.get('editable')) {
       if (!this.get('editing')) {
         this.set('editing', true);
-        Ember.run.next(this, function() {
+        Ember.run.later(this, function() {
           this.$('.border').velocity('transition.expandIn');
           this.$('input').focus();
-        });
+        }, 100);
       }
     }
   },
