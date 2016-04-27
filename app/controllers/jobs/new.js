@@ -9,7 +9,8 @@ export default Ember.Controller.extend(EmberValidations, {
   validations: {
     'model.title': {
       presence: true,
-      length: { message: "can't be blank (minimum is 1 character)" }
+      presence: { message: "title can't be blank" },
+      length: { minimum: 1 }
     },
     'model.companyId': {
       presence: true,
