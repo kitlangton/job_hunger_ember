@@ -19,10 +19,10 @@ module('Acceptance - authenticate', {
 
 
 test('visiting root with authentication stays at root', function(assert) {
-  visit('/');
+  visit('/welcome');
 
   andThen(function() {
-    assert.equal(currentURL(), '/login');
+    assert.equal(currentURL(), '/welcome');
   });
 });
 
