@@ -1,30 +1,36 @@
+{{#unless hideInterest}}
+<div class="step1">
+  <h3 class="h1">Glad you could be with us.</h3>
 
+  <h3>What is Job Hunger?</h3><br>
 
-<h3 class="h1">Glad you could be with us.</h3>
+  <p class="aboutp">Job Hunger is a place to track your job search efforts. Instead of dropping your resume into a digital black hole, we recommend that you reach out to companies and the people that work there. We're trying to get you hired by helping you find the side door.</p><br>
 
-<h3>
-  {{#text-type class="h1" fade="true"}}
-  Please enter an industry you're interested in:
+  <p class="aboutp">Earn points by adding companies you're interested in. Try to find people you know that work there, and add them as leads. Check that company's job postings, and add jobs that look promising.</p><br>
+
+  {{#text-type class="h3" fade="true"}}
+    Step 1: Please enter an industry you're interested in
   {{/text-type}}
-</h3>
-
-<div class="wide-input-container">
-  {{wide-input value=interest1 inputId="interest1" hidden=hideInterest light="true"}}
-</div>
-
-
-
-{{#if isInterested1}}
-  {{#text-type class="h1" fade="true"}}
-    <h3>Enter a location (zip Code or city)</h3>
-  {{/text-type}}
+  
 
   <div class="wide-input-container">
-    {{wide-input value=zipCode id="zipCode" light="true"}}
+    {{wide-input value=interest1 inputId="interest1" hidden=hideInterest light="true"}}
   </div>
-{{/if}}
+  {{#if isInterested1}}
+    {{#text-type class="h3" fade="true"}}
+      Enter a location (zip code or city)
+    {{/text-type}}
 
-{{normal-button class="light" onClick=(action "submitInterestsAndLocation") text="Find Companies to Follow" size='large'}}
+    <div class="wide-input-container">
+      {{wide-input value=zipCode id="zipCode" light="true"}}
+    </div>
+  {{/if}}
+
+  {{normal-button class="light" onClick=(action "submitInterestsAndLocation") text="Click Here to Find Companies" size='large'}}
+</div>
+{{/unless}}
+
+
 
 {{#if calledGlassdoor}}
   {{#if haveCompanies}}
@@ -62,3 +68,23 @@
 {{/if}}
 
 
+{{#if finalSteps}}
+  {{#text-type class="h3" fade="true"}}
+    Step 2: 
+  {{/text-type}}
+  <h3>Research the companies you're interested in. Find people that you know and add them as leads.</h3>
+
+  {{#text-type class="h3" fade="true"}}
+    Step 3: 
+  {{/text-type}}
+  <h3>Download the <a target="_blank" href="https://chrome.google.com/webstore/detail/job-hunger/nohkkhfkbhhfpblhcpdghanppjfihpdp">Chrome Extension</a>, which is completely free and works similarly to Pinterest's "Pin It" button. While you're scouring the web for jobs, just pop open the extension to save the job to your dashboard!</h3><br>
+
+  {{#text-type class="h3" fade="true"}}
+    Step 4: 
+  {{/text-type}}  
+  <h3>Make sure you check out the Meetups tab to see events happening near you. Friendly reminder to get out of the house and make connections with potential employers!</h3>
+
+
+
+  {{normal-button class="light" onClick=(action "goToDashboard") text="Continue To Dashboard" size='large'}}
+{{/if}}
