@@ -1,10 +1,12 @@
 <div class="container">
   <h1>Meetups</h1>
 
-  <form>
-    {{input value=text placeholder="Search by Keyword"}}
-    {{input value=zip placeholder="Enter Zip Code"}}
-    <select class="dropdown" onchange={{action "selectRadius" value="target.value"}}>
+  <form class="form-inline">
+    <div class="form-group">
+      {{input value=text placeholder="Search by Keyword" class="form-control"}}
+      {{input value=zip placeholder="Enter Zip Code" class="form-control"}}
+    </div>
+    <select class="diy-dropdown" onchange={{action "selectRadius" value="target.value"}}>
       {{#each populateRange as |range|}}
         {{#if (eq range 25)}}
           <option value={{range}} selected="selected">{{range}} miles</option>
@@ -12,15 +14,15 @@
           <option value={{range}}>{{range}} miles</option>
         {{/if}}
       {{/each}}
-    </select>
-    <button {{action 'findMeetups'}}>Find Meetups</button>
+    </select><br><br>
+    <button {{action 'findMeetups'}} class="special-button large">Find Meetups</button>
   </form>
 
   <br>
 
   <div class="list-group">
     {{#each model as |event|}}
-      {{event.date}}
+      <h4>{{event.date}}</h4>
       <a href={{event.event_url}} target="_newTab" class="list-group-item">
         <div class="row">
           <div class="col-xs-2">

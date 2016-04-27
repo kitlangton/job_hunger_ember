@@ -1,5 +1,9 @@
 <div class="crumbs">
-  {{link-to 'Dashboard' 'dashboard'}} • {{link-to model.company.name 'companies.company' model.company}} • {{link-to model.name 'leads.lead' model}} • <a href="#" {{action "deleteLead"}}>X</a>
+  {{link-to 'Dashboard' 'dashboard'}} • {{link-to model.company.name 'companies.company' model.company}} • {{link-to model.name 'leads.lead' model}}
+
+  <div class="pull-right special-button small">
+    <a href="#" {{action "deleteLead"}}>Delete</a>
+  </div>
 </div>
 
 <div class="row">
@@ -13,11 +17,17 @@
     <h3 class="special" data-title-type="info">Information</h3>
     <div class="info">
       <div data-lead-id="{{lead.id}}">
-        <div class="subheading">Blog</div>
+        <div class="subheading">
+          Blog
+          {{model-link link=model.blog}}
+        </div>
         <div class="item">
           {{wide-input editable=true value=model.blog small=true label="Blog" enterPressed=(action "updateLead")}}
         </div>
-        <div class="subheading">Website</div>
+        <div class="subheading">
+          Website
+          {{model-link link=model.website}}
+        </div>
         <div class="item">
           {{wide-input editable=true value=model.website small=true label="Website" enterPressed=(action "updateLead")}}
         </div>

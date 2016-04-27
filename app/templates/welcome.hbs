@@ -16,7 +16,7 @@
 
 {{#if isInterested1}}
   {{#text-type class="h1" fade="true"}}
-    <h3>Enter a location (Zip Code or city)</h3>
+    <h3>Enter a location (zip Code or city)</h3>
   {{/text-type}}
 
   <div class="wide-input-container">
@@ -33,7 +33,7 @@
           <tr>
               <th>Company</th>
               <th>Glassdoor Rating</th>
-              <th>Add This Company!</th>
+              <th>Add This Company</th>
           </tr>
         </thead>
         <tbody>
@@ -41,13 +41,14 @@
             <tr>
                 <td >{{company.name}}</td>
                 <td>
-                  <div class="label label-info">{{company.overallRating}}</div>
+                  {{!-- <span class="badge">{{company.overallRating}}</span> --}}
+                  <span class="rating">{{company.overallRating}}</span>
                 </td>
                 <td>
                   {{#if company.selected}}
-                    <button type="button" class="btn btn-danger">Already been Selected</button>
+                    <div class="secondary">Already Added</div>
                   {{else}}
-                    <button type="button" class="btn btn-info" {{action "createCompany" company}}>Follow this Company!</button>
+                    <button type="button" class="special-button" {{action "createCompany" company}}>Follow!</button>
                   {{/if}}
                 </td>
             </tr>
@@ -59,8 +60,5 @@
   {{/if}}
   {{normal-button class="light" onClick=(action "allDone") text="All Done" size='large'}}
 {{/if}}
-
-
-{{normal-button class="light" onClick=(action "allDone") text="All Done" size='large'}}
 
 

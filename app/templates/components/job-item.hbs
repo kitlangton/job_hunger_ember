@@ -1,32 +1,20 @@
-{{yield}}
-
-<div class="row dark-ritual">
-
-  <div class="col-sm-4 text">
-    {{ jobItem.title }}
-  </div>
-
-  <div class="col-sm-2">
-    <select class="diy-dropdown" onchange={{action "updateJobStatus" value="target.value"}}>
-      {{#each statuses as |status|}}
-        <option value={{status}} selected={{eq jobItem.application_status status }}>{{status}}</option>
-      {{/each}}
-    </select>
-  </div>
-
-  <div class="col-sm-5 text">
-    {{ember-inline-edit
-      value=jobItem.url
-      onSave="updateUrl"}}
-  </div>
-
-  <div class="col-sm-1">
-    <button class="btn btn-default btn-small" {{action "removeJob" job}}>x</button>
-  </div>
-
+<div class="col-sm-4 text">
+  {{ jobItem.title }}
 </div>
 
+<div class="col-sm-2">
+  <select class="diy-dropdown" onchange={{action "updateJobStatus" value="target.value"}}>
+    {{#each statuses as |status|}}
+    <option value={{status}} selected={{eq jobItem.application_status status }}>{{status}}</option>
+    {{/each}}
+  </select>
+</div>
 
+<div class="col-sm-5 text">
+  {{wide-input editable=true value=jobItem.url small=true label="Job URL" enterPressed=(action "updateUrl")}}
+</div>
 
-
-
+<div class="pull-right">
+  {{model-link link=jobItem.url}}
+  <a href=""><span {{action "removeJob" job}} class="glyphicon glyphicon-remove"></span></a>
+</div>

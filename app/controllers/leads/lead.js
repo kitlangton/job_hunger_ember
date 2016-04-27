@@ -28,9 +28,13 @@ export default Ember.Controller.extend({
     },
 
     deleteLead() {
-      console.log("trying to delete lead");
-      this.get('model').deleteRecord()
-      this.transitionToRoute('dashboard');
+      let lead = this.get('model');
+      let bool = confirm("Are you sure you want to remove this Lead?");
+      if (bool) {
+        lead.deleteRecord();
+        lead.save();
+        this.transitionToRoute('dashboard');
+      }
     },
 
   }
