@@ -1,62 +1,50 @@
 import Ember from 'ember';
-import DS from 'ember-data';
+import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
 
   queryParams: ['defaultCompanyId', 'defaultCompanyName'],
   store: Ember.inject.service(),
   sessionAccount: Ember.inject.service(),
-  errors: DS.Errors.create(),
+  selectedCompany: '',
 
-  companyId: '',
-  isEmpty: Ember.computed.empty('name'),
-  isValidInput: Ember.computed.not('isEmpty'),
-  noDefaultCompany: Ember.computed.empty('defaultCompanyId'),
-  // notSelected: Ember.computed.match('companyId', /^$/),
-  isValidSelection: Ember.computed.not('notSelected'),
-  isValid: Ember.computed.and('isValidInput', 'isValidSelection'),
-  isDisabled: Ember.computed.not('isValid'),
-
-  validate() {
-    this.set('errors', DS.Errors.create());
-    if (this.get('isEmpty')) {
-      this.get('errors').add('name', "name can't be empty");
+  validations: {
+    'model.name': {
+      presence: true,
+      length: { message: "can't be blank (minimum is 1 character)" }
+    },
+    'model.companyId': {
+      presence: true,
+      presence: { message: "please select a company" }
     }
-    if(this.get('noDefaultCompany')) {
-      this.get('errors').add('company', "select a company")
-    }
-    return this.get('errors.isEmpty');
   },
 
   actions: {
     selectCompany(id) {
-      let company = this.get('model.companies').findBy("id", id);
-      this.set('companyId', id);
-      // this.set('selectedCompany', company);
+      let company = this.get('model.user.companies').findBy("id", id);
+      this.set('model.companyId', id);
+      this.set('selectedCompany', company);
     },
 
-    createLead(name) {
-      if(this.validate()) {
-
-        let company;
-        if(this.get('companyId') !== '') {
-          company = this.get('model.companies').findBy("id", this.get('companyId'));
-        } else {
-          company = this.get('model.companies').findBy("id", this.get('defaultCompanyId'));
-        }
-
-        let lead = this.get('store').createRecord('lead', {
-          company: company,
-          name: name
-        });
-        this.set('name', '');
-        this.set('defaultCompanyId', '');
-        this.set('defaultCompanyName', '');
+    createLead(name, company) {
+      let lead = this.get('store').createRecord('lead', {
+        company: company,
+        name: name
+      });
+      this.set('name', '');
+      this.validate().then(() => {
         lead.save().then(() => {
+          this.set('model.name', '');
+          this.set('model.companyId', '');
+          this.set('defaultCompanyId', '');
+          this.set('defaultCompanyName', '');
           this.get('sessionAccount.currentUser').reload();
           this.transitionToRoute('leads.lead', lead);
-        });
-      }
+        })
+      }).catch(() => {
+        console.log(this.get('errors').model)
+        this.set('errorList', this.get('errors').model);
+      });
     }
 
   }

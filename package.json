@@ -46,6 +46,7 @@
     "ember-resolver": "^2.0.3",
     "ember-simple-auth": "1.1.0-beta.4",
     "ember-tether": "^0.3.0",
+    "ember-validations": "^2.0.0-alpha.4",
     "liquid-fire": "0.23.0",
     "loader.js": "^4.0.1",
     "surge": "^0.17.7"

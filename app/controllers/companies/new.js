@@ -1,35 +1,36 @@
 import Ember from 'ember';
-import DS from 'ember-data';
+import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
   store: Ember.inject.service(),
   sessionAccount: Ember.inject.service(),
-  isEmpty: Ember.computed.empty('model.name'),
-  validInput: Ember.computed.not('isEmpty'),
-  isDisabled: Ember.computed.not('validInput'),
-  errors: DS.Errors.create(),
+  errorList: [],
 
-  validate() {
-    console.log('hi')
-    this.set('errors', DS.Errors.create());
-    if (this.get('isEmpty')) {
-      this.get('errors').add('name', "name can't be empty");
+  validations: {
+    'model.name': {
+      presence: true,
+      presence: { message: "Company name cannot be blank" },
+      length: { minimum: 1 }
     }
-    return this.get('errors.isEmpty');
   },
 
   actions: {
-    createCompany(company) {
-      if(this.validate()) {
-        let currentUser = this.get('sessionAccount.currentUser');
 
-        company.set('interest', 0);
-        company.set('user', currentUser);
+    createCompany(company) {
+      let currentUser = this.get('sessionAccount.currentUser');
+
+      company.set('interest', 0);
+      company.set('user', currentUser);
+
+      this.validate().then(() => {
         company.save().then(() => {
           this.get('sessionAccount.currentUser').reload();
           this.transitionToRoute('companies.company', company);
-        });
-      }
+        })
+      }).catch(() => {
+        let errors = this.get('errors');
+        this.set('errorList', this.get('errors').model);
+      });
     }
   }
 });

@@ -2,25 +2,23 @@
 
 <form>
   <div class="wide-input-container">
-    {{wide-input value=title inputId="title" label="Job Title"}}
-    {{#each errors.title as |error|}}
-      <span class="help-block">{{error.message}}</span>
-    {{/each}}
+    {{wide-input value=model.title inputId="title" label="Job Title"}}
+    {{errorMessage errorList.title}}
   </div>
 
   <select class="diy-dropdown" onchange={{action "selectCompany" value="target.value"}}>
     <option value=''>Please Select Company</option>
-    {{#each model.companies as |company|}}
+    {{#each model.user.companies as |company|}}
       <option value={{company.id}}>
         {{ company.name }}
       </option>
     {{/each}}
   </select>
-  {{#each errors.company as |error|}}
-    <span class="help-block">{{error.message}}</span>
-  {{/each}}
+  <div>
+    {{errorMessage errorList.companyId}}
+  </div>
 
   <br>
   <br>
-  {{normal-button onClick=(action "createJob" title selectedCompany) text="Create Job" size="large"}}
+  {{normal-button onClick=(action "createJob" model.title selectedCompany) text="Create Job" size="large"}}
 </form>

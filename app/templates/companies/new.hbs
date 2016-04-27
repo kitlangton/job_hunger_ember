@@ -1,11 +1,9 @@
 <h3>New Company</h3>
 
 <form>
-  <div class="wide-input-container {{if errors.name 'has-error'}}">
-    {{wide-input value=model.name inputId="model.name" label="Company Name"}}
-    {{#each errors.name as |error|}}
-      <span class="help-block">{{error.message}}</span>
-    {{/each}}
+  <div class="wide-input-container">
+    {{wide-input value=model.name inputId="model.name" label="Company Name" errors=errors.name}}
+    {{errorMessage errorList.name}}
   </div>
   {{normal-button onClick=(action "createCompany" model) text="Create Company" size="large" }}
 </form>

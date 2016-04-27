@@ -6,6 +6,10 @@ export default Ember.Route.extend({
 
   model() {
     let currentUser = this.get('sessionAccount.currentUser');
-    return this.store.findRecord('user', currentUser.id, {include: 'companies'});
+    return Ember.RSVP.hash({
+      user: this.store.findRecord('user', currentUser.id, {include: 'companies'}),
+      companyId: '',
+      title: ''
+    })
   }
 });
