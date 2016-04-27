@@ -121,9 +121,6 @@ export default Ember.Controller.extend({
       // hide Glassdoor section, show final steps
       this.set('calledGlassdoor', false);
       this.set('finalSteps', true);
-      // .then((response) => {
-      //   this.transitionToRoute('dashboard');
-      // });
     },
 
     goToDashboard() {
