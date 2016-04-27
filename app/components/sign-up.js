@@ -60,7 +60,7 @@ export default Ember.Component.extend({
     let password = this.get('password');
     let passwordConfirmation = this.get('passwordConfirmation');
     var valid = true;
-    if (password.length < 9) {
+    if (password.length < 8) {
       valid = false;
     } else if (password !== passwordConfirmation) {
       valid = false;
@@ -102,7 +102,6 @@ export default Ember.Component.extend({
     animate() {
       let open = this.get('jobDemon.open');
       this.set('jobDemon.open', !open);
-      console.log(open);
     }
   }
 });
