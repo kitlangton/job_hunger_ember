@@ -27,9 +27,9 @@ export default Ember.Component.extend({
     }
     if (link.match(/https?:\/\//)) {
       return link;
-    } else {
-      return "http://" + link;
-    }
+  } else {
+    return "http://" + link;
+  }
   }),
 
   label: Ember.computed('recommendation.field', function() {
@@ -38,8 +38,6 @@ export default Ember.Component.extend({
     if (label) {
       return label;
     } else if (field) {
-      console.log('field');
-      console.log(field);
       return field.split('_').map((word) => {
         return word.charAt(0).toUpperCase() + word.slice(1);
       }).join(' ');

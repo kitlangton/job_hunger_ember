@@ -23,5 +23,6 @@ export default Ember.Controller.extend({
       this.get('model.recommendations').reload();
       this.get('model.leads').reload();
     }
+
   }
 });

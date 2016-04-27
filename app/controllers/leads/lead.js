@@ -25,7 +25,14 @@ export default Ember.Controller.extend({
 
     rollback(model) {
       model.notes = model.notes;
-    }
+    },
+
+    deleteLead() {
+      console.log("trying to delete lead");
+      this.get('model').deleteRecord()
+      this.transitionToRoute('dashboard');
+    },
+
   }
 
 });

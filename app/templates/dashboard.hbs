@@ -28,7 +28,7 @@
   </div>
 
   <div class="col-sm-6">
-    <h3 class="special" data-title-type="leads">Leads <span>{{link-to "+" "leads.new"}}</span></h3>
+    <h3 class="special" data-title-type="leads">Leads <span>{{link-to "+" "leads.new" (query-params defaultCompanyId='' defaultCompanyName='')}}</span></h3>
     <div class="list">
       {{#each model.leads as |lead| }}
       {{lead-card lead=lead data-lead-id=lead.id}}

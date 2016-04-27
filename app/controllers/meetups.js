@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+  sessionAccount: Ember.inject.service(),
   populateRange: [2, 5, 10, 25, 50, 100],
   category_ids: [],
   text: '',
@@ -48,10 +49,15 @@ export default Ember.Controller.extend({
     findMeetups() {
       let that = this;
       let radius = this.get('radius');
-      let text = this.get('text');
+      let text = encodeURI(this.get('text'));
       let zip = this.get('zip');
       let timeStamp = this.get('convertTimestamp');
+      let currentUser = this.get('sessionAccount.currentUser');
+      currentUser.set('defaultKeyword', this.get('text'));
+      currentUser.set('defaultLocation', zip);
 
+      this.set('text', '');
+      this.set('zip', '');
       $.ajax({
         url: 'https://api.meetup.com/2/open_events?&sign=true&photo-host=public&zip=' + zip + '&text=' + text + '&radius=' + radius + '&page=20&key=707d395716d1d2a7b6d3c6514732343',
         dataType: "jsonp",
@@ -71,7 +77,7 @@ export default Ember.Controller.extend({
             };
             parsedResponse.push(obj);
           });
-          that.set('meetups', parsedResponse);
+          that.set('model', parsedResponse);
         }
       });
     }
