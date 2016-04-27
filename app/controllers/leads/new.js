@@ -22,7 +22,6 @@ export default Ember.Controller.extend(EmberValidations, {
   actions: {
     selectCompany(id) {
       let company = this.get('model.user.companies').findBy("id", id);
-      console.log(company);
       this.set('model.companyId', id);
       this.set('selectedCompany', company);
     },
@@ -36,7 +35,8 @@ export default Ember.Controller.extend(EmberValidations, {
       this.validate().then(() => {
         lead.save().then(() => {
           this.set('model.name', '');
-          this.set('model.CompanyId', '');
+          this.set('model.companyId', '');
+          this.set('defaultCompanyId', '');
           this.set('defaultCompanyName', '');
           this.get('sessionAccount.currentUser').reload();
           this.transitionToRoute('leads.lead', lead);

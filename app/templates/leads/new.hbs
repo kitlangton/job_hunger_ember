@@ -7,13 +7,8 @@
   </div>
 
   <select onchange={{action "selectCompany" value="target.value"}}>
-<<<<<<< HEAD
-    <option value=''>Your Companies</option>
-    {{#each model.user.companies as |company|}}
-=======
     <option value={{defaultCompanyId}}>{{defaultCompanyName}}</option>
-    {{#each model.companies as |company|}}
->>>>>>> 5745bb26828b37f6d1aba9b055055bb1ecb27aa9
+    {{#each model.user.companies as |company|}}
       <option value={{company.id}}>
         {{ company.name }}
       </option>
@@ -25,9 +20,5 @@
   </div>
   <br>
   <br>
-<<<<<<< HEAD
   {{normal-button onClick=(action "createLead" model.name selectedCompany) text="Create Lead" size="large"}}
-=======
-  {{normal-button onClick=(action "createLead" name) text="Create Lead" size="large"}}
->>>>>>> 5745bb26828b37f6d1aba9b055055bb1ecb27aa9
 </form>
