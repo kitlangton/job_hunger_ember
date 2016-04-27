@@ -11,6 +11,10 @@ export default Ember.Controller.extend({
 
   actions: {
 
+    saved() {
+      this.get('model.recommendations').reload();
+    },
+
     updateLead() {
       this.get('model').save().then(() => {
         this.get('model.recommendations').forEach( rec => {

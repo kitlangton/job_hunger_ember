@@ -1,32 +1,42 @@
 import Ember from 'ember';
+import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
 
   store: Ember.inject.service(),
-  companyId: '',
+  errorList: [],
 
-  isEmpty: Ember.computed.empty('title'),
-  isValidInput: Ember.computed.not('isEmpty'),
-  notSelected: Ember.computed.match('companyId', /^\D*$/),
-  isValidSelection: Ember.computed.not('notSelected'),
-  isValid: Ember.computed.and('isValidInput', 'isValidSelection'),
-  isDisabled: Ember.computed.not('isValid'),
+  validations: {
+    'model.title': {
+      presence: true,
+      length: { message: "can't be blank (minimum is 1 character)" }
+    },
+    'model.companyId': {
+      presence: true,
+      presence: { message: "please select a company" }
+    }
+  },
 
   actions: {
     selectCompany(id) {
-      let company = this.get('model.companies').findBy("id", id);
-      this.set('companyId', id);
+      let company = this.get('model.user.companies').findBy("id", id);
+      this.set('model.companyId', id);
       this.set('selectedCompany', company);
     },
 
     createJob(title, company) {
-      let job = this.get('store').createRecord('job', {
-        company: company,
-        title: title
-      });
-      this.set('title', '');
-      job.save();
-      this.transitionToRoute('dashboard');
+      this.validate().then(() => {
+        let job = this.get('store').createRecord('job', {
+          company: company,
+          title: title
+        });
+        job.save().then(() => {
+          this.set('model.title', '');
+          this.transitionToRoute('dashboard');
+        })
+      }).catch(() => {
+        this.set('errorList', this.get('errors').model);
+      })
     }
   }
 });

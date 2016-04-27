@@ -8,6 +8,9 @@ export default Model.extend({
   start_date: attr('date'),
   action: attr('string'),
   query: attr('string'),
+  kind: attr('string'),
   field: attr('string'),
+  label: attr('string'),
+  link: attr('string'),
   completed: attr('boolean')
 });

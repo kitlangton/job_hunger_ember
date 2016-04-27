@@ -1,9 +1,11 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 
 export default Ember.Component.extend({
   classNames: ['wide-input'],
   classNameBindings: ['active', 'light', 'present', 'narrow', 'small'],
   type: 'text',
+  errors: DS.Errors.create(),
 
   didInsertElement() {
     if (this.get('hidden')) {
@@ -32,12 +34,20 @@ export default Ember.Component.extend({
     if(this.get('editable')) {
       if (!this.get('editing')) {
         this.set('editing', true);
-        Ember.run.next(this, function() {
+        Ember.run.later(this, function() {
           this.$('.border').velocity('transition.expandIn');
           this.$('input').focus();
-        });
+        }, 100);
       }
     }
+  },
+
+  validate() {
+    this.set('errors', DS.Errors.create());
+    if (this.get('value') === '' || this.get('value') === undefined) {
+      this.get('errors').add('value', "can't be empty");
+    }
+    return this.get('errors.isEmpty');
   },
 
   actions: {
@@ -50,12 +60,14 @@ export default Ember.Component.extend({
     },
 
     enterPressed() {
-      let func = this.get('enterPressed');
-      if (this.get('editable')) {
-        this.set('editing', false);
-      }
-      if (func) {
-        func();
+      if(this.validate()) {
+        let func = this.get('enterPressed');
+        if (this.get('editable')) {
+          this.set('editing', false);
+        }
+        if (func) {
+          func();
+        }
       }
     }
   }
