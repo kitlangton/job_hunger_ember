@@ -44,6 +44,7 @@ export default Ember.Controller.extend(EmberValidations, {
         lead.save().then(() => {
           this.set('model.name', '');
           this.set('model.companyId', '');
+          this.set('errorList', []);
           this.get('sessionAccount.currentUser').reload();
           this.transitionToRoute('leads.lead', lead);
         })

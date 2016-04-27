@@ -212,14 +212,15 @@ button.close {
   padding: 5px;
 }
 
-.has-error {
-}
-
 .help-block {
   color: red;
 }
 
-
 .job-item {
   height: 45px;
+}
+
+.error-message {
+  font-size: 15px;
+  color: red;
 }

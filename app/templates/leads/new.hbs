@@ -9,7 +9,9 @@
   </div>
 
   <select onchange={{action "selectCompany" value="target.value"}} class="diy-dropdown">
-
+    {{#unless defaultCompanyId}}
+      <option></option>
+    {{/unless}}
     {{#each model.user.companies as |company|}}
       <option value={{company.id}} selected={{eq company.id defaultCompanyId}}>
         {{ company.name }}
@@ -18,7 +20,9 @@
 
   </select>
   <div>
-    {{errorMessage errorList.companyId}}
+    <div class="error-message">
+      {{errorMessage errorList.companyId}}
+    </div>
   </div>
   <br>
   <br>
