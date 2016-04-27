@@ -22,16 +22,24 @@
         <div class="item">
           {{wide-input editable=true value=model.address small=true label="Address" enterPressed=(action "updateCompany")}}
         </div>
-        <div class="subheading">Blog</div>
+        <div class="subheading">
+          Blog
+          {{model-link link=model.blog}}
+        </div>
         <div class="item">
           {{wide-input editable=true value=model.blog small=true label="Blog" enterPressed=(action "updateCompany")}}
         </div>
-        <div class="subheading">Website</div>
+        <div class="subheading">
+          Website
+          {{model-link link=model.website}}
+        </div>
         <div class="item">
           {{wide-input editable=true value=model.website small=true label="Website" enterPressed=(action "updateCompany")}}
         </div>
         {{#if model.glassdoor_rating}}
-        <div class="subheading">Glassdoor Rating</div>
+        <div class="subheading">
+          Glassdoor Rating
+        </div>
         <div class="item">
           {{model.glassdoor_rating}}
         </div>

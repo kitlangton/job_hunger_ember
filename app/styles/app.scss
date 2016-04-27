@@ -208,10 +208,6 @@ body {
   color: $secondary-color;
 }
 
-.text {
-  padding-top: 5px;
-}
-
 button.close {
   padding: 5px;
 }
@@ -223,3 +219,7 @@ button.close {
   color: red;
 }
 
+
+.job-item {
+  height: 45px;
+}
