@@ -7,10 +7,9 @@
   </div>
 
   <select onchange={{action "selectCompany" value="target.value"}} class="diy-dropdown">
-    <option value=''>Please Select Company</option>
 
     {{#each model.user.companies as |company|}}
-      <option value={{company.id}}>
+      <option value={{company.id}} selected={{eq company.id defaultCompanyId}}>
         {{ company.name }}
       </option>
     {{/each}}
