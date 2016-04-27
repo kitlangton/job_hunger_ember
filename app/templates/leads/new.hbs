@@ -2,24 +2,23 @@
 
 <form>
   <div class="wide-input-container">
-    {{wide-input value=name inputId="name" label="Lead Name"}}
-    {{#each errors.name as |error|}}
-      <span class="help-block">{{error.message}}</span>
-    {{/each}}
+    {{wide-input value=model.name inputId="name" label="Lead Name"}}
+    {{errorMessage errorList.name}}
   </div>
 
   <select onchange={{action "selectCompany" value="target.value"}}>
-    <option value=''>Please Select Company</option>
-    {{#each model.companies as |company|}}
+    <option value=''>Your Companies</option>
+    {{#each model.user.companies as |company|}}
       <option value={{company.id}}>
         {{ company.name }}
       </option>
     {{/each}}
+
   </select>
-  {{#each errors.company as |error|}}
-    <span class="help-block">{{error.message}}</span>
-  {{/each}}
+  <div>
+    {{errorMessage errorList.companyId}}
+  </div>
   <br>
   <br>
-  {{normal-button onClick=(action "createLead" name selectedCompany) text="Create Lead" size="large"}}
+  {{normal-button onClick=(action "createLead" model.name selectedCompany) text="Create Lead" size="large"}}
 </form>

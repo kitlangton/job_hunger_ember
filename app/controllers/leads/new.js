@@ -1,50 +1,46 @@
 import Ember from 'ember';
-import DS from 'ember-data';
+import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
 
   store: Ember.inject.service(),
   sessionAccount: Ember.inject.service(),
-  errors: DS.Errors.create(),
+  selectedCompany: '',
 
-  companyId: '',
-  isEmpty: Ember.computed.empty('name'),
-  isValidInput: Ember.computed.not('isEmpty'),
-  notSelected: Ember.computed.match('companyId', /^$/),
-  isValidSelection: Ember.computed.not('notSelected'),
-  isValid: Ember.computed.and('isValidInput', 'isValidSelection'),
-  isDisabled: Ember.computed.not('isValid'),
-
-  validate() {
-    this.set('errors', DS.Errors.create());
-    if (this.get('isEmpty')) {
-      this.get('errors').add('name', "name can't be empty");
+  validations: {
+    'model.name': {
+      presence: true,
+      length: { message: "can't be blank (minimum is 1 character)" }
+    },
+    'model.companyId': {
+      presence: true,
+      presence: { message: "please select a company" }
     }
-    if(this.get('notSelected')) {
-      this.get('errors').add('company', "select a company")
-    }
-    return this.get('errors.isEmpty');
   },
 
   actions: {
     selectCompany(id) {
-      let company = this.get('model.companies').findBy("id", id);
-      this.set('companyId', id);
+      let company = this.get('model.user.companies').findBy("id", id);
+      console.log(company);
+      this.set('model.companyId', id);
       this.set('selectedCompany', company);
     },
 
     createLead(name, company) {
-      if(this.validate()) {
-        let lead = this.get('store').createRecord('lead', {
-          company: company,
-          name: name
-        });
-        this.set('name', '');
+      let lead = this.get('store').createRecord('lead', {
+        company: company,
+        name: name
+      });
+      this.set('name', '');
+      this.validate().then(() => {
         lead.save().then(() => {
           this.get('sessionAccount.currentUser').reload();
           this.transitionToRoute('leads.lead', lead);
-        });
-      }
+        })
+      }).catch(() => {
+        console.log(this.get('errors').model)
+        this.set('errorList', this.get('errors').model);
+      });
     }
   }
 });
