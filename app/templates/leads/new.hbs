@@ -3,7 +3,9 @@
 <form>
   <div class="wide-input-container">
     {{wide-input value=model.name inputId="name" label="Lead Name"}}
-    {{errorMessage errorList.name}}
+    <div class="error-message">
+      {{errorMessage errorList.name}}
+    </div>
   </div>
 
   <select onchange={{action "selectCompany" value="target.value"}} class="diy-dropdown">
