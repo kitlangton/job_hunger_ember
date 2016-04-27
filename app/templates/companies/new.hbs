@@ -2,8 +2,10 @@
 
 <form>
   <div class="wide-input-container">
-    {{wide-input value=model.name inputId="model.name" label="Company Name" errors=errors.name}}
-    {{errorMessage errorList.name}}
+    {{wide-input value=model.name inputId="model.name" label="Company Name"}}
+    <div class="error-message">
+      {{errorMessage errorList.name}}
+    </div>
   </div>
   {{normal-button onClick=(action "createCompany" model) text="Create Company" size="large" }}
 </form>
