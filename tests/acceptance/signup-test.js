@@ -4,11 +4,23 @@ import moduleForAcceptance from 'job-hunger/tests/helpers/module-for-acceptance'
 import startApp from '../helpers/start-app';
 import { currentSession, authenticateSession, invalidateSession } from 'job-hunger/tests/helpers/ember-simple-auth';
 
+// moduleForAcceptance('Acceptance | sign up', {
+//   beforeEach: function(){
+//     authenticateSession( startApp() );
+//   },
+// });
 
-moduleForAcceptance('Acceptance | sign up', {
-  beforeEach: function(){
-    authenticateSession( startApp() );
-  },
+let App;
+
+module('Acceptance - signup', {
+  setup: function() {
+    App = startApp();
+    authenticateSession( App );
+  }, 
+
+  teardown: function() {
+    Ember.run(App, 'destroy');
+  }
 });
 
 test('visiting /sign-up', function(assert) {
