@@ -3,10 +3,15 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['dark-ritual'],
   jobDemon: Ember.inject.service(),
+  store: Ember.inject.service(),
   backgroundColor: Ember.inject.service(),
   attributeBindings: ['data-ritual-id'],
   recAction: "Find a blog",
-  // query: "Khan+Academy+company+blog",
+
+  isActionable: Ember.computed('recommendation.kind', function() {
+    let kind = this.get('recommendation.kind');
+    return kind === 'action';
+  }),
 
   query: Ember.computed('recommendation.query', function() {
     let query = this.get('recommendation.query');
@@ -15,11 +20,24 @@ export default Ember.Component.extend({
     }
   }),
 
+  link: Ember.computed('recommendation.link', function() {
+    let link = this.get('recommendation.link');
+    if (!link) {
+      return;
+    }
+    if (link.match(/https?:\/\//)) {
+      return link;
+  } else {
+    return "http://" + link;
+  }
+  }),
+
   label: Ember.computed('recommendation.field', function() {
     let field = this.get('recommendation.field');
-    if (field) {
-      // console.log('field');
-      // console.log(field);
+    let label = this.get('recommendation.label');
+    if (label) {
+      return label;
+    } else if (field) {
       return field.split('_').map((word) => {
         return word.charAt(0).toUpperCase() + word.slice(1);
       }).join(' ');
@@ -27,17 +45,13 @@ export default Ember.Component.extend({
   }),
 
   didInsertElement() {
-    // this.$().css('opacity',0);
     this.$('.page').velocity('transition.expandIn');
-    // this.$().velocity('transition.fadeIn', { duration: 1000});
   },
 
   fadeOut() {
-    // this.get('backgroundColor').setDark();
     let from = this.$('.page').offset();
     this.$().velocity('transition.fadeOut');
     this.get('jobDemon').animatePage(from);
-    // this.$('.complete').css('opacity', 0);
     let demon = this.get('jobDemon');
     this.set('processing', true);
     demon.ooze();
@@ -55,32 +69,42 @@ export default Ember.Component.extend({
 
     save() {
       let recommendation = this.get('recommendation');
+      let kind = recommendation.get('kind');
+
       this.get('recommendation.recommendable').then((recommendable) => {
-        let field = this.get('recommendation.field');
-        recommendable.set(field, this.get('value'));
-        this.fadeOut();
-        recommendable.save().then(() => {
-          recommendation.reload();
-        });
+
+        if (kind === 'edit') {
+          let field = this.get('recommendation.field');
+          recommendable.set(field, this.get('value'));
+          this.fadeOut();
+          recommendable.save().then(() => {
+            this.get('saved')();
+            recommendation.reload();
+          });
+        } else if (kind === 'create') {
+          let field = this.get('recommendation.field');
+          let newObject = recommendable.get(field).createRecord({ name: this.get('value') });
+          this.fadeOut();
+          newObject.save().then(() => {
+            this.get('saved')();
+          });
+          recommendation.set('completed', true);
+          recommendation.save();
+        }
       });
     },
 
     complete() {
       this.$('input').blur();
-      this.$().velocity('transition.fadeOut');
-
-      let demon = this.get('jobDemon');
-      this.set('processing', true);
-      demon.ooze();
-      Ember.run.later(demon, demon.open, 5000);
+      this.set('recommendation.completed', true);
+      this.get('recommendation').save().then(() => {
+        this.get('saved')();
+      });
+      this.fadeOut();
     },
 
     showModal() {
       this.toggleProperty('isShowModal');
     },
-
-    toggleHelperCursor() {
-      $('.complete').toggleClass('helper');
-    }
   }
 });

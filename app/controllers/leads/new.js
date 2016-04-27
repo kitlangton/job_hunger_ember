@@ -3,6 +3,7 @@ import EmberValidations from 'ember-validations';
 
 export default Ember.Controller.extend(EmberValidations, {
 
+  queryParams: ['defaultCompanyId', 'defaultCompanyName'],
   store: Ember.inject.service(),
   sessionAccount: Ember.inject.service(),
   selectedCompany: '',
@@ -34,6 +35,9 @@ export default Ember.Controller.extend(EmberValidations, {
       this.set('name', '');
       this.validate().then(() => {
         lead.save().then(() => {
+          this.set('model.name', '');
+          this.set('model.CompanyId', '');
+          this.set('defaultCompanyName', '');
           this.get('sessionAccount.currentUser').reload();
           this.transitionToRoute('leads.lead', lead);
         })
@@ -42,5 +46,6 @@ export default Ember.Controller.extend(EmberValidations, {
         this.set('errorList', this.get('errors').model);
       });
     }
+
   }
 });

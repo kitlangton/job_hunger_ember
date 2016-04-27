@@ -13,6 +13,15 @@ export default Ember.Controller.extend({
         company.set('interest', 1);
       }
       company.save();
+    },
+
+    showModal() {
+    },
+
+    saved() {
+      this.get('model.companies').reload();
+      this.get('model.recommendations').reload();
+      this.get('model.leads').reload();
     }
 
   }
