@@ -41,12 +41,11 @@
 <div class="row job-table">
   <div class="col-sm-12">
     <h3 class="special" data-title-type="jobs">Jobs <span>{{link-to "+" "jobs.new"}}</span></h3>
-    <div class="list">
+    <div class="rituals">
       {{#each model.jobs as |job| }}
       {{ job-item jobItem=job }}
       {{/each}}
     </div>
-
   </div>
 </div>
 
