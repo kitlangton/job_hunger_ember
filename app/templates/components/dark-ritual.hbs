@@ -27,5 +27,8 @@ for
   {{normal-button onClick=(action "complete") text="I did it!"}}
   {{else}}
   {{wide-input value=value narrow=true small=true label=label enterPressed=(action "save")}}
+  <div class="error-message">
+    {{errorMessage errorList.value}}
+  </div>
   {{/if}}
 </div>

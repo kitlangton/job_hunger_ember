@@ -1,12 +1,21 @@
 import Ember from 'ember';
+import EmberValidations from 'ember-validations';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(EmberValidations, {
   classNames: ['dark-ritual'],
   jobDemon: Ember.inject.service(),
   store: Ember.inject.service(),
   backgroundColor: Ember.inject.service(),
   attributeBindings: ['data-ritual-id'],
   recAction: "Find a blog",
+  errorList: [],
+
+  validations: {
+    'value': {
+      presence: true,
+      presence: { message: "can't be blank" }
+    }
+  },
 
   isActionable: Ember.computed('recommendation.kind', function() {
     let kind = this.get('recommendation.kind');
@@ -68,29 +77,33 @@ export default Ember.Component.extend({
     },
 
     save() {
-      let recommendation = this.get('recommendation');
-      let kind = recommendation.get('kind');
+      this.validate().then(() => {
+        let recommendation = this.get('recommendation');
+        let kind = recommendation.get('kind');
 
-      this.get('recommendation.recommendable').then((recommendable) => {
+        this.get('recommendation.recommendable').then((recommendable) => {
 
-        if (kind === 'edit') {
-          let field = this.get('recommendation.field');
-          recommendable.set(field, this.get('value'));
-          this.fadeOut();
-          recommendable.save().then(() => {
-            this.get('saved')();
-            recommendation.reload();
-          });
-        } else if (kind === 'create') {
-          let field = this.get('recommendation.field');
-          let newObject = recommendable.get(field).createRecord({ name: this.get('value') });
-          this.fadeOut();
-          newObject.save().then(() => {
-            this.get('saved')();
-          });
-          recommendation.set('completed', true);
-          recommendation.save();
-        }
+          if (kind === 'edit') {
+            let field = this.get('recommendation.field');
+            recommendable.set(field, this.get('value'));
+            this.fadeOut();
+            recommendable.save().then(() => {
+              this.get('saved')();
+              recommendation.reload();
+            });
+          } else if (kind === 'create') {
+            let field = this.get('recommendation.field');
+            let newObject = recommendable.get(field).createRecord({ name: this.get('value') });
+            this.fadeOut();
+            newObject.save().then(() => {
+              this.get('saved')();
+            });
+            recommendation.set('completed', true);
+            recommendation.save();
+          }
+        });
+      }).catch(() => {
+        this.set('errorList', this.get('errors'));
       });
     },
 

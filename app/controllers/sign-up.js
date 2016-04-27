@@ -35,7 +35,6 @@ export default Ember.Controller.extend({
     animate() {
       let open = this.get('jobDemon.open');
       this.set('jobDemon.open', !open);
-      console.log(open);
     }
   }
 });

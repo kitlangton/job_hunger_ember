@@ -11,6 +11,7 @@ export default Ember.Controller.extend({
   zipCode: '',
   hideInterest: false,
   calledGlassdoor: false,
+  finalSteps: false,
   companies: [],
   sessionAccount: Ember.inject.service(),
   selectedCompanies: [],
@@ -33,7 +34,6 @@ export default Ember.Controller.extend({
   }),
 
   didInsertElement() {
-    // this.get('backgroundColor').setDark();
     this.get('jobDemon').close();
     Ember.run.later(this, () => {
       this.set('hideInterest', false);
@@ -76,8 +76,6 @@ export default Ember.Controller.extend({
       url: request_string,
       dataType: "jsonp",
       success: function(data) {
-        // console.log(data);
-
         that.set('companies', data.response.employers.map(function(company){
           return Ember.Object.create(company)
         }));
@@ -96,39 +94,38 @@ export default Ember.Controller.extend({
       currentUser.set('defaultKeyword', interest1);
       currentUser.set('defaultLocation', zipCode);
       currentUser.save().then((response) => {
-        // console.log('trying to save');
-        // console.log(response);
       });
 
       this.glassdoorAPICall();
+      this.set('hideInterest', true);
     },
 
 
     createCompany(company) {
       let currentUser = this.get('sessionAccount.currentUser');
-      // console.log(currentUser);
       let newCompany = this.store.createRecord('company');
 
       newCompany.set('user', currentUser);
       newCompany.set('name', company.name);
       company.set('selected', true);
       newCompany.save().then((response) => {
-        // console.log('trying to save');
-        // console.log(response);
       });
 
       this.selectedCompanies.push( company.name );
-      console.log( this.selectedCompanies );
     },
 
     allDone() {
       let currentUser = this.get('sessionAccount.currentUser');
       currentUser.set('hasOnboarded', true);
-      currentUser.save().then((response) => {
-        console.log("attempt trans");
-        this.transitionToRoute('dashboard');
-      });
+      currentUser.save();
+      // hide Glassdoor section, show final steps
+      this.set('calledGlassdoor', false);
+      this.set('finalSteps', true);
     },
+
+    goToDashboard() {
+      this.transitionToRoute('dashboard');
+    }
 
 
   }
