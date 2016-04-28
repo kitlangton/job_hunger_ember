@@ -102,21 +102,31 @@ body {
 .diy-dropdown {
   background-color: white;
   display: inline-block;
-  margin-bottom: 0;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   border: 1px #CCC solid;
   padding: 6px 12px;
-  font-size: 14px;
   border-radius: 4px;
   font-size: large;
+  @media (max-width : 1095px) {
+    font-size: small;
+    width: 80px;
+  }
+
+  @media (max-width : 600px) {
+    width: 60px;
+  }
+
+  @media (max-width : 450px) {
+    padding: 3px 6px;
+    width: 30px;
+  }
 }
 
 .ember-inline-edit-save {
   color: black;
 }
-
 
 .aboutp {
   font-size: large;
@@ -144,7 +154,20 @@ button.close {
 }
 
 .job-item {
-  height: 45px;
+  padding: 5px 10px;
+}
+
+.job-item-row {
+  display: flex;
+  align-items: center;
+}
+
+.job-item-input {
+  display: flex;
+  align-items: center;
+}
+
+.job-item-title {
 }
 
 .error-message {
