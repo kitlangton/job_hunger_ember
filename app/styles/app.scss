@@ -42,6 +42,32 @@ body {
   }
 }
 
+.dark-ritual {
+  @media (max-width : 900px) {
+    height: 100px;
+    position: relative;
+  }
+}
+
+.left-side {
+  display: inline-block;
+  @media (max-width : 900px) {
+    display: block;
+  }
+}
+.right-side {
+  @media (max-width : 900px) {
+    width: 100%;
+    position: absolute;
+    top: 65%;
+    .wide-input {
+      width: 100%;
+    }
+  }
+  @media (max-width : 400px) {
+  }
+}
+
 .hunger-logo {
   height: 100px;
   width: auto;
@@ -173,4 +199,8 @@ button.close {
 .error-message {
   font-size: 15px;
   color: red;
+}
+
+.heart {
+  top: 4px;
 }
