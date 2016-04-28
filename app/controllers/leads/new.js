@@ -11,7 +11,8 @@ export default Ember.Controller.extend(EmberValidations, {
   validations: {
     'model.name': {
       presence: true,
-      length: { message: "can't be blank (minimum is 1 character)" }
+      presence: { message: "lead can't be blank" },
+      length: { minimum: 1 }
     },
     'model.companyId': {
       presence: true,
@@ -21,28 +22,33 @@ export default Ember.Controller.extend(EmberValidations, {
 
   actions: {
     selectCompany(id) {
-      let company = this.get('model.user.companies').findBy("id", id);
       this.set('model.companyId', id);
-      this.set('selectedCompany', company);
     },
 
-    createLead(name, company) {
+    createLead(name) {
+
+      if (this.get('model.companyId')) {
+        let company = this.get('model.user.companies').findBy("id", this.get('model.companyId'));
+        this.set('selectedCompany', company);
+      } else if (this.get('defaultCompanyId')) {
+        let company = this.get('model.user.companies').findBy("id", this.get('defaultCompanyId'));
+        this.set('selectedCompany', company);
+        this.set('model.companyId', this.get('defaultCompanyId'));
+      }
+
       let lead = this.get('store').createRecord('lead', {
-        company: company,
+        company: this.get('selectedCompany'),
         name: name
       });
-      this.set('name', '');
       this.validate().then(() => {
         lead.save().then(() => {
           this.set('model.name', '');
           this.set('model.companyId', '');
-          this.set('defaultCompanyId', '');
-          this.set('defaultCompanyName', '');
+          this.set('errorList', []);
           this.get('sessionAccount.currentUser').reload();
           this.transitionToRoute('leads.lead', lead);
         })
       }).catch(() => {
-        console.log(this.get('errors').model)
         this.set('errorList', this.get('errors').model);
       });
     }
