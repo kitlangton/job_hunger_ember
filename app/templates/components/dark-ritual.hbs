@@ -1,27 +1,27 @@
-<div class="complete helper" {{action "showModal"}}>
-  <img class="page" src="/page.png" alt="">
-  {{#if isShowModal}}
-    {{#tether-dialog close="showModal"
-                      target=target
-                      container-class="modal-window"}}
-      Fill in or complete a recommendation to earn points.
-    {{/tether-dialog}}
+<div class="left-side">
+  <div class="complete helper" {{action "showModal"}}>
+    <img class="page" src="/page.png" alt="">
+    {{#if isShowModal}}
+      {{#tether-dialog close="showModal"
+                        target=target
+                        container-class="modal-window"}}
+        Fill in or complete a recommendation to earn points.
+      {{/tether-dialog}}
+    {{/if}}
+  </div>
+
+  {{#if query}}
+  <a href="#" {{action "focus"}}>{{recommendation.action}}</a>
+  {{else if link}}
+  <a href="{{link}}" target="_blank">{{recommendation.action}}</a>
+  {{else}}
+  <strong>
+    {{recommendation.action}}
+  </strong>
   {{/if}}
+  for
+  {{link-to recommendation.recommendable.name recommendation.recommendable.route recommendation.recommendable}}
 </div>
-
-{{#if query}}
-<a href="#" {{action "focus"}}>{{recommendation.action}}</a>
-{{else if link}}
-<a href="{{link}}" target="_blank">{{recommendation.action}}</a>
-{{else}}
-<strong>
-  {{recommendation.action}}
-</strong>
-{{/if}}
-
-for
-
-{{link-to recommendation.recommendable.name recommendation.recommendable.route recommendation.recommendable}}
 
 <div class="right-side">
   <!-- <a href="#" {{action "focus"}}>Search</a> -->
