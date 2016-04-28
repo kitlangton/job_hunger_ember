@@ -11,6 +11,15 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
+    toggleHeart(company, interest) {
+        if (interest === 1) {
+          company.set('interest', 0);
+        } else {
+          company.set('interest', 1);
+        }
+        company.save();
+    },
+
     saved() {
       this.get('model.recommendations').reload();
     },

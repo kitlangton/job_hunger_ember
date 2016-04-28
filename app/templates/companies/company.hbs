@@ -1,7 +1,12 @@
 
 <div class="crumbs">
-  {{link-to 'Dashboard' 'dashboard'}} • {{link-to model.name 'companies.company' model}} 
+  {{link-to 'Dashboard' 'dashboard'}} • {{link-to model.name 'companies.company' model}}
 
+  {{#if (eq model.interest 1)}}
+    <span class="glyphicon glyphicon-heart heart" {{action "toggleHeart" model model.interest}}></span>
+  {{else}}
+    <span class="glyphicon glyphicon-heart-empty heart" {{action "toggleHeart" model model.interest}}></span>
+  {{/if}}
   <div class="pull-right special-button small">
     <a href="#" {{action "deleteCompany"}}>Delete</a>
   </div>
