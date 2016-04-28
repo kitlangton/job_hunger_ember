@@ -36,7 +36,7 @@ export default Ember.Component.extend({
   passwordTooShort: Ember.computed('password', function() {
     console.log('short');
     let password = this.get('password');
-    if (password.length < 9) {
+    if (password.length < 8) {
       return true;
     }
     return false;

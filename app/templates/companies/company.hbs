@@ -18,9 +18,11 @@
     <h3 class="special" data-title-type="info">Information</h3>
     <div class="info">
       <div data-lead-id="{{lead.id}}">
-        <div class="subheading">Address</div>
+        <div class="subheading">
+          Address
+        </div>
         <div class="item">
-          {{wide-input editable=true value=model.address small=true label="Address" enterPressed=(action "updateCompany")}}
+          {{wide-input editable=true value=model.address small=true label="Address" address=true enterPressed=(action "updateCompany")}}
         </div>
         <div class="subheading">
           Blog
@@ -44,6 +46,12 @@
           {{model.glassdoor_rating}}
         </div>
         {{/if}}
+        <div class="subheading">
+          Notes
+        </div>
+        <div class="item">
+          {{wide-input editable=true value=model.notes small=true label="Notes" notes=true enterPressed=(action "updateCompany")}}
+        </div>
       </div>
     </div>
   </div>
