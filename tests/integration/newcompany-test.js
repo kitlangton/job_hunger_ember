@@ -1,3 +1,4 @@
+
 import { test } from 'qunit';
 import moduleForAcceptance from 'job-hunger/tests/helpers/module-for-acceptance';
 
@@ -6,9 +7,10 @@ import { currentSession, authenticateSession, invalidateSession } from 'job-hung
 
 let App;
 
-module('Acceptance - noauthenticate', {
+module('integration - newcompany', {
   setup: function() {
     App = startApp();
+    authenticateSession( App );
   }, 
 
   teardown: function() {
@@ -17,12 +19,11 @@ module('Acceptance - noauthenticate', {
 });
 
 
-
-test('visiting root without authentication', function(assert) {
+test('clicking plus button on dashboard goes to new company', function(assert) {
   visit('/');
 
+  click('.logout');
   andThen(function() {
     assert.equal(currentURL(), '/login');
   });
 });
-
