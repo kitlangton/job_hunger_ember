@@ -30,10 +30,12 @@ export default Ember.Component.extend({
       stagger: 50,
       delay: delay,
       complete: () => {
-        this.$('.focus').velocity({
-          color: '#88F',
-          // borderBottomWidth: '1px'
-        });
+        if( this.$('.focus') ) {
+          this.$('.focus').velocity({
+            color: '#88F',
+            // borderBottomWidth: '1px'
+          });
+        }
       }
     });
 
