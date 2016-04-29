@@ -1,9 +1,20 @@
-{{#liquid-if recommendations class="crossfade"}}
+{{#liquid-if displayedRecommendations class="crossfade"}}
     <h3><span class="focus special">Recommendations</span></h3>
-{{/liquid-if}}
 
 <div class="rituals">
-  {{#each recommendations as |recommendation|}}
+  {{#each displayedRecommendations as |recommendation|}}
   {{dark-ritual recommendation=recommendation data-ritual-id=recommendation.id saved=saved}}
   {{/each}}
 </div>
+
+<div class="center">
+  {{#if moreThanFourRecommendations}}
+    {{#if showingMoreRecommendations}}
+      {{normal-button onClick=(action "showFewerRecommendations") text="Show fewer recommendations..."}}
+    {{else}}
+      {{normal-button onClick=(action "showMoreRecommendations") text="Show more recommendations..."}}
+    {{/if}}
+  {{/if}}
+</div>
+
+{{/liquid-if}}

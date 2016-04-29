@@ -16,7 +16,7 @@
 
     <h3 class="special" data-title-type="companies">Companies <span>{{link-to "+" "companies.new"}}</span></h3>
     <div class="list">
-      {{#each model.companies as |company| }}
+      {{#each companies as |company| }}
       <div class="item">
         <a href="">
           {{link-to company.name 'companies.company' company}}
