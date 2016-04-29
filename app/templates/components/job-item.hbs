@@ -16,7 +16,14 @@
   </div>
 
   <div class="col-xs-1">
-    <a href="" class="pull-right"><span {{action "removeJob" job}} class="glyphicon glyphicon-remove"></span></a>
+    <div class="row clearfix">
+      <div class="col-xs-6 pull-right">
+        <a href=""><span {{action "removeJob" job}} class="glyphicon glyphicon-remove"></span></a>
+      </div>
+      <div class="col-xs-6 pull-right">
+        {{model-link link=jobItem.url}}
+      </div>
+    </div>
   </div>
 
 </div>
