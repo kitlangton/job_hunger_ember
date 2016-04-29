@@ -8,9 +8,7 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('sign-up');
   this.route('login');
-  // this.route('protected', { path: '/' });
   this.route('dashboard', { path: '' });
-  this.route('freestyle');
 
   this.route('companies', function() {
     this.route('new');
@@ -26,7 +24,6 @@ Router.map(function() {
     this.route('new');
   });
 
-  this.route('recommendable', {path: '/:recommendable_type/:recommendable_id'});
   this.route('about');
   this.route('meetups');
   this.route('welcome');
