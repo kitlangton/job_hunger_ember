@@ -22,15 +22,29 @@
           {{model-link link=model.blog}}
         </div>
         <div class="item">
-          {{wide-input editable=true value=model.blog small=true label="Blog" enterPressed=(action "updateLead")}}
+          {{wide-input editable=true value=model.blog small=true blog=true label="Blog" enterPressed=(action "updateLead")}}
         </div>
         <div class="subheading">
-          Website
-          {{model-link link=model.website}}
+          Email
+          {{model-link link=model.email}}
         </div>
         <div class="item">
-          {{wide-input editable=true value=model.website small=true label="Website" enterPressed=(action "updateLead")}}
+          {{wide-input editable=true value=model.email small=true email=true label="Email" enterPressed=(action "updateLead")}}
         </div>
+        <div class="subheading">
+          LinkedIn
+          {{model-link link=model.linked_in}}
+        </div>
+        <div class="item">
+          {{wide-input editable=true value=model.linked_in small=true linkedin = true label="LinkedIn" enterPressed=(action "updateLead")}}
+        </div>
+        <div class="subheading">
+          Notes
+          {{model-link link=model.notes}}
+        </div>
+        <div class="item">
+          {{wide-input editable=true value=model.notes small=true notes=true label="Notes" enterPressed=(action "updateLead")}}
+        </div>                       
       </div>
     </div>
   </div>
